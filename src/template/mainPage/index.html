@@ -1,2 +1,35 @@
 {% extends "base.html" %}
 
+{% block content %}
+    <div class="choseCourse">
+ 
+        <h1>
+            Eu quero um 
+        </h1>
+        <div class="choseCourse_selection">
+            <div class="choseCourse_selection_course invisible">
+                <p>
+                    Curso 1
+                </p>
+            </div>
+            <div class="choseCourse_selection_course">
+                <p>
+                    Curso 2
+                </p>
+            </div>
+            <div class="choseCourse_selection_course invisible">
+                <p>
+                    Curso 3
+                </p>
+            </div>
+        </div>
+        <div class="choseCourse_blur">
+        
+        </div>
+    </div>
+
+    <div class="cards">
+        {%include 'components/card.html'%}
+        
+    </div>
+{% endblock %}

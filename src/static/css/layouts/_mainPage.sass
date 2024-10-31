@@ -1,4 +1,71 @@
-body
-    background-color: $baseColor-100
-h2
-    color: white
+.choseCourse
+    background-color: $baseColor-200
+    height: 30vh
+    display: flex
+    justify-content: center
+    align-items: center
+
+    h1
+        font-style: $titleFont 
+        font-size: 45px
+        color: $baseColor-600
+        margin-right: 30px
+        color: white
+    
+    .choseCourse_blur
+        position: absolute
+        transition: .5s
+        backdrop-filter: blur(0px) 
+        top: 0
+        bottom: 0
+        width: 100vw
+        height: 100vh
+        background-color: #8b8b8b00
+    
+    .choseCourse_selection:hover ~ .choseCourse_blur
+        display: block
+        background-color: #8b8b8b57 
+        backdrop-filter: blur(10px)  
+        transition: .5s
+
+
+
+    .choseCourse_selection
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        z-index: 10000
+        height: 80px
+        &:hover
+            .invisible
+                p
+                    border-bottom: 0px !important
+                    font-size: 25px !important
+                    font-weight: lighter !important
+                    color: $baseColor-600
+                pointer-events: auto
+                opacity: 1
+                transition: .5s
+            
+
+        .invisible
+            pointer-events: none
+            opacity: 0
+            transition: .5s
+            margin: 20px 0px
+            font-size: 25px !important
+            font-weight: lighter !important
+            color: $baseColor-600
+            border-bottom: 0px !important
+
+        .choseCourse_selection_course
+            p  
+                height: min-content
+                width: max-content
+                font-size: $textFont
+                font-size: 40px
+                font-weight: bold
+                color: white
+                border-bottom: 3px solid white
