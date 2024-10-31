@@ -1,25 +1,49 @@
 services:
   database:
-      image: postgres
-      restart: always
-      ports:
-        - "5432:5432"
-      volumes:
-        - data:/var/lib/postgresql/data
-      environment:
-        POSTGRES_PASSWORD: password
-        POSTGRES_USER: user
-        POSTGRES_DB: db
-
-  web:
-    build: .
+    image: postgres
+    restart: always
     volumes:
-      - .:/app
-    ports:
-      - "5433:8000"
+      - data:/var/lib/postgresql/data
     environment:
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: db
+    networks:
+      - app-network
+      
+  src:
+    build:
+      context: ./src
+      dockerfile: ops/src.Dockerfile
+    ports:
+      - 8000:8000
+    command: bash -c "poetry run python manage.py migrate && poetry run gunicorn setup.wsgi 0.0.0.0:8000"
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: db
+      POSTGRES_HOST: database
+      POSTGRES_PORT: 5432
+    networks:
+      - app-network
+    depends_on:
+      - database
+
+  adminer:
+    image: adminer
+    restart: always
+    links:
+      - database:db
+    ports:
+      - 5433:8080
+    networks:
+      - app-network
+    depends_on:
+      - database
 
 volumes:
   data:
+
+networks:
+  app-network:
+    driver: bridge
