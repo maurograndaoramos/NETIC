@@ -62,7 +62,7 @@ ROOT_URLCONF = "main.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['template'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'db',
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'database',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -129,6 +129,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Media files
 MEDIA_URL = "media/"
