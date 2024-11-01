@@ -49,6 +49,130 @@ input {
   border-radius: 0;
 }
 
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: auto;
+  height: 60vh;
+}
+
+.medium {
+  width: 250px !important;
+}
+.medium .image {
+  border-radius: 100%;
+  background-color: #613583;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 65px !important;
+  height: 65px !important;
+}
+.medium .name {
+  width: 100%;
+}
+.medium .name h3 {
+  margin: 5px 0px !important;
+  font-size: 23px !important;
+}
+.medium .course p {
+  font-size: 15px !important;
+}
+.medium .description p {
+  font-size: 13px !important;
+  line-height: 18px !important;
+}
+
+.small {
+  width: 220px !important;
+}
+.small .image {
+  border-radius: 100%;
+  background-color: #613583;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 60px !important;
+  height: 60px !important;
+}
+.small .name {
+  width: 100%;
+}
+.small .name h3 {
+  margin: 5px 0px !important;
+  font-size: 18px !important;
+}
+.small .course p {
+  font-size: 14px !important;
+}
+.small .description p {
+  line-height: 18px !important;
+  font-size: 12px !important;
+  line-height: 20px;
+}
+
+.card {
+  padding: 20px 15px;
+  width: 300px;
+  z-index: 5000000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #282828;
+}
+.card .image {
+  border-radius: 100%;
+  background-color: #613583;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80px;
+  height: 80px;
+}
+.card .name {
+  width: 100%;
+}
+.card .name h3 {
+  margin: 10px 0px;
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+}
+.card .course p {
+  margin: 10px 0px;
+  text-align: center;
+  color: #8b8b8b;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+}
+.card .description p {
+  text-align: center;
+  margin: 10px 0px;
+  color: #8b8b8b;
+  font-size: 16px;
+  line-height: 20px;
+  font-family: "Lato", sans-serif;
+  width: 100%;
+}
+.card .seemore button {
+  margin: 10px 0px;
+  padding: 10px 20px;
+  background-color: #613583;
+  font-family: "Lato", sans-serif;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  transition: 0.5s;
+}
+.card .seemore button:hover {
+  transition: 0.5s;
+  cursor: pointer;
+  background-color: #734a90;
+}
+
 .choseCourse {
   background-color: #282828;
   height: 30vh;
@@ -72,11 +196,11 @@ input {
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(139, 139, 139, 0);
+  background-color: rgba(37, 37, 37, 0);
 }
 .choseCourse .choseCourse_selection:hover ~ .choseCourse_blur {
   display: block;
-  background-color: rgba(139, 139, 139, 0.3411764706);
+  background-color: rgba(37, 37, 37, 0);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: 0.5s;

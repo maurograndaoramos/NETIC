@@ -1,0 +1,118 @@
+.cards
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+    width: auto
+    height: 60vh
+
+.medium
+    width: 250px !important
+    .image
+        border-radius: 100%
+        background-color: $primaryColor-100
+        margin-top: 10px
+        margin-bottom: 10px
+        width: 65px !important
+        height: 65px !important
+
+    .name
+        width: 100%
+        h3
+            margin: 5px 0px !important
+            font-size: 23px !important
+    
+    .course
+        p
+            font-size: 15px !important
+    .description
+        p
+            font-size: 13px !important
+            line-height: 18px !important
+
+.small
+    width: 220px !important
+    .image
+        border-radius: 100%
+        background-color: $primaryColor-100
+        margin-top: 10px
+        margin-bottom: 10px
+        width: 60px !important
+        height: 60px !important
+
+    .name
+        width: 100%
+        h3
+            margin: 5px 0px !important
+            font-size: 18px !important
+    
+    .course
+        p
+            font-size: 14px !important
+    .description
+        p
+            line-height: 18px !important
+            font-size: 12px !important
+            line-height: 20px
+
+
+.card
+    padding: 20px 15px
+    width: 300px
+    z-index: 5000000
+    border-radius: 10px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    background-color: $baseColor-200
+
+    .image
+        border-radius: 100%
+        background-color: $primaryColor-100
+        margin-top: 10px
+        margin-bottom: 10px
+        width: 80px
+        height: 80px
+
+    .name
+        width: 100%
+        h3
+            margin: 10px 0px
+            text-align: center
+            color: white
+            font-weight: 400
+            font-size: 30px
+            font-family: $titleFont
+    
+    .course
+        p
+            margin: 10px 0px
+            text-align: center
+            color: $baseColor-600
+            font-size: 18px
+            font-family: $textFont
+    .description
+        p
+            text-align: center
+            margin: 10px 0px
+            color: $baseColor-600
+            font-size: 16px
+            line-height: 20px
+            font-family: $textFont
+            width: 100%
+    .seemore
+        button
+            margin: 10px 0px
+            padding: 10px 20px
+            background-color: $primaryColor-100
+            font-family: $textFont
+            color: white
+            font-size: 18px
+            border-radius: 10px
+            border: none
+            transition: .5s
+
+            &:hover
+                transition: .5s
+                cursor: pointer
+                background-color: $primaryColor-200
