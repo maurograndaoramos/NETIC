@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    {% include 'particle/particle.html' with quantity=20 %}
+
     <div class="topBar">
         <div class="logo">
 
@@ -25,6 +27,9 @@
     {% block content %}
     
     {% endblock%}
+
+    
+
 </body>
 
 </html>

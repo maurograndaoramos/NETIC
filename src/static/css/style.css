@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 *, *:before, *:after {
@@ -49,6 +50,19 @@ input {
   border-radius: 0;
 }
 
+@keyframes appearCard {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 .cards {
   display: flex;
   align-items: center;
@@ -57,75 +71,28 @@ input {
   height: 60vh;
 }
 
-.medium {
-  width: 250px !important;
-}
-.medium .image {
-  border-radius: 100%;
-  background-color: #613583;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 65px !important;
-  height: 65px !important;
-}
-.medium .name {
-  width: 100%;
-}
-.medium .name h3 {
-  margin: 5px 0px !important;
-  font-size: 23px !important;
-}
-.medium .course p {
-  font-size: 15px !important;
-}
-.medium .description p {
-  font-size: 13px !important;
-  line-height: 18px !important;
-}
-
-.small {
-  width: 220px !important;
-}
-.small .image {
-  border-radius: 100%;
-  background-color: #613583;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 60px !important;
-  height: 60px !important;
-}
-.small .name {
-  width: 100%;
-}
-.small .name h3 {
-  margin: 5px 0px !important;
-  font-size: 18px !important;
-}
-.small .course p {
-  font-size: 14px !important;
-}
-.small .description p {
-  line-height: 18px !important;
-  font-size: 12px !important;
-  line-height: 20px;
-}
-
 .card {
-  padding: 20px 15px;
-  width: 300px;
-  z-index: 5000000;
-  border-radius: 10px;
+  z-index: -1 !important;
+  opacity: 0;
+  animation: appearCard 1s ease-in-out forwards;
+  padding: 20px;
+  width: 280px;
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #282828;
+  background-color: rgba(40, 40, 40, 0.7058823529);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
 }
 .card .image {
-  border-radius: 100%;
+  border-radius: 50%;
   background-color: #613583;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
   width: 80px;
   height: 80px;
 }
@@ -133,117 +100,213 @@ input {
   width: 100%;
 }
 .card .name h3 {
-  margin: 10px 0px;
+  margin: 10px 0;
   text-align: center;
   color: white;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 24px;
   font-family: "Montserrat", sans-serif;
 }
 .card .course p {
-  margin: 10px 0px;
+  margin: 5px 0;
   text-align: center;
   color: #8b8b8b;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Lato", sans-serif;
 }
 .card .description p {
   text-align: center;
-  margin: 10px 0px;
+  margin: 10px 0;
   color: #8b8b8b;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 1.5;
   font-family: "Lato", sans-serif;
   width: 100%;
 }
 .card .seemore button {
-  margin: 10px 0px;
+  margin: 10px 0;
   padding: 10px 20px;
   background-color: #613583;
   font-family: "Lato", sans-serif;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 10px;
   border: none;
-  transition: 0.5s;
+  transition: background-color 0.5s, transform 0.3s;
 }
 .card .seemore button:hover {
-  transition: 0.5s;
-  cursor: pointer;
   background-color: #734a90;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
+.medium {
+  width: 230px;
+}
+.medium .image {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 65px;
+  height: 65px;
+}
+.medium .name h3 {
+  margin: 5px 0;
+  font-size: 22px;
+}
+.medium .course p {
+  font-size: 15px;
+}
+.medium .description p {
+  font-size: 13px;
+}
+.medium .seemore button {
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.small {
+  width: 200px;
+}
+.small .image {
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 60px;
+  height: 60px;
+}
+.small .name h3 {
+  margin: 5px 0;
+  font-size: 18px;
+}
+.small .course p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+.small .description p {
+  font-size: 12px;
+  line-height: 16px;
+  margin: 5px 0;
+}
+.small .seemore button {
+  font-size: 14px;
+  padding: 7px 14px;
+  margin: 5px 0;
+}
+
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+html, body {
+  overflow: hidden;
+}
+
+@keyframes appearCouseOption {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes appearCouseLabel {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes appearCouseDiv {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .choseCourse {
-  background-color: #282828;
+  animation: appearCouseDiv 1s ease-in-out forwards;
+  background-color: rgba(40, 40, 40, 0.7058823529);
   height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Estilo para a opção individual */
+  /* Opção ativa centralizada */
 }
-.choseCourse h1 {
-  font-style: "Montserrat", sans-serif;
+.choseCourse h2 {
+  animation: appearCouseLabel 1s ease-in-out forwards;
+  font-family: "Montserrat", sans-serif;
   font-size: 45px;
   color: #8b8b8b;
   margin-right: 30px;
   color: white;
 }
 .choseCourse .choseCourse_blur {
-  position: absolute;
   transition: 0.5s;
-  -webkit-backdrop-filter: blur(0px);
-          backdrop-filter: blur(0px);
-  top: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(37, 37, 37, 0);
+  position: absolute;
+  height: 0px;
+  width: 0px;
 }
-.choseCourse .choseCourse_selection:hover ~ .choseCourse_blur {
+.choseCourse .selector_choseCourse:hover ~ .choseCourse_blur {
   display: block;
-  background-color: rgba(37, 37, 37, 0);
+  z-index: 8;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 40, 40, 0.6588235294);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   transition: 0.5s;
 }
-.choseCourse .choseCourse_selection {
+.choseCourse .selector_choseCourse {
+  z-index: 10;
   position: relative;
+  height: 50px;
+  overflow: hidden;
+  width: 900px;
+  margin: 20px 0px;
+  font-size: 24px;
+  text-align: center;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
-  height: 80px;
+  cursor: pointer;
 }
-.choseCourse .choseCourse_selection:hover .invisible {
-  pointer-events: auto;
+.choseCourse .selector_choseCourse:hover {
+  height: 50vh;
+}
+.choseCourse .selector_choseCourse:hover .option {
   opacity: 1;
-  transition: 0.5s;
 }
-.choseCourse .choseCourse_selection:hover .invisible p {
-  border-bottom: 0px !important;
-  font-size: 25px !important;
-  font-weight: lighter !important;
-  color: #8b8b8b;
-}
-.choseCourse .choseCourse_selection .invisible {
-  pointer-events: none;
+.choseCourse .option {
+  position: absolute;
   opacity: 0;
-  transition: 0.5s;
-  margin: 20px 0px;
-  font-size: 25px !important;
-  font-weight: lighter !important;
+  padding: 20px;
   color: #8b8b8b;
-  border-bottom: 0px !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.choseCourse .choseCourse_selection .choseCourse_selection_course p {
-  height: -moz-min-content;
-  height: min-content;
-  width: -moz-max-content;
-  width: max-content;
-  font-size: "Lato", sans-serif;
-  font-size: 40px;
-  font-weight: bold;
+.choseCourse .option.active {
   color: white;
+  position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  color: white;
+}
+.choseCourse .option.active p {
   border-bottom: 3px solid white;
 }
 
@@ -251,7 +314,29 @@ body {
   background-color: #121212;
 }
 
+@keyframes appearTopBar {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes appearTopBarBorder {
+  0% {
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+  }
+  100% {
+    border-bottom: 1px solid white;
+  }
+}
 .topBar {
+  animation: appearTopBarBorder 1s ease-in-out forwards;
   height: 80px;
   border-bottom: 1px solid white;
   display: flex;
@@ -260,6 +345,7 @@ body {
   padding: 0px 40px;
 }
 .topBar .logo {
+  animation: appearTopBar 1s ease-in-out forwards;
   width: 50px;
   height: 50px;
   background-color: #613583;
@@ -278,6 +364,7 @@ body {
   border-radius: 100%;
 }
 .topBar nav a {
+  animation: appearTopBar 1s ease-in-out forwards;
   margin-left: 50px;
   text-decoration: none;
   color: white;

@@ -1,7 +1,30 @@
 body 
     background-color: $baseColor-100
     
+@keyframes appearTopBar
+    0% 
+        transform: translateY(-50px)
+        opacity: 0
+
+    80%
+        transform: translateY(10px)
+
+    100%  
+        transform: translateY(0px)
+        opacity: 1 
+
+@keyframes appearTopBarBorder
+    0% 
+        border-bottom: 1px solid #ffffff00
+
+
+    100%  
+        border-bottom: 1px solid white
+
+
 .topBar
+    animation: appearTopBarBorder 1s ease-in-out forwards    
+
     height: 80px
     border-bottom: 1px solid white
 
@@ -12,6 +35,7 @@ body
     padding: 0px 40px
 
     .logo
+        animation: appearTopBar 1s ease-in-out forwards    
         width: 50px
         height: 50px
         background-color: $primaryColor-100
@@ -28,6 +52,7 @@ body
             background-color: $primaryColor-100
             border-radius: 100%
         a
+            animation: appearTopBar 1s ease-in-out forwards    
             margin-left: 50px
             text-decoration: none
             color: white

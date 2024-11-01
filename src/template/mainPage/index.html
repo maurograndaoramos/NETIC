@@ -1,25 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
     <div class="choseCourse">
-        <h1>
+        <h2>
             Eu quero um 
-        </h1>
-        <div class="choseCourse_selection">
-            <div class="choseCourse_selection_course invisible">
-                <p>
-                    Curso 1
-                </p>
+        </h2>
+        <div class="selector_choseCourse" tabindex="0">
+            <div class="option">
+                <p>Ui/Ux degin</p>
             </div>
-            <div class="choseCourse_selection_course">
-                <p>
-                    Curso 2
-                </p>
+            <div class="option">
+                <p>Web development and comunication</p>
             </div>
-            <div class="choseCourse_selection_course invisible">
-                <p>
-                    Curso 3
-                </p>
+            <div class="option">
+                <p>Marketing and Social Media</p>
             </div>
         </div>
         <div class="choseCourse_blur">
@@ -28,11 +23,14 @@
     </div>
 
     <div class="cards">
-        {%include 'components/card.html' with size="small"%}
-        {%include 'components/card.html' with size="medium"%}
-        {%include 'components/card.html'%}
-        {%include 'components/card.html' with size="medium"%}
-        {%include 'components/card.html' with size="small"%}
-        
+
+        {%include 'components/card.html' with size="small" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
+        {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
+        {%include 'components/card.html' with size="" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
+        {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
+        {%include 'components/card.html' with size="small" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
     </div>
+
+    <script type="module" src="{% static 'js/index.js'%}" ></script>
+    <script type="module" src="{% static 'js/courseSlider/slider.js'%}"></script>
 {% endblock %}

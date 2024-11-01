@@ -1,71 +1,99 @@
+html, body
+    overflow: hidden
+@keyframes appearCouseOption
+    0% 
+        transform: translateX(50px)
+        opacity: 0
+
+    100%  
+        opacity: 1
+        transform: translateX(0px)
+
+@keyframes appearCouseLabel
+    0% 
+        transform: translateX(-50px)
+        opacity: 0
+
+
+    100%  
+        opacity: 1
+        transform: translateX(0px)
+
+@keyframes appearCouseDiv
+    0% 
+        opacity: 0
+
+    100%  
+        opacity: 1
+
 .choseCourse
-    background-color: $baseColor-200
+    animation: appearCouseDiv 1s ease-in-out forwards    
+    background-color: $baseColor-200-50
     height: 30vh
     display: flex
     justify-content: center
     align-items: center
 
-    h1
-        font-style: $titleFont 
+    h2
+        animation: appearCouseLabel 1s ease-in-out forwards    
+        font-family: $titleFont 
         font-size: 45px
         color: $baseColor-600
         margin-right: 30px
         color: white
-    
     .choseCourse_blur
+        transition: .5s
         position: absolute
-        transition: .5s
-        backdrop-filter: blur(0px) 
-        top: 0
-        bottom: 0
-        width: 100vw
-        height: 100vh
-        background-color: #25252500
-    
-    .choseCourse_selection:hover ~ .choseCourse_blur
+        height: 0px
+        width: 0px
+    .selector_choseCourse:hover ~ .choseCourse_blur
         display: block
-        background-color: #25252500
-        backdrop-filter: blur(10px)  
+        z-index: 8
+        position: absolute
+        top: 0
+        width: 100%
+        height: 100%
+        background: #282828a8
+        backdrop-filter: blur(10px)
         transition: .5s
 
 
-
-    .choseCourse_selection
+    .selector_choseCourse
+        z-index: 10
         position: relative
+        height: 50px /* Altura do item central */
+        overflow: hidden
+        width: 900px
+        margin: 20px 0px
+        font-size: 24px
+        text-align: center
         display: flex
-        flex-direction: column
         align-items: center
         justify-content: center
-        z-index: 10000
-        height: 80px
+        cursor: pointer
+
         &:hover
-            .invisible
-                p
-                    border-bottom: 0px !important
-                    font-size: 25px !important
-                    font-weight: lighter !important
-                    color: $baseColor-600
-                pointer-events: auto
+            height: 50vh
+            .option 
                 opacity: 1
-                transition: .5s
-            
 
-        .invisible
-            pointer-events: none
-            opacity: 0
-            transition: .5s
-            margin: 20px 0px
-            font-size: 25px !important
-            font-weight: lighter !important
-            color: $baseColor-600
-            border-bottom: 0px !important
+    /* Estilo para a opção individual */
+    .option 
+        position: absolute
+        opacity: 0
+        padding: 20px
+        color: $baseColor-600
+        transition: opacity 0.3s ease, transform 0.3s ease
 
-        .choseCourse_selection_course
-            p  
-                height: min-content
-                width: max-content
-                font-size: $textFont
-                font-size: 40px
-                font-weight: bold
-                color: white
-                border-bottom: 3px solid white
+    /* Opção ativa centralizada */
+    .option.active
+        color: white 
+        position: relative
+        opacity: 1 /* Mostra apenas a opção ativa */
+        transform: translateY(0)
+        font-family: $titleFont 
+        font-size: 45px
+        color: white
+        p
+            border-bottom: 3px solid white
+        
