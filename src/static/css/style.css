@@ -410,6 +410,7 @@ ul .cardss {
   border-radius: 10%;
   background-color: #282828;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 70%;
 }
 ul .cardss:hover {
   transform: scale(1.1);
