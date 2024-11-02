@@ -1,4 +1,4 @@
-let currentOptionIndex = 1;
+let currentOptionIndex = 4;
 const options = document.querySelectorAll(".option");
 
 function updateOptionDisplay() {
@@ -8,7 +8,8 @@ function updateOptionDisplay() {
             }%)`;
     });
     options[currentOptionIndex].classList.add("active"); 
-    console.log(`Opção selecionada: ${options[currentOptionIndex].textContent}`); 
+    // console.log(`Opção selecionada: ${options[currentOptionIndex].textContent}`); 
+    document.querySelector("body").dispatchEvent(new CustomEvent("changedCourse", { detail: { course: options[currentOptionIndex].textContent }}))
 }
 
 // Navegação com scroll do rato para alternar a opção selecionada

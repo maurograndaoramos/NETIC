@@ -1,3 +1,15 @@
+# Para usar context
+
+Primeiro tens de importar o context em views.py 
+```python
+    from .context import context
+```
+
+apos isso mandar o contexto para o html 
+```python
+    return render (request, "mainPage/index.html", context)
+```
+
 # Para usar um Card
 
 ```html
@@ -18,3 +30,4 @@ Gerir quantidade :
 - nao coloque mais de 2000
 
 *Particula ja vem na html base
+

@@ -7,23 +7,22 @@
             Eu quero um 
         </h2>
         <div class="selector_choseCourse" tabindex="0">
-            <div class="option">
-                <p>Ui/Ux degin</p>
-            </div>
-            <div class="option">
-                <p>Web development and comunication</p>
-            </div>
-            <div class="option">
-                <p>Marketing and Social Media</p>
-            </div>
+            {% for course in courses %}
+                <div class="option">
+                    <p>{{course}}</p>
+                </div>
+            {% endfor %}
         </div>
         <div class="choseCourse_blur">
         
         </div>
     </div>
 
+    
     <div class="cards">
-
+        {% for user_info in users_data %}
+            {% include 'components/card.html' with size="" image=user_info.imagem name=user_info.nome course=user_info.curso description=user_info.sinopse %}
+        {% endfor %}
         {%include 'components/card.html' with size="small" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
         {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
         {%include 'components/card.html' with size="" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
@@ -33,4 +32,5 @@
 
     <script type="module" src="{% static 'js/index.js'%}" ></script>
     <script type="module" src="{% static 'js/courseSlider/slider.js'%}"></script>
+    <script type="module" src="{% static 'js/cardsHandler/cardsHandler.js'%}"></script>
 {% endblock %}
