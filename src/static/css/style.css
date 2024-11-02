@@ -372,4 +372,86 @@ body {
   color: white;
   font-family: "Lato", sans-serif;
   font-size: 20px;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+header h1.title {
+  font-size: 48px;
+  color: #FFFFFF;
+  font-style: bold;
+  margin-top: 6vh;
+}
+
+main {
+  padding-inline: 3.2rem;
+  max-width: 70rem;
+  margin: 3.2rem auto;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  margin: 3% 8%;
+  gap: 5rem;
+  list-style: none;
+  justify-content: center;
+}
+ul .cardss {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 45vh;
+  width: 15vw;
+  border-radius: 10%;
+  background-color: #282828;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+ul .cardss:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+ul .cardss .img-card {
+  margin: 10%;
+  border-radius: 100%;
+  height: 70px;
+  width: 70px;
+  background-color: yellow;
+}
+ul .cardss .nome {
+  color: #FFFFFF;
+  margin-bottom: 5%;
+  font-size: 20px;
+  font-weight: 500;
+}
+ul .cardss .curso {
+  color: #8b8b8b;
+  font-size: 16px;
+}
+ul .cardss .sinopse {
+  margin: 5% 5%;
+  text-decoration: none;
+  color: #717171;
+  text-align: justify;
+}
+ul .cardss .btn-verMais {
+  display: flex;
+  text-decoration: none;
+  color: #FFFFFF;
+  background-color: #613583;
+  width: 40%;
+  height: 8%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 5%;
+}
+
+ul:has(li:hover) li:not(:hover) {
+  opacity: 0.6;
+  transform: scale(0.9);
 }/*# sourceMappingURL=style.css.map */
