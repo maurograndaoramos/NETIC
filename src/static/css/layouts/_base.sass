@@ -38,24 +38,41 @@ body
         animation: appearTopBar 1s ease-in-out forwards    
         width: 50px
         height: 50px
-        background-color: $primaryColor-100
+        // background-color: $primaryColor-100
         border-radius: 100%
+        img
+            width: 50px
+            height: 50px
 
     nav
         display: flex
         align-items: center
         justify-content: center
         .user
-            display: block
+            
+            display: flex
+            justify-content: center
+            align-items: center
             width: 50px !important
             height: 50px !important
-            background-color: $primaryColor-100
+            border: 1px solid $primaryColor-100
             border-radius: 100%
+            img
+                width: 40px
+                height: 40px
         a
             animation: appearTopBar 1s ease-in-out forwards    
             margin-left: 50px
             text-decoration: none
-            color: white
+            color: $baseColor-600
             font-family: $textFont
             font-size: 20px
+            transition: .5s
+            &:hover
+                transition: .5s
+                color: white !important
 
+        .actualPage
+            color: white !important
+            font-weight: bold
+            text-decoration: underline
