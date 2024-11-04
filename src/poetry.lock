@@ -11,6 +11,9 @@ files = [
     {file = "asgiref-3.8.1.tar.gz", hash = "sha256:c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590"},
 ]
 
+[package.dependencies]
+typing-extensions = {version = ">=4", markers = "python_version < \"3.11\""}
+
 [package.extras]
 tests = ["mypy (>=0.800)", "pytest", "pytest-asyncio"]
 
@@ -48,6 +51,38 @@ files = [
 [package.dependencies]
 asgiref = ">=3.6"
 django = ">=4.2"
+
+[[package]]
+name = "gunicorn"
+version = "23.0.0"
+description = "WSGI HTTP Server for UNIX"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "gunicorn-23.0.0-py3-none-any.whl", hash = "sha256:ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d"},
+    {file = "gunicorn-23.0.0.tar.gz", hash = "sha256:f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec"},
+]
+
+[package.dependencies]
+packaging = "*"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1,!=0.36.0)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+testing = ["coverage", "eventlet", "gevent", "pytest", "pytest-cov"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
+name = "packaging"
+version = "24.1"
+description = "Core utilities for Python packages"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "packaging-24.1-py3-none-any.whl", hash = "sha256:5b8f2217dbdbd2f7f384c41c628544e6d52f2d0f53c6d0c3ea61aa5d1d7ff124"},
+    {file = "packaging-24.1.tar.gz", hash = "sha256:026ed72c8ed3fcce5bf8950572258698927fd1dbda10a5e981cdf0ac37f4f002"},
+]
 
 [[package]]
 name = "pillow"
@@ -239,6 +274,17 @@ files = [
 ]
 
 [[package]]
+name = "python-decouple"
+version = "3.8"
+description = "Strict separation of settings from code."
+optional = false
+python-versions = "*"
+files = [
+    {file = "python-decouple-3.8.tar.gz", hash = "sha256:ba6e2657d4f376ecc46f77a3a615e058d93ba5e465c01bbe57289bfb7cce680f"},
+    {file = "python_decouple-3.8-py3-none-any.whl", hash = "sha256:d0d45340815b25f4de59c974b855bb38d03151d81b037d9e3f463b0c9f8cbd66"},
+]
+
+[[package]]
 name = "python-dotenv"
 version = "1.0.1"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -291,5 +337,5 @@ files = [
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.12"
-content-hash = "8c69db2f82c8672d81a4c33becd3beb0881b0dec0bf5fa83b2fa25d0389493a4"
+python-versions = "^3.10"
+content-hash = "08e1bea0817ec1d028616d611d2fd28d314b7b4b091023778e9898ee766610f6"

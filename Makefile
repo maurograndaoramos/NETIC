@@ -1,30 +1,34 @@
-help: ## Show help
-	@grep -E '^[a-zA-Z_-]+:.?## .$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n",$$1,$$2}'
-
-.PHONY: up
-up:  ## Run Postgres on port 5432 and Adminer on port 5433
-	docker compose up --build
-
-connect: ## Connect to the Postgres database
-	docker compose exec -it db psql --username=user --dbname=db
-
-clean: ## Stop and remove containers
-	docker compose down
-	docker rm -f postgres-db-1
-	docker volume rm postgres_data
-
-sql: ## Run scripts/insert_users_and_orders.sql script
-	docker compose exec db psql --username=user --dbname=db -f /scripts/insert_users_and_orders.sql
-
-all: 
-	migration create_superuser up
+PHONY: help migrate build bash load up down dump createsuperuser reset
 
 migrate:
-	python3 ./src/manage.py makemigrations && python3 ./src/manage.py migrate
+	docker compose run -it src poetry run python manage.py makemigrations
+
+build: migrate
+	docker build -t src -f ops/src.Dockerfile ./src
+
+bash:
+	docker compose exec -it src bash
+
+load:
+	docker compose exec -it src poetry run python manage.py loaddata /app/data.json
+
+up:
+	docker compose up $(FLAGS) --build
+
+down:
+	docker compose down --remove-orphans --volumes
+
+dump:
+	docker compose exec -it src poetry run python manage.py dumpdata -o data.json
+	docker cp netic-src-1:/app/data.json ./src/data.json
 
 createsuperuser:
-	echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'pass')" | python manage.py shell
-	@echo "super user criado..."
+	docker compose run -it src poetry run python manage.py createsuperuser --noinput --username Admin --email admin@netic.pt
+	docker compose exec -it src poetry run python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); user = User.objects.get(username='Admin'); user.set_password('password'); user.save()"
 
-flush:
-	python3 ./src/manage.py flush
+resetup:
+	docker compose up -d --build
+
+reset: down resetup
+	sleep 5
+	make load

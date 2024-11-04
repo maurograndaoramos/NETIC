@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from decouple import config
 
 # Load environment variables
 load_dotenv()
@@ -82,14 +83,20 @@ WSGI_APPLICATION = "main.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+POSTGRES_DB = config("POSTGRES_DB", cast=str)
+POSTGRES_HOST = config("POSTGRES_HOST", cast=str)
+POSTGRES_PASSWORD = config("POSTGRES_PASSWORD", cast=str)
+POSTGRES_PORT = config("POSTGRES_PORT", cast=int)
+POSTGRES_USER = config("POSTGRES_USER", cast=str)
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": POSTGRES_DB,
+        "USER": POSTGRES_USER,
+        "PASSWORD": POSTGRES_PASSWORD,
+        "HOST": POSTGRES_HOST,
+        "PORT": POSTGRES_PORT,
     }
 }
 
@@ -136,8 +143,7 @@ STATICFILES_DIRS = [
 ]
 
 # Media files
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
+MEDIA_ROOT = BASE_DIR / "profile_pictures/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
