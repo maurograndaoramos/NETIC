@@ -15,6 +15,347 @@ context = {
         "Técnicas de Som"
     ],
     "users_data" : [
+                {
+    "nome": "Ana Oliveira",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Designer criativa com paixão por marketing digital.",
+    "descricao": "Ana tem experiência em criação de campanhas de marketing digital e design gráfico. Ela é formada em Design de Comunicação e Marketing Digital e busca sempre se atualizar nas novas tendências.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Pedro Silva",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Especialista em campanhas de mídia social.",
+    "descricao": "Pedro é responsável pela criação de estratégias de conteúdo e design gráfico para empresas de tecnologia. Seu foco está em campanhas digitais que se destacam.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Marta Souza",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Senior",
+    "sinopse": "Consultora de branding e design visual.",
+    "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Carlos Lima",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Recém-formado em Design de Comunicação, com interesse em branding.",
+    "descricao": "Carlos busca aplicar seus conhecimentos em branding e desenvolver campanhas que refletem identidade visual única.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Luciana Alves",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Designer focada em UX e UI para aplicativos.",
+    "descricao": "Luciana tem experiência em projetos de design para aplicativos móveis e adora trabalhar em interface e experiência do usuário.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Thiago Menezes",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Senior",
+    "sinopse": "Diretor de criação com experiência em publicidade.",
+    "descricao": "Thiago já trabalhou em campanhas publicitárias de grande porte e tem um olhar voltado para inovação e branding.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Fernanda Coelho",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Designer gráfica focada em mídia social.",
+    "descricao": "Fernanda cria conteúdos gráficos para redes sociais de pequenas empresas e busca sempre se atualizar nas tendências visuais.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Rafael Costa",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Especialista em design editorial e digital.",
+    "descricao": "Rafael tem um histórico em criação de layouts editoriais e portais digitais, focando em acessibilidade e estética.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Juliana Rodrigues",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Senior",
+    "sinopse": "Consultora em estratégias de marketing de conteúdo.",
+    "descricao": "Juliana orienta empresas na criação de estratégias visuais e de conteúdo para redes sociais e sites institucionais.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Marcelo Andrade",
+    "curso": "Design de Comunicação e Marketing Digital",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Recém-ingresso no marketing digital com foco em SEO.",
+    "descricao": "Marcelo está iniciando sua jornada no marketing digital e explora a otimização para SEO e campanhas de Google Ads.",
+    "imagem": "https://picsum.photos/300/300"
+},
+
+{
+    "nome": "Lucas Mendes",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Produtor musical iniciante, especializado em trilhas para jogos.",
+    "descricao": "Lucas é apaixonado por trilhas sonoras e atua em projetos para estúdios independentes, buscando sempre trazer uma identidade sonora inovadora.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Carla Almeida",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Produtora de música eletrônica com foco em deep house.",
+    "descricao": "Carla cria faixas para gravadoras e plataformas de streaming, sempre buscando novos timbres e formas de inovar no som eletrônico.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Daniela Freitas",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Produtora iniciante com foco em jingles comerciais.",
+    "descricao": "Daniela cria jingles para empresas locais e desenvolve habilidades em gravação e mixagem.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Rafael Sousa",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Compositor de trilhas sonoras para vídeos e curtas.",
+    "descricao": "Rafael se especializou em criar atmosferas sonoras que complementam narrativas visuais e cinematográficas.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Fernanda Santos",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Senior",
+    "sinopse": "Produtora sênior com experiência em produção musical.",
+    "descricao": "Fernanda já produziu para diversas bandas e artistas independentes, além de colaborar com gravadoras.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "André Matos",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Produtor iniciante de música eletrônica.",
+    "descricao": "André está começando a explorar produção de faixas de house e EDM, buscando sempre melhorar suas habilidades técnicas.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Giovana Lopes",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Produtora de música acústica e folk.",
+    "descricao": "Giovana grava e produz faixas em estúdios caseiros para artistas independentes de gêneros acústicos.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Bruno Teixeira",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Senior",
+    "sinopse": "Especialista em mixagem e masterização.",
+    "descricao": "Com experiência em estúdios profissionais, Bruno foca em mixagem para gravadoras e grandes eventos.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Vanessa Lima",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Junior",
+    "sinopse": "Compositora de trilhas experimentais.",
+    "descricao": "Vanessa gosta de explorar novas formas sonoras em suas composições para curtas e vídeos artísticos.",
+    "imagem": "https://picsum.photos/300/300"
+},
+{
+    "nome": "Leonardo Silva",
+    "curso": "Criação Musical, Produção e Técnicas de Som",
+    "nivel_de_experiencia": "Pleno",
+    "sinopse": "Produtor de hip-hop e rap.",
+    "descricao": "Leonardo já trabalhou com vários artistas locais e produz beats de hip-hop e rap, aprimorando sempre suas técnicas.",
+    "imagem": "https://picsum.photos/300/300"
+},
+        {
+        "nome": "Ana Oliveira",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Junior",
+        "sinopse": "Designer criativa com paixão por marketing digital.",
+        "descricao": "Ana tem experiência em criação de campanhas de marketing digital e design gráfico. Ela é formada em Design de Comunicação e Marketing Digital e busca sempre se atualizar nas novas tendências.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Pedro Silva",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Especialista em campanhas de mídia social.",
+        "descricao": "Pedro é responsável pela criação de estratégias de conteúdo e design gráfico para empresas de tecnologia. Seu foco está em campanhas digitais que se destacam.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Marta Souza",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Consultora de branding e design visual.",
+        "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Pedro Silva",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Especialista em campanhas de mídia social.",
+        "descricao": "Pedro é responsável pela criação de estratégias de conteúdo e design gráfico para empresas de tecnologia. Seu foco está em campanhas digitais que se destacam.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Marta Souza",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Consultora de branding e design visual.",
+        "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Pedro Silva",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Especialista em campanhas de mídia social.",
+        "descricao": "Pedro é responsável pela criação de estratégias de conteúdo e design gráfico para empresas de tecnologia. Seu foco está em campanhas digitais que se destacam.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Marta Souza",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Consultora de branding e design visual.",
+        "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Marta Souza",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Consultora de branding e design visual.",
+        "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+
+        {
+        "nome": "Marta Souza",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Consultora de branding e design visual.",
+        "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+
+        {
+        "nome": "Marta Souza",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Consultora de branding e design visual.",
+        "descricao": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+
+
+        {
+        "nome": "Lucas Mendes",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "nivel_de_experiencia": "Junior",
+        "sinopse": "Produtor musical iniciante, especializado em trilhas para jogos.",
+        "descricao": "Lucas é apaixonado por trilhas sonoras e atua em projetos para estúdios independentes, buscando sempre trazer uma identidade sonora inovadora.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Carla Almeida",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Produtora de música eletrônica com foco em deep house.",
+        "descricao": "Carla cria faixas para gravadoras e plataformas de streaming, sempre buscando novos timbres e formas de inovar no som eletrônico.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "André Matos",
+        "curso": "Fotografia Profissional",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Fotógrafo premiado em fotografia de paisagens.",
+        "descricao": "Com mais de 15 anos de experiência, André é especialista em fotografia de paisagens e documentários visuais, com publicações em diversas revistas internacionais.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Laura Nunes",
+        "curso": "Fotografia Profissional",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Fotógrafa de eventos e moda.",
+        "descricao": "Laura atua como fotógrafa em eventos e editoriais de moda. Sua experiência e seu olhar criativo trazem destaque às suas produções fotográficas.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Rafael Costa",
+        "curso": "Programação Web",
+        "nivel_de_experiencia": "Junior",
+        "sinopse": "Desenvolvedor front-end apaixonado por UI/UX.",
+        "descricao": "Rafael está iniciando sua carreira como desenvolvedor web e está focado em criar interfaces intuitivas e eficientes.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Fernanda Dias",
+        "curso": "Programação Web",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Desenvolvedora full-stack com experiência em e-commerce.",
+        "descricao": "Fernanda desenvolve soluções completas para lojas virtuais e possui experiência com integração de sistemas de pagamento e logística.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Tiago Santos",
+        "curso": "Realização, Cinema e TV",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Diretor de fotografia em produções independentes.",
+        "descricao": "Tiago já trabalhou em diversos curtas e documentários, destacando-se pela sensibilidade em captar emoções e narrativas visuais.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Juliana Rocha",
+        "curso": "Realização, Cinema e TV",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Produtora com experiência em documentários e séries.",
+        "descricao": "Juliana é produtora de conteúdo audiovisual e trabalha em documentários que abordam temas sociais.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Luiz Borges",
+        "curso": "Videojogos",
+        "nivel_de_experiencia": "Junior",
+        "sinopse": "Desenvolvedor iniciante de jogos 2D.",
+        "descricao": "Luiz está se especializando em desenvolvimento de jogos para mobile, com foco em narrativa e jogabilidade.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Tatiana Ramos",
+        "curso": "Videojogos",
+        "nivel_de_experiencia": "Pleno",
+        "sinopse": "Designer de personagens para RPGs.",
+        "descricao": "Tatiana cria personagens para jogos de RPG e aventura, focando em expressões e histórias detalhadas.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Igor Oliveira",
+        "curso": "Concept Art",
+        "nivel_de_experiencia": "Senior",
+        "sinopse": "Artista conceitual com foco em ambientes de fantasia.",
+        "descricao": "Igor é responsável pela criação de mundos e cenários para jogos e filmes de fantasia.",
+        "imagem": "https://picsum.photos/300/300"
+        },
+        {
+        "nome": "Patrícia Lopes",
+        "curso": "Concept Art",
+        "nivel_de_experiencia": "Junior",
+        "sinopse": "Artista iniciante com paixão por criaturas e personagens.",
+        "descricao": "Patrícia cria personagens com características únicas para projetos de animação e jogos.",
+        "imagem": "https://picsum.photos/300/300"
+        },
         {
             "nome": "Ana Oliveira",
             "curso": "Design de Comunicação e Marketing Digital",

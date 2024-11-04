@@ -3,9 +3,9 @@
 
 {% block content %}
     <div class="choseCourse">
-        <h2>
+        <!-- <h2>
             Eu quero um 
-        </h2>
+        </h2> -->
         <div class="selector_choseCourse" tabindex="0">
             {% for course in courses %}
                 <div class="option">
@@ -20,16 +20,19 @@
 
     
     <div class="cards">
+        {% include 'components/card.html' with usable="no" size="small" image="https://picsum.photos/300/250" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
+        {% include 'components/card.html' with usable="no" size="medium" image="https://picsum.photos/250/300" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
         {% for user_info in users_data %}
-            {% include 'components/card.html' with size="" image=user_info.imagem name=user_info.nome course=user_info.curso description=user_info.sinopse %}
+            {% include 'components/card.html' with size="" image=user_info.imagem name=user_info.nome course=user_info.curso description=user_info.sinopse big_discription=user_info.descricao %}
         {% endfor %}
-        {%include 'components/card.html' with size="small" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-        {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-        {%include 'components/card.html' with size="" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-        {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-        {%include 'components/card.html' with size="small" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
+        {% include 'components/card.html' with usable="no" size="medium" image="https://picsum.photos/200/250" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
+        {% include 'components/card.html' with usable="no" size="small" image="https://picsum.photos/250/200" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
+        
     </div>
-
+    {% include 'components/userModel.html' %}
+    <script>
+        window.initialCourse = "Programação Web"
+    </script>
     <script type="module" src="{% static 'js/index.js'%}" ></script>
     <script type="module" src="{% static 'js/courseSlider/slider.js'%}"></script>
     <script type="module" src="{% static 'js/cardsHandler/cardsHandler.js'%}"></script>

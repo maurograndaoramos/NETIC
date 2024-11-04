@@ -26,17 +26,5 @@ document
         event.preventDefault();
     });
 
-document
-    .querySelector(".selector_choseCourse")
-    .addEventListener("keydown", (event) => {
-        if (event.key === "ArrowDown") {
-            currentOptionIndex = (currentOptionIndex + 1) % options.length;
-        } else if (event.key === "ArrowUp") {
-            currentOptionIndex =
-                (currentOptionIndex - 1 + options.length) % options.length;
-        }
-        updateOptionDisplay();
-        event.preventDefault();
-    });
 
 updateOptionDisplay();

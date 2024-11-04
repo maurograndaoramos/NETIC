@@ -33,6 +33,7 @@
     display: flex
     justify-content: center
     align-items: center
+    z-index: 10
 
     h2
         animation: appearCouseLabel 1s ease-in-out forwards    
@@ -60,9 +61,9 @@
 
     .selector_choseCourse
         animation: appearCouseOption 1s ease-in-out forwards    
-        z-index: 10
+        z-index: 10 !important
         position: relative
-        height: 50px /* Altura do item central */
+        height: 100px /* Altura do item central */
         overflow: hidden
         width: 900px
         margin: 20px 0px

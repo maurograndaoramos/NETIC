@@ -10,6 +10,30 @@
         transform: translateY(0px)
         opacity: 1 
 
+@keyframes slideUp 
+    0% 
+        transform: translateY(0)
+        opacity: 1
+    100% 
+        transform: translateY(-100%)
+        opacity: 0
+    
+
+
+@keyframes slideDown 
+    0% 
+        transform: translateY(0)
+        opacity: 1
+    100% 
+        transform: translateY(100%)
+        opacity: 0
+    
+.card.slide-down
+    animation: slideDown 0.5s forwards
+
+.card.slide-up 
+    animation: slideUp 0.5s forwards
+
 .cards
     display: flex
     align-items: center
@@ -17,8 +41,11 @@
     width: auto
     height: 60vh
 
-.card
-    z-index: -1 !important
+.cardno
+    filter: blur(5px)
+.card, .cardno
+    height: 505px
+    z-index: 0 !important
     opacity: 0
     animation: appearCard 1s ease-in-out forwards    
     padding: 20px
@@ -27,7 +54,7 @@
     display: flex
     flex-direction: column
     align-items: center
-    justify-content: center
+    justify-content: space-evenly
     background-color: $baseColor-200-50
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
     transition: transform 0.3s
@@ -93,6 +120,7 @@
                 cursor: pointer
 
 .medium
+    height: 460px !important
     width: 230px
 
     .image
@@ -120,6 +148,7 @@
             padding: 8px 16px
 
 .small
+    height: 415px !important
     width: 200px
 
     .image
