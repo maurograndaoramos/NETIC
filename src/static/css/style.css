@@ -543,7 +543,17 @@ body {
   text-decoration: none;
   color: #8b8b8b;
   font-family: "Lato", sans-serif;
-  font-size: 20px
+  font-size: 20px;
+  transition: 0.5s;
+}
+.topBar nav a:hover {
+  transition: 0.5s;
+  color: white !important;
+}
+.topBar nav .actualPage {
+  color: white !important;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 header {
@@ -627,14 +637,161 @@ ul .cardss .btn-verMais {
 ul:has(li:hover) li:not(:hover) {
   opacity: 0.6;
   transform: scale(0.9);
-  transition: 0.5s;
 }
-.topBar nav a:hover {
-  transition: 0.5s;
-  color: white !important;
+
+@keyframes appearCard {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
-.topBar nav .actualPage {
-  color: white !important;
-  font-weight: bold;
-  text-decoration: underline;
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  font-size: 48px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  color: white;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.formwrap {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  font-family: "Lato", sans-serif;
+  color: white;
+  animation: appearCard 1s ease-in-out forwards;
+}
+.formwrap svg {
+  width: 41px;
+  height: 46px;
+  fill: white;
+}
+.formwrap input, .formwrap textarea {
+  background: rgba(40, 40, 40, 0.7058823529);
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 0 8px;
+  min-height: 1.8rem;
+}
+.formwrap input:hover, .formwrap textarea:hover {
+  border: 1px solid #734a90;
+}
+.formwrap input:active, .formwrap textarea:active {
+  border: 1px solid #734a90;
+}
+.formwrap input:focus, .formwrap textarea:focus {
+  border: 1px solid #734a90;
+  background: #9575ac;
+  opacity: 0.5;
+}
+.formwrap textarea {
+  height: 12rem;
+}
+.formwrap button {
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #734a90;
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+  border: 4px;
+  padding: 4px 8px;
+}
+.formwrap button:hover {
+  background: #9575ac;
+}
+.formwrap form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.formwrap form .container {
+  display: flex;
+  flex-direction: row;
+}
+.formwrap form .profimage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 40%;
+  margin: 0 24px;
+  align-items: center;
+  gap: 1rem;
+}
+.formwrap form .fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-right: 24px;
+  margin-top: 8px;
+}
+.formwrap form .fields label {
+  margin-top: 4px;
+}
+.formwrap form .fields span {
+  display: flex;
+  width: 100%;
+}
+.formwrap form .fields span input {
+  flex-grow: 1;
+  height: 24px;
+  border: 8px;
+  margin-left: 1rem;
+}
+.formwrap form .fields span input:hover {
+  border: 1px solid #734a90;
+}
+.formwrap form .fields span input:active {
+  border: 1px solid #734a90;
+}
+.formwrap form .fields span input:focus {
+  border: 1px solid #734a90;
+}
+.formwrap form .fields .sinopse textarea {
+  margin-left: 1rem;
+  height: 4rem;
+  width: 100%;
+}
+.formwrap form .fields .socials {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+.formwrap form .fields .socials span {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 8px;
+  margin: 0 8px;
+  align-items: center;
+}
+.formwrap form .fields .socials span input {
+  width: 16rem;
+}
+.formwrap form .desc {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 24px;
+  gap: 1rem;
+  align-items: center;
+}
+.formwrap form .desc label {
+  align-self: flex-start;
+}
+.formwrap form .desc textarea {
+  box-sizing: border-box;
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */

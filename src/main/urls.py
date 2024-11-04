@@ -6,5 +6,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.netics_home, name='home'),
     path("mynetwork/", views.myNetwork, name = 'network'),
-
+    path("perfil/", views.profile, name='perfil')
 ]
