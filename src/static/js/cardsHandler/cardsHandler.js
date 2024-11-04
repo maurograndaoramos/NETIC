@@ -10,6 +10,16 @@ function initializeCards() {
         card.querySelector(".seemore button").onclick = () => {
             document.querySelector(".userModel").style.display ="flex"
             document.querySelector(".userModel").classList.add("userModel_appear")
+            
+            const JustToChangeModel = {
+                element: card,
+                image: (card.querySelector('.image img')?.src || "").trim(),
+                name: (card.querySelector('.name h3')?.textContent || "").trim(),
+                course: (card.querySelector('.course p')?.textContent || "").trim(),
+                description: (card.querySelector('.description p')?.textContent || "").trim(),
+                bigDiscription: (card.querySelector('.bigDiscription p')?.textContent || "").trim()
+            };
+            updateModalContent(JustToChangeModel)
         }
 
         return {
@@ -30,7 +40,8 @@ function initializeCards() {
 }
 
 document.querySelector(".userModel_card_close-bt").addEventListener("click", () => {
-    const userModel = document.querySelector(".userModel").classList.add("userModel_disappear")
+    document.querySelector(".userModel").style.display ="none"
+    document.querySelector(".userModel").classList.add("userModel_appear")
 });
 
 function filterCards(course) {

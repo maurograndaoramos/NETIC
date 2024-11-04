@@ -37,7 +37,7 @@
     animation: openModal 1s ease-in-out forwards
 
 .userModel_disappear
-    animation: openModal 1s ease-in-out reverse !important
+    animation: openModal 1s ease-in-out reverse 
 
 .userModel
     z-index: 12
@@ -58,6 +58,20 @@
         animation: openCard 1.5s ease-in-out forwards
         background: $baseColor-100
         padding: 30px
+
+        .userModel_card_close
+            width: 100%
+            display: flex
+            justify-content: flex-end
+            align-items: center
+            button
+                font-weight: bold
+                color: $primaryColor-100
+                font-size: 30px
+                font-family: $titleFont
+                background: none
+                border: none
+                cursor: pointer
 
         .userModel_card_topInfo
             display: flex

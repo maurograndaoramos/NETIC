@@ -286,7 +286,7 @@ input {
 }
 
 .userModel_disappear {
-  animation: openModal 1s ease-in-out reverse !important;
+  animation: openModal 1s ease-in-out reverse;
 }
 
 .userModel {
@@ -309,6 +309,21 @@ input {
   animation: openCard 1.5s ease-in-out forwards;
   background: #121212;
   padding: 30px;
+}
+.userModel .userModel_card .userModel_card_close {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.userModel .userModel_card .userModel_card_close button {
+  font-weight: bold;
+  color: #613583;
+  font-size: 30px;
+  font-family: "Montserrat", sans-serif;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 .userModel .userModel_card .userModel_card_topInfo {
   display: flex;

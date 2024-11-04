@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{%load static%}
+
 {% block content%}
   <header>
 			<h1 class="title">My Network</h1>
@@ -6,30 +8,17 @@
 
 	<main>
 		<ul>
-			<li class="cardss">
-				<div class="img-card"></div>
-				<h2 class= "nome"> Leandro Olivieira </h2>
-				<h3 class="curso"> Programação Web </h4>
-				<p class="sinopse">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora alias, fugit doloremque sequi iure quam maxime dolorem. Quis laudantium nesciunt ut, quibusdam possimus delectus, ratione nostrum, reiciendis iusto ullam aliquid.</p>
-				<a class="btn-verMais" href="#">Ver mais</a>
+			{% for user_info in users_data %}
+				<li class="cardss">
+
+					{% include 'components/card.html' with size="" image=user_info.imagem name=user_info.nome course=user_info.curso description=user_info.sinopse big_discription=user_info.descricao %}
 				</li>
-
-				<div class="cardss">	</div>	
-				<div class="cardss">	</div>	
-				<div class="cardss">	</div>	
-				<div class="cardss">	</div>	
-				<div class="cardss">	</div>	
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-                {%include 'components/card.html' with size="medium" image="" name="Mccartheney Mendes" course="web development" description="Sou em desenvolvedor web fullstack, atualmente estou fazendo o curso de desenvolvimento web para mehorar as minhas habilidades e tmb criar uma networking" %}
-
-
+			{% endfor %}
+				
 		</ul>   
+
+	{% include 'components/userModel.html' %}
+	<script type="module" src="{% static 'js/cardsHandler/cardsHandler.js'%}"></script>
 	</main>
 
 {% endblock%}   

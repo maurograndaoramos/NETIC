@@ -7,7 +7,7 @@ def netics_home (request) :
     return render (request, "mainPage/index.html", context)
 
 def myNetwork (request): 
-    return render (request, "myNetwork/index.html", {})
+    return render (request, "myNetwork/index.html", context)
 
 def profile(request):
     if request.method == 'POST':
