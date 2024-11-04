@@ -1,0 +1,132 @@
+@keyframes openModal
+    1%
+        display: flex
+        top: calc(100vh - 100px)
+        left: 50vw
+        width: 0px
+        height: 0px
+        border-radius: 100%
+    20%
+        top: calc(50vh - 100px)
+        left: calc(50vw - 100px)
+        width: 200px
+        height: 200px
+        border-radius: 100%
+    100%
+        display: flex
+        width: 100vw
+        height: 100vh
+        left: 0px
+        top: 0px
+        border-radius: 0
+
+
+@keyframes openCard
+    0%
+        display: none
+        opacity: 0
+    50%
+        display: flex
+        opacity: 0
+
+    100%
+        opacity: 1
+        display: flex
+
+.userModel_appear
+    animation: openModal 1s ease-in-out forwards
+
+.userModel_disappear
+    animation: openModal 1s ease-in-out reverse 
+
+.userModel
+    z-index: 12
+    display: none
+    align-items: center
+    justify-content: center
+    position: absolute
+    top: calc(100vh - 220px)
+    left: calc(50vw - 100px)
+    width: 200px
+    height: 200px
+    background: $baseColor-200-50
+    backdrop-filter: blur(10px)
+
+    .userModel_card
+        border-radius: 40px
+        width: 350px
+        animation: openCard 1.5s ease-in-out forwards
+        background: $baseColor-100
+        padding: 30px
+
+        .userModel_card_close
+            width: 100%
+            display: flex
+            justify-content: flex-end
+            align-items: center
+            button
+                font-weight: bold
+                color: $primaryColor-100
+                font-size: 30px
+                font-family: $titleFont
+                background: none
+                border: none
+                cursor: pointer
+
+        .userModel_card_topInfo
+            display: flex
+
+            .userModel_card_topInfo_image img
+                border-radius: 100%
+                width: 100px
+                height: 100px
+
+            .userModel_card_topInfo_info
+                margin-left: 20px
+
+                h3
+                    margin: 10px 0px
+                    font-family: $titleFont
+                    font-size: 25px
+                    color: white
+                    font-weight: bold
+
+                p
+                    margin: 10px 0px
+                    font-family: $textFont
+                    font-size: 20px
+                    color: $baseColor-600
+                    font-weight: bold
+
+                .capacitys
+                    width: 10px
+                    height: 10px
+                    border-radius: 100%
+                    background: red
+
+        .userModel_card_descriptions
+            margin: 20px 0px
+
+            p
+                color: $baseColor-600
+                font-size: 15px
+                font-family: $textFont
+
+        .userModel_card_links
+            margin-top: 80px
+            display: flex
+            align-items: center
+            justify-content: space-evenly
+
+            a
+                border-radius: 100%
+                display: flex
+                justify-content: center
+                align-items: center
+                width: 40px
+                height: 40px
+                background: $baseColor-200
+
+                img
+                    width: 30px
+                    height: 30px

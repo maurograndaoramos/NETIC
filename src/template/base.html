@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Netics{% endblock %}</title>
+</head>
+
+<body>
+    {% include 'particle/particle.html' with quantity=20 %}
+
+    <div class="topBar">
+        <div class="logo">
+            <img src="{% static 'images/logo/logo.png' %}" alt="logo">
+        </div> 
+
+        <nav>
+            <a href="/" class="actualPage">Home</a>
+            <a href="/network" class="">My network</a>
+            <a href="/perfil" class="user">
+                <img src="{% static 'images/defaultUser/default_user.png' %}" alt="">
+            </a>
+        </nav>
+    </div>
+
+    {% block content %}
+    
+    {% endblock%}
+    
+
+</body>
+
+</html>
