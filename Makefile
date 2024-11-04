@@ -1,7 +1,10 @@
-PHONY: help migrate build bash load up down dump createsuperuser reset
+.PHONY: help makemigrations migrate build bash load up down dump createsuperuser reset
 
-migrate:
+makemigrations:
 	docker compose run -it src poetry run python manage.py makemigrations
+
+migrate: makemigrations
+	docker compose run -it src poetry run python manage.py migrate
 
 build: migrate
 	docker build -t src -f ops/src.Dockerfile ./src
@@ -13,7 +16,7 @@ load:
 	docker compose exec -it src poetry run python manage.py loaddata /app/data.json
 
 up:
-	docker compose up $(FLAGS) --build
+	docker compose up $(if $(DETACH),-d) --build
 
 down:
 	docker compose down --remove-orphans --volumes
@@ -26,9 +29,8 @@ createsuperuser:
 	docker compose run -it src poetry run python manage.py createsuperuser --noinput --username Admin --email admin@netic.pt
 	docker compose exec -it src poetry run python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); user = User.objects.get(username='Admin'); user.set_password('password'); user.save()"
 
-resetup:
-	docker compose up -d --build
-
-reset: down resetup
+reset: down up migrate dump
+	make down
+	make up DETACH=true
 	sleep 5
 	make load
