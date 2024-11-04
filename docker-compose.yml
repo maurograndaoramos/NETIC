@@ -14,10 +14,10 @@ services:
   src:
     build:
       context: ./src
-      dockerfile: ops/src.Dockerfile
+      dockerfile: ../ops/src.Dockerfile
     ports:
       - 8000:8000
-    command: bash -c "poetry run python manage.py migrate && poetry run gunicorn setup.wsgi 0.0.0.0:8000"
+    command: bash -c "poetry run python manage.py migrate && poetry run gunicorn -w 20 -b 0.0.0.0:8000 main.wsgi"
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
