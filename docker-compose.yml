@@ -40,7 +40,7 @@ services:
       - app-network
     depends_on:
       - database
-
+      
 volumes:
   data:
 

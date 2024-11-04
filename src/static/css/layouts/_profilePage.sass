@@ -1,0 +1,133 @@
+@keyframes appearCard
+    0%
+        transform: translateY(50px)
+        opacity: 0
+
+    80%
+        transform: translateY(-10px)
+
+    100%
+        transform: translateY(0px)
+        opacity: 1
+
+.header
+    display: flex
+    justify-content: center
+    width: 100vw
+    font-size: 48px
+    font-family: $titleFont
+    font-weight: 500
+    color: white
+    margin-top: 24px
+    margin-bottom: 24px
+
+.formwrap
+    display: flex
+    justify-content: center
+    width: 100vw
+    font-family: $textFont
+    color: white
+    animation: appearCard 1s ease-in-out forwards
+
+    svg
+        width: 41px
+        height: 46px
+        fill: white
+
+    input, textarea
+        background: $baseColor-200-50
+        color: white
+        border-radius: 8px
+        border: none
+        padding: 0 8px
+        min-height: 1.8rem
+        &:hover
+            border: 1px solid $primaryColor-200
+        &:active
+            border: 1px solid $primaryColor-200
+        &:focus
+            border: 1px solid $primaryColor-200
+            background: $primaryColor-400
+            opacity: .50
+
+    textarea
+        height: 12rem
+
+    button
+        width: fit-content
+        background: $primaryColor-200
+        color: white
+        font-weight: 700
+        border-radius: 4px
+        border: 4px
+        padding: 4px 8px
+        &:hover
+            background: $primaryColor-400
+
+    form
+        width: 70%
+        display: flex
+        flex-direction: column
+        .container
+            display: flex
+            flex-direction: row
+        .profimage
+            display: flex
+            flex-direction: column
+            justify-content: center
+            max-width: 40%
+            margin: 0 24px
+            align-items: center
+            gap: 1rem
+
+        .fields
+            display: flex
+            flex-direction: column
+            justify-content: space-between
+            flex-grow: 1
+            margin-right: 24px
+            margin-top: 8px
+            label
+                margin-top: 4px
+            span
+                display: flex
+                width: 100%
+                input
+                    flex-grow: 1
+                    height: 24px
+                    border: 8px
+                    margin-left: 1rem
+                    &:hover
+                        border: 1px solid $primaryColor-200
+                    &:active
+                        border: 1px solid $primaryColor-200
+                    &:focus
+                        border: 1px solid $primaryColor-200
+            .sinopse
+                textarea
+                    margin-left: 1rem
+                    height: 4rem
+                    width: 100%
+            .socials
+                display: grid
+                grid-template-columns: repeat(2, 1fr)
+                justify-items: center
+                span
+                    display: flex
+                    width: fit-content
+                    gap: 8px
+                    margin: 0 8px
+                    align-items: center
+                    input
+                        width: 16rem
+        .desc
+            display: flex
+            flex-direction: column
+            margin: 12px 24px
+            gap: 1rem
+            align-items: center
+            label
+                align-self: flex-start
+            textarea
+                box-sizing: border-box
+                width: 100%

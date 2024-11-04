@@ -1,0 +1,59 @@
+<div id="particles-js"></div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+    window.quantity = "{{quantity}}"
+    
+</script>
+
+<script>
+    console.log(window.quantity);
+    
+    particlesJS('particles-js', {
+        "particles": {
+            "number": {
+                "value": window.quantity,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "size": {    // Adjust size here
+                "value": 3,    // Smaller value for smaller particles
+                "random": true
+            },
+            "color": {
+                "value": "#613583"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#8b8b8b"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                }
+            },
+            "move": {
+                "enable": true,
+                "speed": 6,
+                "direction": "none",
+                "random": false,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "repulse"
+                }
+            }
+        }
+    });
+</script>

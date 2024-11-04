@@ -1,0 +1,35 @@
+{% load static %}
+
+{%block card%}
+    <div class="card{{usable}} {{size}}">
+        <div class="image">
+            <img src="{{image}}" alt="">
+        </div>
+        <div class="name">
+            <h3>
+                {{name}}
+            </h3>
+        </div>
+        <div class="course">
+            <p>
+                {{course}}
+            </p>
+        </div>
+        <div class="description">
+            <p>
+                {{description}}
+            </p>
+        </div>
+        <div class="bigDiscription" style="display: none;">
+            <p>
+                {{big_discription}}
+            </p>
+        </div>
+        <div class="seemore">
+            <button>
+                ver mais
+            </button>
+        </div>
+    </div>
+
+{% endblock %}

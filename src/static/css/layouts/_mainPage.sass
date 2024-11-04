@@ -1,0 +1,101 @@
+// html, body
+    // overflow: hidden
+@keyframes appearCouseOption
+    0% 
+        transform: translateX(50px)
+        opacity: 0
+
+    100%  
+        opacity: 1
+        transform: translateX(0px)
+
+@keyframes appearCouseLabel
+    0% 
+        transform: translateX(-50px)
+        opacity: 0
+
+
+    100%  
+        opacity: 1
+        transform: translateX(0px)
+
+@keyframes appearCouseDiv
+    0% 
+        opacity: 0
+
+    100%  
+        opacity: 1
+
+.choseCourse
+    animation: appearCouseDiv 1s ease-in-out forwards    
+    background-color: $baseColor-200-50
+    height: 30vh
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 10
+
+    h2
+        animation: appearCouseLabel 1s ease-in-out forwards    
+        font-family: $titleFont 
+        font-size: 45px
+        color: $baseColor-600
+        margin-right: 30px
+        color: white
+    .choseCourse_blur
+        transition: .5s
+        position: absolute
+        height: 0px
+        width: 0px
+    .selector_choseCourse:hover ~ .choseCourse_blur
+        display: block
+        z-index: 8
+        position: absolute
+        top: 0
+        width: 100%
+        height: 100%
+        background: #282828a8
+        backdrop-filter: blur(10px)
+        transition: .5s
+
+
+    .selector_choseCourse
+        animation: appearCouseOption 1s ease-in-out forwards    
+        z-index: 10 !important
+        position: relative
+        height: 100px /* Altura do item central */
+        overflow: hidden
+        width: 900px
+        margin: 20px 0px
+        font-size: 24px
+        text-align: center
+        display: flex
+        align-items: center
+        justify-content: center
+        cursor: pointer
+
+        &:hover
+            height: 50vh
+            .option 
+                opacity: 1
+
+    /* Estilo para a opção individual */
+    .option 
+        position: absolute
+        opacity: 0
+        padding: 20px
+        color: $baseColor-600
+        transition: opacity 0.3s ease, transform 0.3s ease
+
+    /* Opção ativa centralizada */
+    .option.active
+        color: white 
+        position: relative
+        opacity: 1 /* Mostra apenas a opção ativa */
+        transform: translateY(0)
+        font-family: $titleFont 
+        font-size: 45px
+        color: white
+        p
+            border-bottom: 3px solid white
+        

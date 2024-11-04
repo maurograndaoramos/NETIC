@@ -1,0 +1,71 @@
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+env/
+venv/
+*.egg-info/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.class
+
+# C/C++
+*.o
+*.out
+*.exe
+*.obj
+*.bin
+
+# Visual Studio
+.vs/
+*.sln
+*.user
+*.suo
+*.cache
+*.dbmdl
+
+# IDEs
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Logs
+*.log
+
+# Build directories
+build/
+dist/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Other files
+*.pid
+*.seed
+*.pid.lock
+*.lock
+*.tgz
+*.gz
+
+# Environment files
+.env
+.env.local
+.env.*.local
