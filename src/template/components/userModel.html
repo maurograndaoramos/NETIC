@@ -1,0 +1,33 @@
+{% load static %}
+
+{% block userModel %}
+<div class="userModel ">
+    <div class="userModel_card">
+        <div class="userModel_card_close">
+            <button class="userModel_card_close-bt">
+                x
+            </button>
+        </div>
+        <div class="userModel_card_topInfo">
+            <div class="userModel_card_topInfo_image">
+                <img src="https://picsum.photos/250/250" alt="">
+            </div>
+            <div class="userModel_card_topInfo_info">
+                <h3>Name</h3>
+                <p>Course</p>
+                <div class="capacitys"></div>
+            </div>
+        </div>
+        <div class="userModel_card_descriptions">
+            <p class="sinopse">Initial description here.</p>
+            <br><br>
+            <p class="description">Full description here.</p>
+        </div>
+        <div class="userModel_card_links">
+            <a href=""><img src="{% static 'images/userLinksLogo/github.png' %}" alt=""></a>
+            <a href=""><img src="{% static 'images/userLinksLogo/linkedin.png' %}" alt=""></a>
+            <a href=""><img src="{% static 'images/userLinksLogo/insta.png' %}" alt=""></a>
+        </div>
+    </div>
+</div>
+{% endblock %}

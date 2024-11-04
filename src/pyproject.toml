@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "NETIC"
+version = "0.1.0"
+description = "A Networking app for ETIC_Algarve"
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.1.2"
+gunicorn = "^23.0.0"
+python-dotenv = "^1.0.1"
+pillow = "^11.0.0"
+django-cors-headers = "^4.6.0"
+python-decouple = "^3.8"
+psycopg = {extras = ["binary"], version = "^3.2.3"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

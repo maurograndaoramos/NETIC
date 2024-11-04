@@ -1,0 +1,90 @@
+header
+    width: 100%
+    display: flex
+    justify-content: center
+
+    h1.title
+        $titleFont : "Montserrat", sans-serif
+        font-size: 48px
+        color: #FFFFFF
+        font-style: bold
+        margin-top: 6vh
+
+
+main
+    padding-inline: 3.2rem
+    max-width: 70rem
+    margin: 3.2rem auto
+    
+
+ul
+    display: grid
+    grid-template-columns: repeat(4, auto)
+    margin: 3% 8%   
+    gap: 5rem
+    list-style: none
+    justify-content: center
+
+
+    .cardss
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center
+        height: 45vh
+        width: 15vw
+        border-radius: 10%
+        background-color: $baseColor-200
+        transition: transform 0.3s ease, opacity 0.3s ease       
+        opacity: 70%  
+
+        &:hover
+            transform: scale(1.10) 
+            opacity: 1 
+
+
+        .img-card
+            margin: 10%
+            border-radius: 100%
+            height: 70px
+            width: 70px
+            background-color: yellow
+
+        .nome
+            $titleFont : "Montserrat", sans-serif
+            color: #FFFFFF
+            margin-bottom: 5%
+            font-size: 20px
+            font-weight: 500
+
+        .curso
+            $textFont : "Lato", sans-serif
+            color: $baseColor-600 
+            font-size: 16px
+
+        .sinopse
+            margin: 5% 5%
+            text-decoration: none
+            $textFont : "Lato", sans-serif
+            color: $baseColor-500 
+            text-align: justify
+
+
+        .btn-verMais
+            display: flex
+            text-decoration: none
+            color: #FFFFFF
+            background-color: $primaryColor-100
+            $titleFont : "Montserrat", sans-serif
+            width: 40%
+            height: 8%
+            align-items: center
+            justify-content: center
+            border-radius: 10px
+            margin-top: 5%
+
+
+
+ul:has(li:hover) li:not(:hover)
+    opacity: 0.6
+    transform: scale(0.90)
