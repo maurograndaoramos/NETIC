@@ -12,6 +12,9 @@ def netics_home (request) :
 def myNetwork (request): 
     return render (request, "myNetwork/index.html", context)
 
+def login (request): 
+    return render (request, "login/index.html", context)
+
 def profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST)

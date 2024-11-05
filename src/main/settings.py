@@ -71,6 +71,14 @@ KEY = os.getenv('key')
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
         'APP': {
             'client_id': CLIENT_ID,
             'secret': SECRET,
@@ -78,6 +86,9 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+LOGIN_REDIRECT_URL = '/'  # Customize this if needed
+LOGOUT_REDIRECT_URL = '/'
 
 ROOT_URLCONF = "main.urls"
 
@@ -92,7 +103,9 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                'django.template.context_processors.request',
+                "django.template.context_processors.request",
+                "allauth.account.context_processors.account",
+                "allauth.socialaccount.context_processors.socialaccount",
             ],
         },
     },

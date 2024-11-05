@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+
+{% block content %}
+  <div class="login-container">
+    <h2>Login</h2>
+    
+    <!-- Google Login Button -->
+    <a href="{% provider_login_url 'google' %}" class="btn btn-google">
+      Login with Google
+    </a>
+    
+    <p>Don't have an account? <a href="{% url 'account:signup' %}">Sign up</a></p>
+  </div>
+{% endblock %}
