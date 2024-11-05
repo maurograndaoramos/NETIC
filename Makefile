@@ -1,6 +1,6 @@
 .PHONY: help makemigrations migrate build bash load up down dump createsuperuser reset
 
-makemigrations:
+migrations:
 	docker compose run -it src poetry run python manage.py makemigrations
 
 migrate: makemigrations

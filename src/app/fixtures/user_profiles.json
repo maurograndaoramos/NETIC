@@ -1,0 +1,1608 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+        "username": "ana.oliveira",
+        "first_name": "Ana",
+        "last_name": "Oliveira",
+        "email": "ana.oliveira@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 1,
+        "fields": {
+        "first_name": "Ana",
+        "last_name": "Oliveira",
+        "email": "ana.oliveira@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Designer criativa com paixão por marketing digital.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Ana tem experiência em criação de campanhas de marketing digital e design gráfico. Ela é formada em Design de Comunicação e Marketing Digital e busca sempre se atualizar nas novas tendências.",
+        "user": 1,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+        "username": "pedro.silva",
+        "first_name": "Pedro",
+        "last_name": "Silva",
+        "email": "pedro.silva@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 2,
+        "fields": {
+        "first_name": "Pedro",
+        "last_name": "Silva",
+        "email": "pedro.silva@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Especialista em campanhas de mídia social.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Pedro é responsável pela criação de estratégias de conteúdo e design gráfico para empresas de tecnologia. Seu foco está em campanhas digitais que se destacam.",
+        "user": 2,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+        "username": "marta.souza",
+        "first_name": "Marta",
+        "last_name": "Souza",
+        "email": "marta.souza@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 3,
+        "fields": {
+        "first_name": "Marta",
+        "last_name": "Souza",
+        "email": "marta.souza@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Consultora de branding e design visual.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Marta ajuda empresas a desenvolverem identidades de marca fortes através de estratégias de comunicação visual e marketing.",
+        "user": 3,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+        "username": "carlos.lima",
+        "first_name": "Carlos",
+        "last_name": "Lima",
+        "email": "carlos.lima@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 4,
+        "fields": {
+        "first_name": "Carlos",
+        "last_name": "Lima",
+        "email": "carlos.lima@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Recém-formado em Design de Comunicação, com interesse em branding.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Carlos busca aplicar seus conhecimentos em branding e desenvolver campanhas que refletem identidade visual única.",
+        "user": 4,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+        "username": "luciana.alves",
+        "first_name": "Luciana",
+        "last_name": "Alves",
+        "email": "luciana.alves@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 5,
+        "fields": {
+        "first_name": "Luciana",
+        "last_name": "Alves",
+        "email": "luciana.alves@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Designer focada em UX e UI para aplicativos.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Luciana tem experiência em projetos de design para aplicativos móveis e adora trabalhar em interface e experiência do usuário.",
+        "user": 5,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 6,
+        "fields": {
+            "username": "thiago.menezes",
+            "first_name": "Thiago",
+            "last_name": "Menezes",
+            "email": "thiago.menezes@example.com",
+            "password": "pbkdf2_sha256$600000$defaulthash123",
+            "is_active": true,
+            "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+    "model": "app.userprofile",
+    "pk": 6,
+    "fields": {
+        "first_name": "Thiago",
+        "last_name": "Menezes",
+        "email": "thiago.menezes@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Diretor de criação com experiência em publicidade.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Thiago já trabalhou em campanhas publicitárias de grande porte e tem um olhar voltado para inovação e branding.",
+        "user": 6,
+        "network": []
+    }
+    },
+    {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+        "username": "fernanda.coelho",
+        "first_name": "Fernanda",
+        "last_name": "Coelho",
+        "email": "fernanda.coelho@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+    }
+    },
+    {
+    "model": "app.userprofile",
+    "pk": 7,
+    "fields": {
+        "first_name": "Fernanda",
+        "last_name": "Coelho",
+        "email": "fernanda.coelho@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Designer gráfica focada em mídia social.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Fernanda cria conteúdos gráficos para redes sociais de pequenas empresas e busca sempre se atualizar nas tendências visuais.",
+        "user": 7,
+        "network": []
+    }
+    },
+    {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+        "username": "rafael.costa2",
+        "first_name": "Rafael",
+        "last_name": "Costa",
+        "email": "rafael.costa2@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+    }
+    },
+    {
+    "model": "app.userprofile",
+    "pk": 8,
+    "fields": {
+        "first_name": "Rafael",
+        "last_name": "Costa",
+        "email": "rafael.costa2@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Especialista em design editorial e digital.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Rafael tem um histórico em criação de layouts editoriais e portais digitais, focando em acessibilidade e estética.",
+        "user": 8,
+        "network": []
+    }
+    },
+    {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+        "username": "juliana.rodrigues",
+        "first_name": "Juliana",
+        "last_name": "Rodrigues",
+        "email": "juliana.rodrigues@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+    }
+    },
+    {
+    "model": "app.userprofile",
+    "pk": 9,
+    "fields": {
+        "first_name": "Juliana",
+        "last_name": "Rodrigues",
+        "email": "juliana.rodrigues@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Consultora em estratégias de marketing de conteúdo.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Juliana orienta empresas na criação de estratégias visuais e de conteúdo para redes sociais e sites institucionais.",
+        "user": 9,
+        "network": []
+    }
+    },
+    {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+        "username": "marcelo.andrade",
+        "first_name": "Marcelo",
+        "last_name": "Andrade",
+        "email": "marcelo.andrade@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+    }
+    },
+    {
+    "model": "app.userprofile",
+    "pk": 10,
+    "fields": {
+        "first_name": "Marcelo",
+        "last_name": "Andrade",
+        "email": "marcelo.andrade@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Recém-ingresso no marketing digital com foco em SEO.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Marcelo está iniciando sua jornada no marketing digital e explora a otimização para SEO e campanhas de Google Ads.",
+        "user": 10,
+        "network": []
+    }
+    },
+    {
+        "model": "auth.user",
+        "pk": 11,
+        "fields": {
+        "username": "lucas.mendes2",
+        "first_name": "Lucas",
+        "last_name": "Mendes",
+        "email": "lucas.mendes2@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 11,
+        "fields": {
+        "first_name": "Lucas",
+        "last_name": "Mendes",
+        "email": "lucas.mendes2@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Produtor musical iniciante, especializado em trilhas para jogos.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Lucas é apaixonado por trilhas sonoras e atua em projetos para estúdios independentes, buscando sempre trazer uma identidade sonora inovadora.",
+        "user": 11,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 12,
+        "fields": {
+        "username": "sarah.chen",
+        "first_name": "Sarah",
+        "last_name": "Chen",
+        "email": "sarah.chen@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 12,
+        "fields": {
+        "first_name": "Sarah",
+        "last_name": "Chen",
+        "email": "sarah.chen@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Produtora iniciante com foco em jingles comerciais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Sarah cria jingles para empresas locais e desenvolve habilidades em gravação e mixagem.",
+        "user": 12,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 13,
+        "fields": {
+        "username": "rafael.sousa",
+        "first_name": "Rafael",
+        "last_name": "Sousa",
+        "email": "rafael.sousa@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 13,
+        "fields": {
+        "first_name": "Rafael",
+        "last_name": "Sousa",
+        "email": "rafael.sousa@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Compositor de trilhas sonoras para vídeos e curtas.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Rafael se especializou em criar atmosferas sonoras que complementam narrativas visuais e cinematográficas.",
+        "user": 13,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 14,
+        "fields": {
+        "username": "emma.thompson",
+        "first_name": "Emma",
+        "last_name": "Thompson",
+        "email": "emma.thompson@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 14,
+        "fields": {
+        "first_name": "Emma",
+        "last_name": "Thompson",
+        "email": "emma.thompson@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Produtora sênior com experiência em produção musical.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Emma já produziu para diversas bandas e artistas independentes, além de colaborar com gravadoras.",
+        "user": 14,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 15,
+        "fields": {
+        "username": "andre.matos2",
+        "first_name": "André",
+        "last_name": "Matos",
+        "email": "andre.matos2@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 15,
+        "fields": {
+        "first_name": "André",
+        "last_name": "Matos",
+        "email": "andre.matos2@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Produtor iniciante de música eletrônica.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "André está começando a explorar produção de faixas de house e EDM, buscando sempre melhorar suas habilidades técnicas.",
+        "user": 15,
+        "network": []
+        }
+    },
+    
+    {
+        "model": "auth.user",
+        "pk": 16,
+        "fields": {
+        "username": "giovana.lopes",
+        "first_name": "Giovana",
+        "last_name": "Lopes",
+        "email": "giovana.lopes@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 16,
+        "fields": {
+        "first_name": "Giovana",
+        "last_name": "Lopes",
+        "email": "giovana.lopes@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Produtora de música acústica e folk.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Giovana grava e produz faixas em estúdios caseiros para artistas independentes de gêneros acústicos.",
+        "user": 16,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 17,
+        "fields": {
+        "username": "james.wilson",
+        "first_name": "James",
+        "last_name": "Wilson",
+        "email": "james.wilson@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 17,
+        "fields": {
+        "first_name": "James",
+        "last_name": "Wilson",
+        "email": "james.wilson@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Especialista em mixagem e masterização.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Com experiência em estúdios profissionais, James foca em mixagem para gravadoras e grandes eventos.",
+        "user": 17,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 18,
+        "fields": {
+        "username": "vanessa.lima",
+        "first_name": "Vanessa",
+        "last_name": "Lima",
+        "email": "vanessa.lima@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 18,
+        "fields": {
+        "first_name": "Vanessa",
+        "last_name": "Lima",
+        "email": "vanessa.lima@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Compositora de trilhas experimentais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Vanessa gosta de explorar novas formas sonoras em suas composições para curtas e vídeos artísticos.",
+        "user": 18,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 19,
+        "fields": {
+        "username": "yuki.tanaka",
+        "first_name": "Yuki",
+        "last_name": "Tanaka",
+        "email": "yuki.tanaka@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 19,
+        "fields": {
+        "first_name": "Yuki",
+        "last_name": "Tanaka",
+        "email": "yuki.tanaka@example.com",
+        "curso": "Fotografia Profissional",
+        "sinopse": "Fotógrafa especializada em retrato e street photography.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Yuki traz uma perspectiva única para a fotografia de rua e retratos, combinando técnicas tradicionais com abordagens contemporâneas.",
+        "user": 19,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 20,
+        "fields": {
+        "username": "carlos.rodriguez",
+        "first_name": "Carlos",
+        "last_name": "Rodriguez",
+        "email": "carlos.rodriguez@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 20,
+        "fields": {
+        "first_name": "Carlos",
+        "last_name": "Rodriguez",
+        "email": "carlos.rodriguez@example.com",
+        "curso": "Videojogos",
+        "sinopse": "Game designer com foco em mecânicas inovadoras.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Carlos é apaixonado por criar mecânicas de jogo únicas que desafiam as convenções tradicionais do design de games.",
+        "user": 20,
+        "network": []
+        }
+    },
+    
+    {
+        "model": "auth.user",
+        "pk": 21,
+        "fields": {
+        "username": "sofia.mueller",
+        "first_name": "Sofia",
+        "last_name": "Mueller",
+        "email": "sofia.mueller@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 21,
+        "fields": {
+        "first_name": "Sofia",
+        "last_name": "Mueller",
+        "email": "sofia.mueller@example.com",
+        "curso": "Design Gráfico",
+        "sinopse": "Designer especializada em tipografia e identidade visual.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Sofia combina precisão alemã com criatividade latina em seus projetos de design, criando identidades visuais memoráveis e tipografia personalizada.",
+        "user": 21,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 22,
+        "fields": {
+        "username": "amir.patel",
+        "first_name": "Amir",
+        "last_name": "Patel",
+        "email": "amir.patel@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 22,
+        "fields": {
+        "first_name": "Amir",
+        "last_name": "Patel",
+        "email": "amir.patel@example.com",
+        "curso": "Programação Web",
+        "sinopse": "Desenvolvedor full-stack com paixão por acessibilidade web.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Amir desenvolve aplicações web com foco em acessibilidade e performance, garantindo que seus projetos sejam inclusivos e eficientes.",
+        "user": 22,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 23,
+        "fields": {
+        "username": "nina.kovac",
+        "first_name": "Nina",
+        "last_name": "Kovac",
+        "email": "nina.kovac@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 23,
+        "fields": {
+        "first_name": "Nina",
+        "last_name": "Kovac",
+        "email": "nina.kovac@example.com",
+        "curso": "Concept Art",
+        "sinopse": "Artista conceitual especializada em cenários futuristas.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Nina cria mundos visuais impressionantes que misturam elementos do leste europeu com visões futuristas, trabalhando principalmente para jogos indie.",
+        "user": 23,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 24,
+        "fields": {
+        "username": "david.kim",
+        "first_name": "David",
+        "last_name": "Kim",
+        "email": "david.kim@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 24,
+        "fields": {
+        "first_name": "David",
+        "last_name": "Kim",
+        "email": "david.kim@example.com",
+        "curso": "Marketing Digital e Social Media",
+        "sinopse": "Especialista em marketing de influência e TikTok.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "David é especializado em criar campanhas virais para TikTok e Instagram, com foco em engajamento orgânico e parcerias com influenciadores.",
+        "user": 24,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 25,
+        "fields": {
+        "username": "isabelle.dubois",
+        "first_name": "Isabelle",
+        "last_name": "Dubois",
+        "email": "isabelle.dubois@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 25,
+        "fields": {
+        "first_name": "Isabelle",
+        "last_name": "Dubois",
+        "email": "isabelle.dubois@example.com",
+        "curso": "Fotografia",
+        "sinopse": "Fotógrafa de moda com experiência em Paris e Milano.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Isabelle traz sua experiência internacional em fotografia de moda para criar imagens que capturam tanto a elegância clássica quanto as tendências contemporâneas.",
+        "user": 25,
+        "network": []
+        }
+    },
+    
+    {
+        "model": "auth.user",
+        "pk": 26,
+        "fields": {
+        "username": "mohamed.hassan",
+        "first_name": "Mohamed",
+        "last_name": "Hassan",
+        "email": "mohamed.hassan@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 26,
+        "fields": {
+        "first_name": "Mohamed",
+        "last_name": "Hassan",
+        "email": "mohamed.hassan@example.com",
+        "curso": "Realização, Cinema e TV",
+        "sinopse": "Diretor criativo especializado em documentários sociais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Mohamed traz uma perspectiva única aos seus documentários, focando em histórias que conectam diferentes culturas e comunidades. Seu trabalho já foi exibido em festivais internacionais.",
+        "user": 26,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 27,
+        "fields": {
+        "username": "ling.zhao",
+        "first_name": "Ling",
+        "last_name": "Zhao",
+        "email": "ling.zhao@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 27,
+        "fields": {
+        "first_name": "Ling",
+        "last_name": "Zhao",
+        "email": "ling.zhao@example.com",
+        "curso": "Videojogos",
+        "sinopse": "Game designer especializada em narrativas interativas.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Ling combina storytelling tradicional com mecânicas inovadoras de jogos, criando experiências narrativas únicas que ressoam com jogadores globalmente.",
+        "user": 27,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 28,
+        "fields": {
+        "username": "sven.andersson",
+        "first_name": "Sven",
+        "last_name": "Andersson",
+        "email": "sven.andersson@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 28,
+        "fields": {
+        "first_name": "Sven",
+        "last_name": "Andersson",
+        "email": "sven.andersson@example.com",
+        "curso": "Produção e Criação Musical Eletrónica",
+        "sinopse": "Produtor de música eletrônica experimental e ambient.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Sven explora as fronteiras entre música eletrônica e sound design, criando paisagens sonoras imersivas inspiradas na natureza escandinava.",
+        "user": 28,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 29,
+        "fields": {
+        "username": "priya.sharma",
+        "first_name": "Priya",
+        "last_name": "Sharma",
+        "email": "priya.sharma@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 29,
+        "fields": {
+        "first_name": "Priya",
+        "last_name": "Sharma",
+        "email": "priya.sharma@example.com",
+        "curso": "Design de Comunicação e Multimédia",
+        "sinopse": "Designer multimídia com foco em animação e motion graphics.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Priya cria animações que fundem elementos culturais tradicionais com técnicas modernas de motion design, trazendo cor e movimento para marcas globais.",
+        "user": 29,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 30,
+        "fields": {
+        "username": "leo.costa",
+        "first_name": "Leonardo",
+        "last_name": "Costa",
+        "email": "leo.costa@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 30,
+        "fields": {
+        "first_name": "Leonardo",
+        "last_name": "Costa",
+        "email": "leo.costa@example.com",
+        "curso": "Concept Art",
+        "sinopse": "Artista conceitual com foco em character design.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Leonardo especializa-se em criar personagens únicos que mesclam influências do folclore brasileiro com estética contemporânea de jogos e animação.",
+        "user": 30,
+        "network": []
+        }
+    },
+    
+    {
+        "model": "auth.user",
+        "pk": 31,
+        "fields": {
+        "username": "fatima.ahmed",
+        "first_name": "Fatima",
+        "last_name": "Ahmed",
+        "email": "fatima.ahmed@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 31,
+        "fields": {
+        "first_name": "Fatima",
+        "last_name": "Ahmed",
+        "email": "fatima.ahmed@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Estrategista digital especializada em mercados globais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Fatima traz uma perspectiva única ao marketing digital, combinando design contemporâneo com sensibilidade cultural para criar campanhas que ressoam em diferentes mercados internacionais.",
+        "user": 31,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 32,
+        "fields": {
+        "username": "akiko.sato",
+        "first_name": "Akiko",
+        "last_name": "Sato",
+        "email": "akiko.sato@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 32,
+        "fields": {
+        "first_name": "Akiko",
+        "last_name": "Sato",
+        "email": "akiko.sato@example.com",
+        "curso": "Fotografia",
+        "sinopse": "Fotógrafa minimalista com foco em arquitetura urbana.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Akiko captura a essência da arquitetura moderna através de uma lente minimalista, encontrando beleza na simplicidade e nas formas geométricas do ambiente urbano.",
+        "user": 32,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 33,
+        "fields": {
+        "username": "gabriel.santos",
+        "first_name": "Gabriel",
+        "last_name": "Santos",
+        "email": "gabriel.santos@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 33,
+        "fields": {
+        "first_name": "Gabriel",
+        "last_name": "Santos",
+        "email": "gabriel.santos@example.com",
+        "curso": "Técnicas de Som",
+        "sinopse": "Sound designer especializado em áudio espacial.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Gabriel explora as fronteiras do áudio espacial e binaural, criando experiências sonoras imersivas para realidade virtual e instalações artísticas interativas.",
+        "user": 33,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 34,
+        "fields": {
+        "username": "zara.khan",
+        "first_name": "Zara",
+        "last_name": "Khan",
+        "email": "zara.khan@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 34,
+        "fields": {
+        "first_name": "Zara",
+        "last_name": "Khan",
+        "email": "zara.khan@example.com",
+        "curso": "Design Gráfico",
+        "sinopse": "Designer especializada em caligrafia e tipografia multicultural.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Zara cria designs que fundem caligrafia tradicional com tipografia moderna, desenvolvendo identidades visuais que celebram a diversidade linguística e cultural.",
+        "user": 34,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 35,
+        "fields": {
+        "username": "diego.martinez",
+        "first_name": "Diego",
+        "last_name": "Martinez",
+        "email": "diego.martinez@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 35,
+        "fields": {
+        "first_name": "Diego",
+        "last_name": "Martinez",
+        "email": "diego.martinez@example.com",
+        "curso": "Videojogos",
+        "sinopse": "Desenvolvedor de jogos indie com foco em narrativas latino-americanas.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Diego cria jogos que exploram o rico folclore e as histórias latino-americanas, combinando elementos tradicionais com mecânicas de gameplay inovadoras.",
+        "user": 35,
+        "network": []
+        }
+    },
+    
+    {
+        "model": "auth.user",
+        "pk": 36,
+        "fields": {
+        "username": "maya.patel",
+        "first_name": "Maya",
+        "last_name": "Patel",
+        "email": "maya.patel@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 36,
+        "fields": {
+        "first_name": "Maya",
+        "last_name": "Patel",
+        "email": "maya.patel@example.com",
+        "curso": "Design de Comunicação e Multimédia",
+        "sinopse": "Motion designer especializada em animação tradicional indiana e técnicas digitais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Maya combina as técnicas narrativas do teatro de sombras indiano com animação digital moderna, criando peças visuais que contam histórias antigas de maneiras inovadoras. Seu trabalho já foi apresentado em festivais de arte digital em todo o mundo.",
+        "user": 36,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 37,
+        "fields": {
+        "username": "henrik.larsson",
+        "first_name": "Henrik",
+        "last_name": "Larsson",
+        "email": "henrik.larsson@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 37,
+        "fields": {
+        "first_name": "Henrik",
+        "last_name": "Larsson",
+        "email": "henrik.larsson@example.com",
+        "curso": "Fotografia Profissional",
+        "sinopse": "Fotógrafo especializado em fenômenos naturais e aurora boreal.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Henrik passou anos aperfeiçoando técnicas para capturar a aurora boreal e outros fenômenos naturais. Ele combina conhecimento científico com sensibilidade artística para criar imagens que revelam a mágica do mundo natural em sua forma mais pura.",
+        "user": 37,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 38,
+        "fields": {
+        "username": "carmen.ortiz",
+        "first_name": "Carmen",
+        "last_name": "Ortiz",
+        "email": "carmen.ortiz@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 38,
+        "fields": {
+        "first_name": "Carmen",
+        "last_name": "Ortiz",
+        "email": "carmen.ortiz@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Produtora musical fundindo flamenco com música eletrônica.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Carmen revoluciona a música tradicional espanhola através da produção eletrônica. Sua abordagem única preserva a alma do flamenco enquanto o transporta para o século XXI, criando um som que é tanto ancestral quanto futurista.",
+        "user": 38,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 39,
+        "fields": {
+        "username": "jin.wei",
+        "first_name": "Jin",
+        "last_name": "Wei",
+        "email": "jin.wei@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 39,
+        "fields": {
+        "first_name": "Jin",
+        "last_name": "Wei",
+        "email": "jin.wei@example.com",
+        "curso": "Concept Art",
+        "sinopse": "Artista conceitual especializada em designs biomecânicos e cyberpunk.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Jin cria designs que fundem elementos da natureza com tecnologia futurista, inspirando-se tanto na medicina tradicional chinesa quanto na ficção científica cyberpunk. Seus concepts já inspiraram diversos jogos indie de sucesso.",
+        "user": 39,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 40,
+        "fields": {
+        "username": "amara.okafor",
+        "first_name": "Amara",
+        "last_name": "Okafor",
+        "email": "amara.okafor@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 40,
+        "fields": {
+        "first_name": "Amara",
+        "last_name": "Okafor",
+        "email": "amara.okafor@example.com",
+        "curso": "Marketing Digital e Social Media",
+        "sinopse": "Estrategista digital focada em narrativas de marca afrofuturistas.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Amara revoluciona o marketing digital através de narrativas que celebram a cultura africana contemporânea e suas visões de futuro. Ela ajuda marcas a contar histórias autênticas que conectam tradição com inovação.",
+        "user": 40,
+        "network": []
+        }
+    },
+    
+    {
+        "model": "auth.user",
+        "pk": 41,
+        "fields": {
+        "username": "kofi.mensah",
+        "first_name": "Kofi",
+        "last_name": "Mensah",
+        "email": "kofi.mensah@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 41,
+        "fields": {
+        "first_name": "Kofi",
+        "last_name": "Mensah",
+        "email": "kofi.mensah@example.com",
+        "curso": "Videojogos",
+        "sinopse": "Game designer criando mundos inspirados em mitologia africana.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Kofi desenvolve jogos que exploram a rica mitologia do oeste africano em ambientes sci-fi. Seu projeto atual combina elementos de Adinkra com mecânicas de puzzle em um mundo pós-apocalíptico vibrante.",
+        "user": 41,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 42,
+        "fields": {
+        "username": "nadia.patel",
+        "first_name": "Nadia",
+        "last_name": "Patel",
+        "email": "nadia.patel@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 42,
+        "fields": {
+        "first_name": "Nadia",
+        "last_name": "Patel",
+        "email": "nadia.patel@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Designer especializada em campanhas de impacto social.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Nadia usa design e storytelling para criar campanhas que abordam questões sociais complexas. Seu trabalho recente focou em tornar a educação tecnológica mais acessível para meninas em comunidades rurais.",
+        "user": 42,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 43,
+        "fields": {
+        "username": "jun.yoshida",
+        "first_name": "Jun",
+        "last_name": "Yoshida",
+        "email": "jun.yoshida@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 43,
+        "fields": {
+        "first_name": "Jun",
+        "last_name": "Yoshida",
+        "email": "jun.yoshida@example.com",
+        "curso": "Criação Musical, Produção e Técnicas de Som",
+        "sinopse": "Sound artist explorando a fusão de música tradicional japonesa e ambient.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Jun cria paisagens sonoras que mesclam gravações de campo do Japão rural com síntese modular e instrumentos tradicionais. Suas composições são frequentemente usadas em instalações de arte contemporânea.",
+        "user": 43,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 44,
+        "fields": {
+        "username": "elena.popov",
+        "first_name": "Elena",
+        "last_name": "Popov",
+        "email": "elena.popov@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 44,
+        "fields": {
+        "first_name": "Elena",
+        "last_name": "Popov",
+        "email": "elena.popov@example.com",
+        "curso": "Design de Comunicação e Multimédia",
+        "sinopse": "Motion designer especializada em contos folclóricos animados.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Elena transforma contos folclóricos eslavos em animações modernas e envolventes. Seu estilo único combina técnicas de animação tradicional com elementos de glitch art e estética vaporwave.",
+        "user": 44,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 45,
+        "fields": {
+        "username": "malik.diop",
+        "first_name": "Malik",
+        "last_name": "Diop",
+        "email": "malik.diop@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 45,
+        "fields": {
+        "first_name": "Malik",
+        "last_name": "Diop",
+        "email": "malik.diop@example.com",
+        "curso": "Fotografia Profissional",
+        "sinopse": "Fotógrafo documentarista focado em urbanização e tradição.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Malik documenta a interseção entre tradição e modernidade nas cidades africanas em rápido desenvolvimento. Seu projeto atual explora como a arquitetura vernacular influencia o design urbano contemporâneo em Dakar.",
+        "user": 45,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 46,
+        "fields": {
+        "username": "lucia.torres",
+        "first_name": "Lucía",
+        "last_name": "Torres",
+        "email": "lucia.torres@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 46,
+        "fields": {
+        "first_name": "Lucía",
+        "last_name": "Torres",
+        "email": "lucia.torres@example.com",
+        "curso": "Realização, Cinema e TV",
+        "sinopse": "Documentarista explorando histórias de comunidades indígenas na era digital.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Lucía cria documentários interativos que permitem que comunidades indígenas contem suas próprias histórias através de tecnologias imersivas. Seu projeto atual combina realidade aumentada com narrativas tradicionais dos povos Mapuche.",
+        "user": 46,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 47,
+        "fields": {
+        "username": "aiden.oconnor",
+        "first_name": "Aiden",
+        "last_name": "O'Connor",
+        "email": "aiden.oconnor@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 47,
+        "fields": {
+        "first_name": "Aiden",
+        "last_name": "O'Connor",
+        "email": "aiden.oconnor@example.com",
+        "curso": "Programação Web",
+        "sinopse": "Desenvolvedor web focado em preservação digital de tradições orais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Aiden desenvolve plataformas web que utilizam IA e tecnologias interativas para preservar e compartilhar histórias e músicas tradicionais irlandesas. Seu trabalho combina etnomusicologia com tecnologia de ponta.",
+        "user": 47,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 48,
+        "fields": {
+        "username": "mei.zhang",
+        "first_name": "Mei",
+        "last_name": "Zhang",
+        "email": "mei.zhang@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 48,
+        "fields": {
+        "first_name": "Mei",
+        "last_name": "Zhang",
+        "email": "mei.zhang@example.com",
+        "curso": "Design de Comunicação e Marketing Digital",
+        "sinopse": "Designer de experiências digitais para museus virtuais.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Mei especializa-se em criar experiências virtuais que tornam a arte e história chinesa acessível globalmente. Seu último projeto permite que visitantes interajam com artefatos históricos em realidade virtual, com narrativas adaptativas baseadas em IA.",
+        "user": 48,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 49,
+        "fields": {
+        "username": "sophie.dubois",
+        "first_name": "Sophie",
+        "last_name": "Dubois",
+        "email": "sophie.dubois@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 49,
+        "fields": {
+        "first_name": "Sophie",
+        "last_name": "Dubois",
+        "email": "sophie.dubois@example.com",
+        "curso": "Design Gráfico",
+        "sinopse": "Designer especializada em sistemas de escrita inclusivos.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Sophie desenvolve sistemas tipográficos que tornam a comunicação mais acessível para pessoas com dislexia e deficiências visuais. Seu trabalho mais recente explora como princípios do design universal podem ser aplicados à tipografia dinâmica.",
+        "user": 49,
+        "network": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 50,
+        "fields": {
+        "username": "rafael.andrade",
+        "first_name": "Rafael",
+        "last_name": "Andrade",
+        "email": "rafael.andrade@example.com",
+        "password": "pbkdf2_sha256$600000$defaulthash123",
+        "is_active": true,
+        "date_joined": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "app.userprofile",
+        "pk": 50,
+        "fields": {
+        "first_name": "Rafael",
+        "last_name": "Andrade",
+        "email": "rafael.andrade@example.com",
+        "curso": "Videojogos",
+        "sinopse": "Desenvolvedor de jogos educacionais sobre biodiversidade.",
+        "instagram": "",
+        "linkedin": "",
+        "github": "",
+        "website": "",
+        "profile_picture": "profile_pictures/default.jpg",
+        "descricao_longa": "Rafael cria jogos que educam sobre a biodiversidade da Amazônia, combinando pesquisa científica com gameplay envolvente. Seu projeto atual usa realidade aumentada para permitir que jogadores 'encontrem' espécies raras em seus próprios bairros.",
+        "user": 50,
+        "network": []
+        }
+    }
+]
