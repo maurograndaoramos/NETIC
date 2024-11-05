@@ -775,6 +775,11 @@ ul:has(li:hover) li:not(:hover) {
 .formwrap form .fields span input:focus {
   border: 1px solid #734a90;
 }
+.formwrap form .fields span input .flexrow {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
 .formwrap form .fields .sinopse textarea {
   margin-left: 1rem;
   height: 4rem;
