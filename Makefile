@@ -41,7 +41,7 @@ UserProfile.objects.create(user=user, first_name='Admin', last_name='Admin', ema
 
 make setup:
 	make up DETACH=true
-	sleep 10
+	sleep 20
 	make load
 
 reset: down up migrate dump
