@@ -68,9 +68,9 @@ MIDDLEWARE = [
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            #'client_id': '123',
-            #'secret': '456',
-            #'key': ''
+            'client_id': os.getenv('client_id'),
+            'secret': os.getenv('secret'),
+            'key': os.getenv('key')
         }
     }
 }
