@@ -1,22 +1,21 @@
 from django.shortcuts import redirect, render
-from context import context
-from main.forms import ProfileForm
-from main.forms import FileForm
+from .context import context
+from .forms import UserProfileForm
 
 def netics_home (request) :
 
     return render (request, "mainPage/index.html", context)
 
 def myNetwork (request): 
-    return render (request, "myNetwork/index.html", {})
+    return render (request, "myNetwork/index.html", context)
 
 def profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
+        form = UserProfileForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
     else:
-        context["form"] = ProfileForm()
+        context["form"] = UserProfileForm()
     
         return render (request, "profilePage/index.html", context)

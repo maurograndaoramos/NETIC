@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "app",
-    "main"
+    "main",
 ]
 
 MIDDLEWARE = [
@@ -139,7 +139,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "app/static",
 ]
 
 # Media files

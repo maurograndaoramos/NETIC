@@ -16,6 +16,7 @@ pillow = "^11.0.0"
 django-cors-headers = "^4.6.0"
 python-decouple = "^3.8"
 psycopg = {extras = ["binary"], version = "^3.2.3"}
+django-sass = "^1.1.0"
 
 
 [build-system]
