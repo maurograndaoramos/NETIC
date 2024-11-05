@@ -39,6 +39,11 @@ user.save(); \
 from app.models import UserProfile; \
 UserProfile.objects.create(user=user, first_name='Admin', last_name='Admin', email='netic_admin@eticalgarve.com')"
 
+make setup:
+	make up DETACH=true
+	sleep 10
+	make load
+
 reset: down up migrate dump
 	make down
 	make up DETACH=true
