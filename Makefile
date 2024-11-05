@@ -27,7 +27,7 @@ dump:
 
 createsuperuser:
 	docker compose run -it src poetry run python manage.py createsuperuser --noinput --username Admin --email admin@netic.pt
-	docker compose exec -it src poetry run python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); user = User.objects.get(username='Admin'); user.set_password('password'); user.save()"
+	docker compose exec -it src poetry run python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); user = User.objects.get(username='Admin'); user.set_password('Password'); user.save()"
 
 reset: down up migrate dump
 	make down
