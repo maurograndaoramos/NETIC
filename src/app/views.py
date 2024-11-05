@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from allauth.account.views import LoginView
 from .context import context
 from .forms import UserProfileForm
+
 
 def netics_home (request) :
 
@@ -20,5 +22,13 @@ def profile(request):
         context["form"] = UserProfileForm()
     
         return render (request, "profilePage/index.html", context)
-    
-def customLoginView(LoginView)
+
+class CustomLoginView(LoginView):
+    template_name = 'account/login.html' 
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
