@@ -15,13 +15,13 @@ context = {
         "Técnicas de Som"
     ],
     "users_data" : [
-                {
-    "nome": "Ana Oliveira",
-    "curso": "Design de Comunicação e Marketing Digital",
-    "nivel_de_experiencia": "Junior",
-    "sinopse": "Designer criativa com paixão por marketing digital.",
-    "descricao": "Ana tem experiência em criação de campanhas de marketing digital e design gráfico. Ela é formada em Design de Comunicação e Marketing Digital e busca sempre se atualizar nas novas tendências.",
-    "imagem": "https://picsum.photos/300/300"
+            {
+"nome": "Ana Oliveira",
+"curso": "Design de Comunicação e Marketing Digital",
+"nivel_de_experiencia": "Junior",
+"sinopse": "Designer criativa com paixão por marketing digital.",
+"descricao": "Ana tem experiência em criação de campanhas de marketing digital e design gráfico. Ela é formada em Design de Comunicação e Marketing Digital e busca sempre se atualizar nas novas tendências.",
+"imagem": "https://picsum.photos/300/300"
 },
 {
     "nome": "Pedro Silva",
