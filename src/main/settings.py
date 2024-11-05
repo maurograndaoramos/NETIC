@@ -64,13 +64,17 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
+CLIENT_ID = os.getenv('client_id')
+SECRET = os.getenv('secret')
+KEY = os.getenv('key')
+
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': os.getenv('client_id'),
-            'secret': os.getenv('secret'),
-            'key': os.getenv('key')
+            'client_id': CLIENT_ID,
+            'secret': SECRET,
+            'key': KEY
         }
     }
 }
