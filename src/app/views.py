@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from allauth.account.views import LoginView
 from .context import context
 from .forms import UserProfileForm
 
@@ -19,3 +20,5 @@ def profile(request):
         context["form"] = UserProfileForm()
     
         return render (request, "profilePage/index.html", context)
+    
+def customLoginView(LoginView)
