@@ -1,4 +1,7 @@
-.PHONY: help makemigrations migrate build bash load up down dump createsuperuser reset
+.PHONY: help makemigrations migrate build bash load up down dump createsuperuser reset shell
+
+make shell:
+	cd src && poetry shell && cd ..
 
 migrations:
 	docker compose run -it src poetry run python manage.py makemigrations
@@ -26,8 +29,15 @@ dump:
 	docker cp netic-src-1:/app/data.json ./src/data.json
 
 createsuperuser:
-	docker compose run -it src poetry run python manage.py createsuperuser --noinput --username Admin --email admin@netic.pt
-	docker compose exec -it src poetry run python manage.py shell -c "from django.contrib.auth import get_user_model; User = get_user_model(); user = User.objects.get(username='Admin'); user.set_password('Password'); user.save()"
+	docker compose run -it src poetry run python manage.py createsuperuser --noinput --username Admin --email netic_admin@eticalgarve.com
+	docker compose exec -it src poetry run python manage.py shell -c "\
+from django.contrib.auth import get_user_model; \
+User = get_user_model(); \
+user = User.objects.get(username='Admin'); \
+user.set_password('Password'); \
+user.save(); \
+from app.models import UserProfile; \
+UserProfile.objects.create(user=user, first_name='Admin', last_name='Admin', email='netic_admin@eticalgarve.com')"
 
 reset: down up migrate dump
 	make down
