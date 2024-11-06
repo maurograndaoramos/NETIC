@@ -47,6 +47,8 @@ document.querySelector(".userModel_card_close-bt").addEventListener("click", () 
 function filterCards(course) {
     visibleCards = allCards.filter(card => card.course === course && !hiddenCards.includes(card));
     console.log("init  :  ", visibleCards);
+    console.log(visibleCards.length);
+
     currentCardIndex = 0;
     updateDisplayedCard();
 }
@@ -57,11 +59,16 @@ function updateDisplayedCard() {
     });
 
     if (visibleCards.length > 0 && currentCardIndex < visibleCards.length) {
+        document.querySelector(".cards").style.display = "flex";
+        document.querySelector(".noCards").style.display = "none";
         const cardToDisplay = visibleCards[currentCardIndex];
         cardToDisplay.element.style.display = "flex";
 
         // Update the modal content with the current card data
         updateModalContent(cardToDisplay);
+    }else {
+        document.querySelector(".cards").style.display = "none";
+        document.querySelector(".noCards").style.display = "flex";
     }
 }
 
@@ -77,10 +84,6 @@ function updateModalContent(card) {
 }
 
 function animateAndReplaceCardUp() {
-
-    
-
-
 
     if (visibleCards.length === 0) return;
     const currentCard = visibleCards[currentCardIndex];
@@ -132,6 +135,10 @@ function animateAndReplaceCardUp() {
             visibleCards.shift();
             currentCardIndex = (currentCardIndex + 1) % visibleCards.length;
             updateDisplayedCard();
+            if (visibleCards.length == 0) {
+                document.querySelector(".cards").style.display = "none";
+                document.querySelector(".noCards").style.display = "flex";
+            }
         }, 500);
     }
 }
@@ -148,6 +155,7 @@ function animateAndReplaceCardDown() {
             visibleCards.shift();
             currentCardIndex = (currentCardIndex - 1 + visibleCards.length) % visibleCards.length;
             updateDisplayedCard();
+            
         }, 500);
     }
 }
