@@ -11,6 +11,8 @@ import json
 from django.http import JsonResponse
 from django.conf import settings
 
+from allauth.account.adapter import DefaultAccountAdapter
+
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def receive_data(request):
     if request.method == 'POST':
@@ -29,30 +31,31 @@ def receive_data(request):
     
 
 def netics_home (request):
-    user_placeholder = authenticate(request, username = "Admin", password = "Password")
-    if user_placeholder is not None :
-        context = {
-            "courses" : [
-                "Design de Comunicação e Marketing Digital",
-                "Criação Musical, Produção e Técnicas de Som",
-                "Design de Comunicação e Multimédia",
-                "Fotografia Profissional",
-                "Programação Web",
-                "Realização, Cinema e TV",
-                "Videojogos",
-                "Concept Art",
-                "Design Gráfico",
-                "Fotografia",
-                "Marketing Digital e Social Media",
-                "Produção e Criação Musical Eletrónica",
-                "Técnicas de Som"
-            ],
-            "users_data" : UserProfile.objects.all(),
-            "logged_user_id" : request.user.id
-        }
-        login(request, user_placeholder)
+    user = authenticate(username="Admin", password="Password")
+    #if user_placeholder is not None :
+    context = {
+        "courses" : [
+            "Design de Comunicação e Marketing Digital",
+            "Criação Musical, Produção e Técnicas de Som",
+            "Design de Comunicação e Multimédia",
+            "Fotografia Profissional",
+            "Programação Web",
+            "Realização, Cinema e TV",
+            "Videojogos",
+            "Concept Art",
+            "Design Gráfico",
+            "Fotografia",
+            "Marketing Digital e Social Media",
+            "Produção e Criação Musical Eletrónica",
+            "Técnicas de Som"
+        ],
+        "users_data" : UserProfile.objects.all(),
+        "logged_user_id" : request.user.id
+    }
+
+    login(request, user, backend="django.contrib.auth.backends.ModelBackend")
         
-        return render (request, "mainPage/index.html", context)
+    return render(request, "mainPage/index.html", context)
 
 def myNetwork (request): 
     logged_profile = UserProfile.objects.get(id=request.user.id)

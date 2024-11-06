@@ -198,3 +198,5 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CORS_ALLOW_CREDENTIALS = True
+
+ACCOUNT_ADAPTER = 'main.users.adapter.MyAccountAdapter'
