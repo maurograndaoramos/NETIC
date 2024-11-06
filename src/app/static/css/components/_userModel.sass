@@ -44,15 +44,17 @@
     display: none
     align-items: center
     justify-content: center
-    position: absolute
+    position: fixed
     top: calc(100vh - 220px)
     left: calc(50vw - 100px)
-    width: 200px
-    height: 200px
+    width: 100vw
+    height: 100vh
     background: $baseColor-200-50
     backdrop-filter: blur(10px)
 
     .userModel_card
+        display: flex
+        flex-direction: column
         border-radius: 40px
         width: 350px
         animation: openCard 1.5s ease-in-out forwards

@@ -26,12 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', "django-insecure-g2l#b3^a^z3_@_3#tx-^!a5&z$$ymlngy4k50&-0jxj&vgt=+o")
+SECRET_KEY = os.getenv(
+    'SECRET_KEY', "django-insecure-g2l#b3^a^z3_@_3#tx-^!a5&z$$ymlngy4k50&-0jxj&vgt=+o")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS',
+                          'localhost,127.0.0.1,0.0.0.0').split(',')
 
 
 # Application definition
@@ -46,7 +48,12 @@ INSTALLED_APPS = [
     "corsheaders",
     "app",
     "main",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -57,7 +64,34 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
+
+CLIENT_ID = os.getenv('client_id')
+SECRET = os.getenv('secret')
+KEY = os.getenv('key')
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+        'APP': {
+            'client_id': CLIENT_ID,
+            'secret': SECRET,
+            'key': KEY
+        }
+    }
+}
+
+LOGIN_REDIRECT_URL = '/'  # Customize this if needed
+LOGOUT_REDIRECT_URL = '/'
 
 ROOT_URLCONF = "main.urls"
 
@@ -72,9 +106,15 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = "main.wsgi.application"
@@ -144,6 +184,7 @@ STATICFILES_DIRS = [
 
 # Media files
 MEDIA_ROOT = BASE_DIR / "profile_pictures/"
+MEDIA_URL = '/profile_pictures/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

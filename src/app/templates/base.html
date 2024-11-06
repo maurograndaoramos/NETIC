@@ -18,8 +18,8 @@
         </div> 
 
         <nav>
-            <a href="/" class="actualPage">Home</a>
-            <a href="/network" class="">My network</a>
+            <a href="/" id = "Home-page" class="actualPage">Home</a>
+            <a href="/network" id = "Network-page" class="actualPage">My network</a>
             <a href="/perfil" class="user">
                 <img src="{% static 'images/defaultUser/default_user.png' %}" alt="">
             </a>
@@ -30,6 +30,7 @@
     
     {% endblock%}
     
+    <script type="module" src="{% static 'js/currentPage/currentPage.js'%}"></script>
 
 </body>
 
