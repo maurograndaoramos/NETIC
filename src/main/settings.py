@@ -26,12 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', "django-insecure-g2l#b3^a^z3_@_3#tx-^!a5&z$$ymlngy4k50&-0jxj&vgt=+o")
+SECRET_KEY = os.getenv(
+    'SECRET_KEY', "django-insecure-g2l#b3^a^z3_@_3#tx-^!a5&z$$ymlngy4k50&-0jxj&vgt=+o")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS',
+                          'localhost,127.0.0.1,0.0.0.0').split(',')
 
 
 # Application definition
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -103,9 +106,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "django.template.context_processors.request",
-                "allauth.account.context_processors.account",
-                "allauth.socialaccount.context_processors.socialaccount",
+
             ],
         },
     },

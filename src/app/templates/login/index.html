@@ -1,17 +1,91 @@
 {% extends "base.html" %}
 {% load static %}
-{% load socialaccount %}
+
 
 
 {% block content %}
-  <div class="login-container">
-    <h2>Login</h2>
-    
-    <!-- Google Login Button -->
-    <a href="{% provider_login_url 'google' %}" class="btn btn-google">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+  .login-container {
+    display: flex;
+    justify-content: center;
+    font-family: "Montserrat";
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    height: 100vh;
+    /* Full viewport height */
+  }
+
+  /* Container for login message */
+  .container-login {
+    width: 100%;
+    max-width: 400px;
+    /* Set a max width for the login card */
+    padding: 20px;
+    background-color: #282828b4;
+    /* White background for the login card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add shadow for card effect */
+    border-radius: 8px;
+    /* Rounded corners */
+    text-align: center;
+    /* Center the text inside the card */
+  }
+
+  /* Styling for the buttons */
+  .btn-google {
+    background-color: #613583;
+    /* Google red */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-google:hover {
+    background-color: #a78bb9;
+    /* Darker red when hovered */
+  }
+
+  p {
+    padding: 8px 16px;
+    text-align: justify;
+    color: white;
+    line-height: 150%;
+  }
+
+  h1 {
+    font-size: 24px;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+</style>
+<div class="login-container">
+
+  <div class="container-login">
+    <h1>Welcome to the Network</h1>
+    <br>
+    <p>Esta plataforma é um espaço para os estudantes da ETIC_Algarve se conectarem, criar projetos e acelarar a sua
+      aprendizagem.
+      <br>
+      <br>Faz login e começa a explorar!
+    </p>
+    <br>
+    <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id={{ client_id }}&redirect_uri=http://localhost:8000/&response_type=code&scope=email%20profile&access_type=offline&include_granted_scopes=true"
+      class="btn btn-google">
       Login with Google
     </a>
-    
-    <p>Don't have an account? <a href="{% url 'account:signup' %}">Sign up</a></p>
   </div>
+
+</div>
 {% endblock %}

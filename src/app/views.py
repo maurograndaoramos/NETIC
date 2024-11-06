@@ -3,17 +3,21 @@ from django.urls import reverse_lazy
 from allauth.account.views import LoginView
 from .context import context
 from .forms import UserProfileForm
+from django.conf import settings
 
 
-def netics_home (request) :
+def netics_home(request):
 
-    return render (request, "mainPage/index.html", context)
+    return render(request, "mainPage/index.html", context)
 
-def myNetwork (request): 
-    return render (request, "myNetwork/index.html", context)
 
-def login (request): 
-    return render (request, "login/index.html", context)
+def myNetwork(request):
+    return render(request, "myNetwork/index.html", context)
+
+
+def login(request):
+    return render(request, "login/index.html", context)
+
 
 def profile(request):
     if request.method == 'POST':
@@ -23,15 +27,12 @@ def profile(request):
             return redirect('home')
     else:
         context["form"] = UserProfileForm()
-    
-        return render (request, "profilePage/index.html", context)
 
-class CustomLoginView(LoginView):
-    template_name = 'account/login.html' 
-    success_url = reverse_lazy('home')
+        return render(request, "profilePage/index.html", context)
 
-    def form_valid(self, form):
-        return super().form_valid(form)
 
-    def form_invalid(self, form):
-        return super().form_invalid(form)
+def login_view(request):
+    context = {
+        'client_id': settings.CLIENT_ID,
+    }
+    return render(request, 'login/index.html', context)
