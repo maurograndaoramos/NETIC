@@ -294,16 +294,18 @@ input {
   display: none;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   top: calc(100vh - 220px);
   left: calc(50vw - 100px);
-  width: 200px;
-  height: 200px;
+  width: 100vw;
+  height: 100vh;
   background: rgba(40, 40, 40, 0.7058823529);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
 }
 .userModel .userModel_card {
+  display: flex;
+  flex-direction: column;
   border-radius: 40px;
   width: 350px;
   animation: openCard 1.5s ease-in-out forwards;
@@ -596,6 +598,27 @@ ul {
   gap: 5rem;
   list-style: none;
   justify-content: center;
+  place-items: center;
+}
+@media (min-width: 1367px) {
+  ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1023px) and (max-width: 1366px) {
+  ul {
+    grid-template-columns: repeat(3, 3fr);
+  }
+}
+@media (min-width: 715px) and (max-width: 1022px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 714px) {
+  ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 ul .cardss {
   display: flex;
@@ -605,7 +628,6 @@ ul .cardss {
   height: 45vh;
   width: 15vw;
   border-radius: 10%;
-  background-color: #282828;
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 70%;
 }

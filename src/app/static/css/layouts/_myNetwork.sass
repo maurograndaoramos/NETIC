@@ -24,7 +24,23 @@ ul
     gap: 5rem
     list-style: none
     justify-content: center
+    place-items: center
 
+    @media (min-width: 1367px) 
+        grid-template-columns: repeat(4, 1fr)
+    
+
+    @media (min-width: 1023px) and (max-width: 1366px) 
+        grid-template-columns: repeat(3, 3fr)
+    
+    
+    @media (min-width: 715px) and (max-width: 1022px)
+        grid-template-columns: repeat(2, 1fr)
+    
+
+    @media (max-width: 714px) 
+        grid-template-columns: repeat(1, 1fr)
+    
 
     .cardss
         display: flex
@@ -34,7 +50,6 @@ ul
         height: 45vh
         width: 15vw
         border-radius: 10%
-        background-color: $baseColor-200
         transition: transform 0.3s ease, opacity 0.3s ease       
         opacity: 70%  
 
