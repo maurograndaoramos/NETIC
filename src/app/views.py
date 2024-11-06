@@ -29,7 +29,7 @@ def receive_data(request):
     
 
 def netics_home (request):
-    user_placeholder = authenticate(request, username = "Admin", password = "Password")
+    user_placeholder = authenticate(request, username = "coopercynthia", password = "123456")
     if user_placeholder is not None :
         context = {
             "courses" : [
@@ -52,7 +52,7 @@ def netics_home (request):
         }
         login(request, user_placeholder)
         
-        return render (request, "mainPage/index.html", context)
+    return render (request, "mainPage/index.html", context)
 
 def myNetwork (request): 
     logged_profile = UserProfile.objects.get(id=request.user.id)
