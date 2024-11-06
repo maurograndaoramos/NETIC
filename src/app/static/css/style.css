@@ -578,7 +578,7 @@ header {
   display: flex;
   justify-content: center;
 }
-header h1.title {
+header h1 {
   font-size: 48px;
   color: #FFFFFF;
   font-style: bold;

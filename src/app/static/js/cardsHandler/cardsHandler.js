@@ -77,9 +77,53 @@ function updateModalContent(card) {
 }
 
 function animateAndReplaceCardUp() {
+
+    
+
+
+
     if (visibleCards.length === 0) return;
     const currentCard = visibleCards[currentCardIndex];
     if (currentCard) {
+
+        // Exemplo de dados a serem enviados
+        const dados = {
+            userToAdd: currentCard.element.getAttribute("userId"),
+            userId: currentCard.element.getAttribute("loggedUserId"),
+        };  
+        
+
+        // Envio dos dados para o Django
+        fetch('http://localhost:8000/receive_id/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(dados)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => console.error('Erro:', error));
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+
         currentCard.element.classList.add('slide-up');
         setTimeout(() => {
             currentCard.element.style.display = "none";
@@ -117,6 +161,7 @@ document.querySelector("body").addEventListener("changedCourse", function (event
 document.addEventListener("keydown", function (event) {
     if (event.key === "ArrowUp") {
         animateAndReplaceCardUp();
+        
     } else if (event.key === "ArrowDown") {
         animateAndReplaceCardDown();
     }

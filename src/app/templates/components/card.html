@@ -1,7 +1,7 @@
 {% load static %}
 
 {%block card%}
-    <div class="card{{usable}} {{size}}">
+    <div class="card{{usable}} {{size}}" loggedUserId="{{logged_user_id_to_send}}"userId="{{id}}">
         <div class="image">
             <img src="{{image}}" alt="">
         </div>
