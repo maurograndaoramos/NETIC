@@ -144,6 +144,7 @@ STATICFILES_DIRS = [
 
 # Media files
 MEDIA_ROOT = BASE_DIR / "profile_pictures/"
+MEDIA_URL = '/profile_pictures/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
