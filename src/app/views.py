@@ -1,4 +1,6 @@
 from django.shortcuts import redirect, render, get_object_or_404
+from django.urls import reverse_lazy
+from allauth.account.views import LoginView
 from .context import context as contextPlaceholder
 from .forms import UserProfileForm
 from .models import UserProfile
@@ -7,6 +9,7 @@ from django.contrib.auth import login, authenticate
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.http import JsonResponse
+from django.conf import settings
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def receive_data(request):
@@ -25,7 +28,7 @@ def receive_data(request):
             logged_user_model.network.add(user_to_add_model)
     
 
-def netics_home (request) :
+def netics_home (request):
     user_placeholder = authenticate(request, username = "Admin", password = "Password")
     if user_placeholder is not None :
         context = {
@@ -62,6 +65,7 @@ def myNetwork (request):
     return render (request, "myNetwork/index.html", context)
 
 
+
 def profile(request):
     user_profile = get_object_or_404(UserProfile, user=request.user)
 
@@ -77,3 +81,10 @@ def profile(request):
         "form": form,
     }
     return render(request, "profilePage/index.html", context)
+
+def login_view(request):
+    context = {
+        'client_id': settings.CLIENT_ID,
+    }
+    return render(request, 'login/index.html', context)
+
