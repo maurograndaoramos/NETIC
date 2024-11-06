@@ -49,3 +49,7 @@ reset: down up migrate dump
 	make up DETACH=true
 	sleep 5
 	make load
+
+# De-comment the following line to update avatars in case DB needs to be reset
+# make profilepictures:
+# 	docker compose exec -it src poetry run python manage.py update_avatars
