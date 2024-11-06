@@ -2,11 +2,67 @@
 {% load static %}
 
 {% block content %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css">
+    <style>
+        /* Estilo da caixa de instrução */
+        .introjs-tooltip {
+            background-color: #282828; /* Cor de fundo */
+            color: white; /* Cor do texto */
+            font-family: "Lato", sans-serif;
+            border-radius: 8px; /* Bordas arredondadas */
+            padding: 15px; /* Espaçamento interno */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra */
+        }
+
+        /* Estilo da seta da caixa */
+        .introjs-tooltipReferenceLayer:after {
+            border-color: #333 transparent transparent transparent;
+        }
+
+        /* Botões do tutorial */
+        .introjs-button, .introjs-skipbutton, .introjs-donebutton, .introjs-nextbutton .introjs-donebutton {
+            font-family: "Lato", sans-serif;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #613583; /* Cor do botão */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .introjs-button:hover, .introjs-skipbutton:hover, .introjs-donebutton:hover, .introjs-nextbutton:hover, .introjs-donebutton:hover {
+            background-color: #734a90; /* Cor ao passar o mouse */
+            color: white;
+        }
+
+        /* Botão de 'Próximo' */
+        .introjs-nextbutton {
+            background-color: #613583;
+            color: white;
+        }
+
+        /* Pular ou finalizar */
+        .introjs-skipbutton, .introjs-donebutton {
+            background-color: #613583;
+            color: white;
+        }
+
+        /* Alteração de bordas no elemento destacado */
+        .introjs-helperLayer {
+            border: 2px solid #613583; /* Cor e transparência da borda */
+            border-radius: 5px;
+        }
+
+    </style>
+
     <div class="choseCourse">
-        <!-- <h2>
-            Eu quero um 
-        </h2> -->
-        <div class="selector_choseCourse" tabindex="0">
+
+        <div class="selector_choseCourse" tabindex="0" data-intro="Ao fazer passar o mouse aqui em cima, vai aparecer todos os cursos, escolha o curso pelo scrool.">
             {% for course in courses %}
                 <div class="option">
                     <p>{{course}}</p>
@@ -19,7 +75,7 @@
     </div>
 
     
-    <div class="cards">
+    <div class="cards" data-intro="O card que se apresenta no meio e o cards selecionado, para ver mais sobre o estudante clique em 'ver mais'.Para adicionar na network precione seta para cima, e para rejeitar seta para baixo">
         {% include 'components/card.html' with usable="no" size="small" image="https://picsum.photos/300/250" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
         {% include 'components/card.html' with usable="no" size="medium" image="https://picsum.photos/250/300" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
         {% for user_info in users_data %}
@@ -29,6 +85,12 @@
         {% include 'components/card.html' with usable="no" size="small" image="https://picsum.photos/250/200" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
         
     </div>
+
+    <div class="noCards">
+        <h1>
+            You Dont have more cards
+        </h1>
+    </div>
     {% include 'components/userModel.html' %}
     <script>
         window.initialCourse = "Programação Web"
@@ -36,4 +98,25 @@
     <script type="module" src="{% static 'js/index.js'%}" ></script>
     <script type="module" src="{% static 'js/courseSlider/slider.js'%}"></script>
     <script type="module" src="{% static 'js/cardsHandler/cardsHandler.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+                // Verifique se o tutorial já foi mostrado
+            if (!localStorage.getItem('tutorialCompleted')) {
+                // O tutorial ainda não foi mostrado, então vamos iniciar
+                var intro = introJs();
+                intro.start();
+
+                // Marcar que o tutorial foi concluído após o término
+                intro.oncomplete(function () {
+                    localStorage.setItem('tutorialCompleted', 'true');
+                });
+
+                // Também pode armazenar a flag caso o usuário pule o tutorial
+                intro.onexit(function () {
+                    localStorage.setItem('tutorialCompleted', 'true');
+                });
+            }
+        });
+    </script>
 {% endblock %}

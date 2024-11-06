@@ -91,6 +91,19 @@ input {
   animation: slideUp 0.5s forwards;
 }
 
+.noCards {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 60vh;
+}
+.noCards h1 {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+}
+
 .cards {
   display: flex;
   align-items: center;
