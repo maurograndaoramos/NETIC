@@ -1,8 +1,5 @@
 .PHONY: help makemigrations migrate build bash load up down dump createsuperuser reset shell
 
-make shell:
-	cd src && poetry shell && cd ..
-
 migrations:
 	docker compose run -it src poetry run python manage.py makemigrations
 
@@ -39,7 +36,7 @@ user.save(); \
 from app.models import UserProfile; \
 UserProfile.objects.create(user=user, first_name='Admin', last_name='Admin', email='netic_admin@eticalgarve.com')"
 
-make setup:
+setup:
 	make up DETACH=true
 	sleep 20
 	make load
