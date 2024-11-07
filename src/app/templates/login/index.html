@@ -6,40 +6,46 @@
 {% block content %}
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
   @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
   .login-container {
     display: flex;
+    gap: 20px;
     justify-content: center;
-    font-family: "Montserrat";
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
+    font-family: "Montserrat";
     height: 100vh;
-    /* Full viewport height */
+    width: 100vw;
+    padding: 20px;
+    gap: 32px;
+    margin: 0 48px;
   }
 
-  /* Container for login message */
-  .container-login {
-    width: 100%;
-    max-width: 400px;
-    /* Set a max width for the login card */
+  .login {
+    flex-grow: 1;
+    height: 400px;
+    max-width: 19%;
     padding: 20px;
     background-color: #282828b4;
-    /* White background for the login card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Add shadow for card effect */
     border-radius: 8px;
-    /* Rounded corners */
     text-align: center;
-    /* Center the text inside the card */
   }
 
-  /* Styling for the buttons */
+  .parag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2;
+    padding: 20px;
+    background-color: #282828b4;
+    border-radius: 8px;
+    height: 400px;
+    max-width: 50%;
+  }
+
   .btn-google {
     background-color: #613583;
-    /* Google red */
     color: white;
     padding: 12px 20px;
     border: none;
@@ -53,14 +59,13 @@
 
   .btn-google:hover {
     background-color: #a78bb9;
-    /* Darker red when hovered */
   }
 
   p {
-    padding: 8px 16px;
     text-align: justify;
     color: white;
-    line-height: 150%;
+    line-height: 1.5;
+    font-size: 1.5rem;
   }
 
   h1 {
@@ -72,19 +77,25 @@
 </style>
 <div class="login-container">
 
-  <div class="container-login">
+  <div class="login max-width-400">
     <h1>Welcome to the Network</h1>
     <br>
-    <p>Esta plataforma é um espaço para os estudantes da ETIC_Algarve se conectarem, criar projetos e acelarar a sua
-      aprendizagem.
-      <br>
-      <br>Faz login e começa a explorar!
-    </p>
+    <img src="{% static 'images/logo/logo.png' %}" alt="">
     <br>
     <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id={{ client_id }}&redirect_uri=http://localhost:8000/&response_type=code&scope=email%20profile&access_type=offline&include_granted_scopes=true"
       class="btn btn-google">
       Login with Google
     </a>
+  </div>
+
+  <div class="parag">
+    <p>
+      Esta plataforma foi criada para fortalecer a comunidade da ETIC_Algarve, facilitando a conexão entre estudantes de
+      diferentes cursos. <br> O objetivo é que possam descobrir talentos, partilhar ideias, e inspirar-se mutuamente
+      para
+      futuros projetos. Junta-te à rede e aproveita a oportunidade para colaborar!
+
+    </p>
   </div>
 
 </div>
