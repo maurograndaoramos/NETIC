@@ -582,6 +582,8 @@ body {
 }
 .topBar nav .actualPage {
   color: white !important;
+}
+.topBar nav .actualPage.active {
   font-weight: bold;
   text-decoration: underline;
 }
