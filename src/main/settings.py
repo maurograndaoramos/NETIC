@@ -32,8 +32,16 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS',
-                          'localhost,127.0.0.1,0.0.0.0').split(',')
+# Base allowed hosts
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+
+# Dynamically allow any ngrok host by checking if it ends with "ngrok-free.app"
+ngrok_host = os.getenv('NGROK_HOST')
+if ngrok_host:
+    ALLOWED_HOSTS.append(ngrok_host)
+else:
+    # For flexibility, allow any *.ngrok-free.app in development
+    ALLOWED_HOSTS.append('.ngrok-free.app')
 
 
 # Application definition
@@ -45,6 +53,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
     "corsheaders",
     "app",
     "main",
@@ -54,6 +63,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
 ]
 
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -90,8 +100,13 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-LOGIN_REDIRECT_URL = '/'  # Customize this if needed
+SOCIALACCOUNT_LOGIN_ON_GET = True 
+ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
+LOGIN_REDIRECT_URL = '/' 
 LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_QUERY_EMAIL = True
 
 ROOT_URLCONF = "main.urls"
 
@@ -199,4 +214,6 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_CREDENTIALS = True
 
-ACCOUNT_ADAPTER = 'main.users.adapter.MyAccountAdapter'
+
+AUTH_PROFILE_MODULE = 'app.UserProfile'
+

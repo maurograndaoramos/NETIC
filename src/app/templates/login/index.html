@@ -1,102 +1,146 @@
-{% extends "base.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ETIC Network</title>
+    {% load socialaccount %}
+    {% load static %}
+    <style>
+        /* Font imports */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            min-height: 100vh;
+            background-color: #121212;  /* Dark background matching main site */
+            position: relative;
+            overflow-x: hidden;
+        }
 
-{% block content %}
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+        /* Main container styles */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-  .login-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    font-family: "Montserrat";
-    height: 100vh;
-    width: 100vw;
-    padding: 20px;
-    gap: 32px;
-    margin: 0 48px;
-  }
+        /* Card styles */
+        .container-login, .parag {
+            background-color: #1E1E1E;  /* Darker cards matching site theme */
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 400px;
+            min-height: 300px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-  .login {
-    flex-grow: 1;
-    height: 400px;
-    max-width: 19%;
-    padding: 20px;
-    background-color: #282828b4;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: center;
-  }
+        /* Typography */
+        h1 {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
 
-  .parag {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 2;
-    padding: 20px;
-    background-color: #282828b4;
-    border-radius: 8px;
-    height: 400px;
-    max-width: 50%;
-  }
+        p {
+            color: #E0E0E0;  /* Slightly off-white for better readability */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
 
-  .btn-google {
-    background-color: #613583;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    display: inline-block;
-    text-decoration: none;
-    font-size: 16px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-  }
+        /* Button styles */
+        .btn-google {
+            display: inline-block;
+            background-color: #613583;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+            transition: all 0.2s ease;
+            text-align: center;
+            width: 100%;
+        }
 
-  .btn-google:hover {
-    background-color: #a78bb9;
-  }
+        .btn-google:hover {
+            background-color: #7d4aa8;
+        }
 
-  p {
-    text-align: justify;
-    color: white;
-    line-height: 1.5;
-    font-size: 1.5rem;
-  }
+        /* Particle container styles */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
 
-  h1 {
-    font-size: 24px;
-    color: white;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-</style>
-<div class="login-container">
+        /* Responsive design */
+        @media (max-width: 968px) {
+            .login-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
 
-  <div class="login max-width-400">
-    <h1>Welcome to the Network</h1>
-    <br>
-    <img src="{% static 'images/logo/logo.png' %}" alt="">
-    <br>
-    <a href="https://accounts.google.com/o/oauth2/v2/auth?client_id={{ client_id }}&redirect_uri=http://localhost:8000/&response_type=code&scope=email%20profile&access_type=offline&include_granted_scopes=true"
-      class="btn btn-google">
-      Login with Google
-    </a>
-  </div>
+            .container-login, .parag {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles">
+        {% include '../particle/particle.html' with quantity=20 %}
+    </div>
+    <div class="login-container">
+        <div class="container-login">
+            <h1>Welcome to the Network</h1>
+            <p>
+                Esta plataforma é um espaço para os estudantes da ETIC_Algarve se conectarem, criar projetos e acelarar a sua aprendizagem.
+                <br><br>
+                Faz login e começa a explorar!
+            </p>
+            <a href="{% provider_login_url 'google' %}" class="btn-google">
+                Login with Google
+            </a>
+        </div>
 
-  <div class="parag">
-    <p>
-      Esta plataforma foi criada para fortalecer a comunidade da ETIC_Algarve, facilitando a conexão entre estudantes de
-      diferentes cursos. <br> O objetivo é que possam descobrir talentos, partilhar ideias, e inspirar-se mutuamente
-      para
-      futuros projetos. Junta-te à rede e aproveita a oportunidade para colaborar!
-
-    </p>
-  </div>
-
-</div>
-{% endblock %}
+        <div class="parag">
+            <p>
+                Esta plataforma foi criada para fortalecer a comunidade da ETIC_Algarve, facilitando a conexão entre estudantes de diferentes cursos. 
+                <br><br>
+                O objetivo é que possam descobrir talentos, partilhar ideias, e inspirar-se mutuamente para futuros projetos. Junta-te à rede e aproveita a oportunidade para colaborar!
+            </p>
+        </div>
+    </div>
+</body>
+</html>

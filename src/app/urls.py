@@ -8,5 +8,4 @@ urlpatterns = [
     path("receive_id/", views.add_to_network, name='data'),
     path("remove_id/", views.remove_to_network, name="remove"),
     path('login/', views.login_view, name='login'),
-    path('accounts/', include('allauth.urls')),
 ]

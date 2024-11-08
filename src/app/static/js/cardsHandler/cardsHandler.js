@@ -53,6 +53,7 @@ function initializeCards() {
     }
 }
 
+
 function filterCards(course) {
     visibleCards = allCards.filter(card => card.course === course && !hiddenCards.includes(card));
     updateDisplayedCards();
