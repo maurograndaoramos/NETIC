@@ -106,10 +106,12 @@ input {
 
 .cards {
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   width: auto;
   height: 60vh;
+  width: 80vw;
+  margin-left: 10vw;
 }
 
 .cardno {
@@ -131,6 +133,7 @@ input {
   background-color: rgba(40, 40, 40, 0.7058823529);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
+  margin: 20px;
 }
 .card:hover, .cardno:hover {
   transform: translateY(-5px);
@@ -190,6 +193,18 @@ input {
   transform: scale(1.05);
   cursor: pointer;
 }
+.card .add-to-network button, .cardno .add-to-network button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.card .add-to-network button img, .cardno .add-to-network button img {
+  width: 20px;
+  height: 20px;
+}
 
 .medium {
   height: 460px !important;
@@ -243,6 +258,21 @@ input {
   font-size: 14px;
   padding: 7px 14px;
   margin: 5px 0;
+}
+
+.no-more-cards {
+  width: 100vw;
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+.no-more-cards h3 {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 40px;
+}
+.no-more-cards h3 a {
+  color: white;
 }
 
 #particles-js {
@@ -480,7 +510,7 @@ input {
   cursor: pointer;
 }
 .choseCourse .selector_choseCourse:hover {
-  height: 50vh;
+  height: 30vh;
 }
 .choseCourse .selector_choseCourse:hover .option {
   opacity: 1;
@@ -594,6 +624,7 @@ header {
   justify-content: center;
 }
 header h1 {
+  font-family: "Montserrat", sans-serif;
   font-size: 48px;
   color: #FFFFFF;
   font-style: bold;
@@ -736,6 +767,7 @@ ul:has(li:hover) li:not(:hover) {
   border: none;
   padding: 0 8px;
   min-height: 1.8rem;
+  font-family: "Lato", sans-serif;
 }
 .formwrap input:hover, .formwrap textarea:hover {
   border: 1px solid #734a90;

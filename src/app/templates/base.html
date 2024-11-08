@@ -10,11 +10,13 @@
 </head>
 
 <body>
-    {% include 'particle/particle.html' with quantity=20 %}
+    {% include 'particle/particle.html' with quantity=particles %}
 
     <div class="topBar">
         <div class="logo">
-            <img src="{% static 'images/logo/logo.png' %}" alt="logo">
+            <a href="/">
+                <img src="{% static 'images/logo/logo.png' %}" alt="logo">
+            </a>
         </div> 
 
         <nav>

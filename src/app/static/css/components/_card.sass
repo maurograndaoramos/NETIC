@@ -47,10 +47,12 @@
 
 .cards
     display: flex
-    align-items: center
     justify-content: space-evenly
+    flex-wrap: wrap
     width: auto
     height: 60vh
+    width: 80vw
+    margin-left: 10vw
 
 .cardno
     filter: blur(5px)
@@ -69,6 +71,7 @@
     background-color: $baseColor-200-50
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
     transition: transform 0.3s
+    margin: 20px
 
     &:hover
         transform: translateY(-5px)
@@ -129,6 +132,18 @@
                 background-color: $primaryColor-200
                 transform: scale(1.05)
                 cursor: pointer
+    .add-to-network
+        button
+            position: absolute
+            top: 20px
+            right: 20px
+            border: none
+            background: none
+            cursor: pointer
+            img
+                width: 20px
+                height: 20px
+
 
 .medium
     height: 460px !important
@@ -189,3 +204,15 @@
             font-size: 14px
             padding: 7px 14px
             margin: 5px 0
+
+.no-more-cards 
+    width: 100vw
+    height: 80vh
+    justify-content: center
+    align-items: center
+    h3
+        font-family: $titleFont
+        color: white
+        font-size: 40px
+        a
+            color: white

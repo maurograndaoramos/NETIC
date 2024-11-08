@@ -12,12 +12,16 @@ services:
       - app-network
       
   src:
+    user: root
     build:
       context: ./src
       dockerfile: ../ops/src.Dockerfile
     ports:
       - 8000:8000
-    command: bash -c "poetry run python manage.py collectstatic --noinput && poetry run python manage.py makemigrations app && poetry run python manage.py migrate && poetry run gunicorn -w 20 -b 0.0.0.0:8000 main.wsgi --reload"
+    volumes:
+      - ./src:/app:z  # Adiciona :z para permitir o acesso com SELinux ativo
+      - ./src/app/static/:/app/static/
+    command: bash -c "poetry run python manage.py collectstatic --noinput && poetry run python manage.py makemigrations app && poetry run python manage.py migrate && poetry run python manage.py runserver 0.0.0.0:8000"
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user
