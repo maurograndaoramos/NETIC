@@ -53,6 +53,9 @@ reset:
 flush:
 	docker compose exec -it src poetry run python manage.py flush --noinput
 
+ngrok:
+	ngrok http http://localhost:8000
+
 # De-comment the following line to update avatars in case DB needs to be reset
 # make profilepictures:
 # 	docker compose exec -it src poetry run python manage.py update_avatars
