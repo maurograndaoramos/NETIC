@@ -21,6 +21,7 @@ pyjwt = "^2.9.0"
 cryptography = "^43.0.3"
 faker = "^30.8.2"
 django-allauth = {extras = ["socialaccount"], version = "^65.1.0"}
+ngrok = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core"]

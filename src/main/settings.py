@@ -32,8 +32,16 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
 
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS',
-                          'localhost,127.0.0.1,0.0.0.0').split(',')
+# Base allowed hosts
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+
+# Dynamically allow any ngrok host by checking if it ends with "ngrok-free.app"
+ngrok_host = os.getenv('NGROK_HOST')
+if ngrok_host:
+    ALLOWED_HOSTS.append(ngrok_host)
+else:
+    # For flexibility, allow any *.ngrok-free.app in development
+    ALLOWED_HOSTS.append('.ngrok-free.app')
 
 
 # Application definition
