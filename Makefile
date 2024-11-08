@@ -1,8 +1,5 @@
 .PHONY: help makemigrations migrate build bash load up down dump createsuperuser reset shell
 
-make shell:
-	cd src && poetry shell && cd ..
-
 migrations:
 	docker compose run -it src poetry run python manage.py makemigrations
 
@@ -16,7 +13,7 @@ bash:
 	docker compose exec -it src bash
 
 load:
-	docker compose exec -it src poetry run python manage.py loaddata /app/data.json
+	docker compose exec -it src poetry run python manage.py loaddata --exclude contenttypes /app/data.json
 
 up:
 	docker compose up $(if $(DETACH),-d) --build
@@ -39,16 +36,22 @@ user.save(); \
 from app.models import UserProfile; \
 UserProfile.objects.create(user=user, first_name='Admin', last_name='Admin', email='netic_admin@eticalgarve.com')"
 
-make setup:
-	make up DETACH=true
-	sleep 20
+urls:
+	docker compose exec -it src poetry run python manage.py show_urls
+
+setup:
+	docker compose up -d
+	make migrate
 	make load
 
-reset: down up migrate dump
-	make down
-	make up DETACH=true
-	sleep 5
-	make load
+reset: 
+	docker compose down
+	docker compose up -d
+	make migrate
+	make load 
+
+flush:
+	docker compose exec -it src poetry run python manage.py flush --noinput
 
 # De-comment the following line to update avatars in case DB needs to be reset
 # make profilepictures:

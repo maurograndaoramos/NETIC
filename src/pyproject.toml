@@ -16,11 +16,12 @@ pillow = "^11.0.0"
 django-cors-headers = "^4.6.0"
 python-decouple = "^3.8"
 psycopg = {extras = ["binary"], version = "^3.2.3"}
-django-allauth = {extras = ["google"], version = "^65.1.0"}
 requests = "^2.32.3"
 pyjwt = "^2.9.0"
 cryptography = "^43.0.3"
 faker = "^30.8.2"
+django-allauth = {extras = ["socialaccount"], version = "^65.1.0"}
+ngrok = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core"]

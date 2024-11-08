@@ -1,4 +1,3 @@
-
 let allCards = [];
 let visibleCards = [];
 let hiddenCards = [];
@@ -41,7 +40,7 @@ function initializeCards() {
 
 document.querySelector(".userModel_card_close-bt").addEventListener("click", () => {
     document.querySelector(".userModel").style.display ="none"
-    document.querySelector(".userModel").classList.add("userModel_appear")
+    document.querySelector(".userModel").classList.add("userModel_disappear")
 });
 
 function filterCards(course) {
