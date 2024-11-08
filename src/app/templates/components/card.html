@@ -1,35 +1,58 @@
 {% load static %}
 
-{%block card%}
-    <div class="card{{usable}} {{size}}" loggedUserId="{{logged_user_id_to_send}}"userId="{{id}}">
-        <div class="image">
-            <img src="{{image}}" alt="">
-        </div>
-        <div class="name">
-            <h3>
-                {{name}}
-            </h3>
-        </div>
-        <div class="course">
-            <p>
-                {{course}}
-            </p>
-        </div>
-        <div class="description">
-            <p>
-                {{description}}
-            </p>
-        </div>
-        <div class="bigDiscription" style="display: none;">
-            <p>
-                {{big_discription}}
-            </p>
-        </div>
-        <div class="seemore">
-            <button>
-                ver mais
-            </button>
-        </div>
+{% block card %}
+<div class="card{{usable}} {{size}}" loggedUserId="{{logged_user_id_to_send}}" userId="{{id}}">
+    <div class="image">
+        <img src="{{image}}" alt="">
+    </div>
+    <div class="name">
+        <h3>{{name}} {{last_name}}</h3>
+    </div>
+    <div class="course">
+        <p>{{course}}</p>
+    </div>
+    <div class="description">
+        <p>{{description}}</p>
+    </div>
+    <div class="bigDiscription" style="display: none;">
+        <p>{{big_discription}}</p>
+    </div>
+    <div class="media" style="display: none;">
+        <p class="insta">
+            {{insta}}
+        </p>
+        <p class="github">
+            {{github}}
+        </p>
+        <p class="linkedin">
+            {{linkedin}}
+        </p>
+        <p class="web">
+            {{web}}
+        </p>
+    </div>
+    <div class="seemore">
+        <button>Ver Mais</button>
+    </div>
+    <!-- Botão adicional para adicionar à rede -->
+
+    <div class="add-to-network">
+            {% if connected == "shit" %}
+                <button class="add">
+                    <img src="{% static 'images/stars/not_star.png' %}" alt="Add to network" class="add-icon">
+                </button>
+                <button class="remove" style="display: none;">
+                    <img src="{% static 'images/stars/star.png' %}" alt="Remove from network" class="remove-icon">
+                </button>
+            {% else %}
+                <button class="add" style="display: none;">
+                    <img src="{% static 'images/stars/not_star.png' %}" alt="Add to network" class="add-icon">
+                </button>
+                <button class="remove" >
+                    <img src="{% static 'images/stars/star.png' %}" alt="Remove from network" class="remove-icon">
+                </button>
+            {% endif %}
     </div>
 
+</div>
 {% endblock %}

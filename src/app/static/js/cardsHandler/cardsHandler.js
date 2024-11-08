@@ -1,26 +1,42 @@
-
 let allCards = [];
 let visibleCards = [];
 let hiddenCards = [];
-let currentCardIndex = 0;
 
 function initializeCards() {
     const cards = document.querySelectorAll('.card');
+    if (cards.length == 0 ) {
+        const noCards = document.querySelector(".no-more-cards")
+        if (noCards){
+            noCards.style.display="flex"
+        }                      
+    }
     allCards = Array.from(cards).map(card => {
         card.querySelector(".seemore button").onclick = () => {
-            document.querySelector(".userModel").style.display ="flex"
-            document.querySelector(".userModel").classList.add("userModel_appear")
-            
-            const JustToChangeModel = {
+            document.querySelector(".userModel").style.display = "flex";
+            document.querySelector(".userModel").classList.add("userModel_appear");
+
+            const cardData = {
                 element: card,
                 image: (card.querySelector('.image img')?.src || "").trim(),
                 name: (card.querySelector('.name h3')?.textContent || "").trim(),
                 course: (card.querySelector('.course p')?.textContent || "").trim(),
                 description: (card.querySelector('.description p')?.textContent || "").trim(),
-                bigDiscription: (card.querySelector('.bigDiscription p')?.textContent || "").trim()
+                bigDiscription: (card.querySelector('.bigDiscription p')?.textContent || "").trim(),
+                insta: (card.querySelector('.media .insta')?.textContent || "").trim(),
+                github: (card.querySelector('.media .github')?.textContent || "").trim(),
+                linkedin: (card.querySelector('.media .linkedin')?.textContent || "").trim(),
+                web: (card.querySelector('.media .web')?.textContent || "").trim(),
             };
-            updateModalContent(JustToChangeModel)
-        }
+            updateModalContent(cardData);
+        };
+
+        card.querySelector(".add-to-network .add").onclick = () => {
+            addToNetwork(card);
+        };
+
+        card.querySelector(".add-to-network .remove").onclick = () => {
+            removeFromNetwork(card);
+        };
 
         return {
             element: card,
@@ -32,44 +48,132 @@ function initializeCards() {
         };
     });
 
-
-
     if (window.initialCourse) {
         filterCards(window.initialCourse);
     }
 }
 
-document.querySelector(".userModel_card_close-bt").addEventListener("click", () => {
-    document.querySelector(".userModel").style.display ="none"
-    document.querySelector(".userModel").classList.add("userModel_appear")
-});
-
 function filterCards(course) {
     visibleCards = allCards.filter(card => card.course === course && !hiddenCards.includes(card));
-    console.log("init  :  ", visibleCards);
-    console.log(visibleCards.length);
-
-    currentCardIndex = 0;
-    updateDisplayedCard();
+    updateDisplayedCards();
 }
 
-function updateDisplayedCard() {
+function updateDisplayedCards() {
     allCards.forEach(card => {
         card.element.style.display = "none";
     });
 
-    if (visibleCards.length > 0 && currentCardIndex < visibleCards.length) {
+    if (visibleCards.length > 0) {
         document.querySelector(".cards").style.display = "flex";
         document.querySelector(".noCards").style.display = "none";
-        const cardToDisplay = visibleCards[currentCardIndex];
-        cardToDisplay.element.style.display = "flex";
 
-        // Update the modal content with the current card data
-        updateModalContent(cardToDisplay);
-    }else {
+        visibleCards.forEach(card => {
+            card.element.style.display = "flex";
+        });
+    } else {
         document.querySelector(".cards").style.display = "none";
         document.querySelector(".noCards").style.display = "flex";
     }
+}
+
+function removeFromNetwork(cardElement) {
+    const userId = cardElement.getAttribute("userId");
+    const loggedUserId = cardElement.getAttribute("loggedUserId");
+
+    const data = {
+        userToRemove: userId,
+        userId: loggedUserId
+    };
+
+    
+    // Adiciona a animação "slide-down" ao card
+    cardElement.classList.add('slide-down');
+    setTimeout(() => {
+        cardElement.style.display = "none";
+        cardElement.classList.remove('slide-down');
+        
+        cardElement.parentElement.remove()
+        cardElement.remove()
+        
+        const cards = document.querySelectorAll('.card');
+        console.log(cards.length);
+        
+        if (cards.length == 0) {
+            const noCards = document.querySelector(".no-more-cards")
+            if (noCards) {
+                noCards.style.display = "flex"
+            }
+        }
+    }, 500); // Tempo para animação de 500ms
+
+    
+
+    // Envio da requisição ao servidor
+    fetch('http://localhost:8000/remove_id/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Usuário removido da rede com sucesso:', data);
+    })
+    .catch(error => console.error('Erro ao remover usuário da rede:', error));
+}
+
+function addToNetwork(cardElement) {
+    const userId = cardElement.getAttribute("userId");
+    const loggedUserId = cardElement.getAttribute("loggedUserId");
+
+    const data = {
+        userToAdd: userId,
+        userId: loggedUserId
+    };
+
+    // Adiciona a animação "slide-up" ao card
+    cardElement.classList.add('slide-up');
+    setTimeout(() => {
+        // Após a animação, remove o card da lista visível
+        cardElement.style.display = "none";
+        cardElement.classList.remove('slide-up');
+
+        // Atualiza as listas
+        hiddenCards.push(visibleCards.find(card => card.element === cardElement));
+        visibleCards = visibleCards.filter(card => card.element !== cardElement);
+        updateDisplayedCards();
+        cardElement.remove()
+    }, 500); // Tempo para animação de 500ms
+
+    // Envio da requisição ao servidor
+    fetch('http://localhost:8000/receive_id/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {})
+        .catch(error => console.error('Erro:', error));
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 function updateModalContent(card) {
@@ -80,99 +184,21 @@ function updateModalContent(card) {
         modal.querySelector('.userModel_card_topInfo_info p').textContent = card.course;
         modal.querySelector('.userModel_card_descriptions .sinopse').textContent = card.description;
         modal.querySelector('.userModel_card_descriptions .description').textContent = card.bigDiscription;
+        modal.querySelector('.userModel_card_links .github').setAttribute("href", card.github)
+        modal.querySelector('.userModel_card_links .linkedIn').setAttribute("href", card.linkedin)
+        modal.querySelector('.userModel_card_links .insta').setAttribute("href", card.insta)
+        modal.querySelector('.userModel_card_links .web').setAttribute("href", card.web) 
     }
 }
 
-function animateAndReplaceCardUp() {
-
-    if (visibleCards.length === 0) return;
-    const currentCard = visibleCards[currentCardIndex];
-    if (currentCard) {
-
-        // Exemplo de dados a serem enviados
-        const dados = {
-            userToAdd: currentCard.element.getAttribute("userId"),
-            userId: currentCard.element.getAttribute("loggedUserId"),
-        };  
-        
-
-        // Envio dos dados para o Django
-        fetch('http://localhost:8000/receive_id/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify(dados)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-            })
-            .catch(error => console.error('Erro:', error));
-
-        function getCookie(name) {
-            let cookieValue = null;
-            if (document.cookie && document.cookie !== '') {
-                const cookies = document.cookie.split(';');
-                for (let i = 0; i < cookies.length; i++) {
-                    const cookie = cookies[i].trim();
-                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-
-
-        currentCard.element.classList.add('slide-up');
-        setTimeout(() => {
-            currentCard.element.style.display = "none";
-            currentCard.element.classList.remove('slide-up');
-            hiddenCards.push(currentCard);
-            visibleCards.shift();
-            currentCardIndex = (currentCardIndex + 1) % visibleCards.length;
-            updateDisplayedCard();
-            if (visibleCards.length == 0) {
-                document.querySelector(".cards").style.display = "none";
-                document.querySelector(".noCards").style.display = "flex";
-            }
-        }, 500);
-    }
-}
-
-function animateAndReplaceCardDown() {
-    if (visibleCards.length === 0) return;
-    const currentCard = visibleCards[currentCardIndex];
-    if (currentCard) {
-        currentCard.element.classList.add('slide-down');
-        setTimeout(() => {
-            currentCard.element.style.display = "none";
-            currentCard.element.classList.remove('slide-down');
-            hiddenCards.push(currentCard);
-            visibleCards.shift();
-            currentCardIndex = (currentCardIndex - 1 + visibleCards.length) % visibleCards.length;
-            updateDisplayedCard();
-            
-        }, 500);
-    }
-}
+document.querySelector(".userModel_card_close-bt").addEventListener("click", () => {
+    document.querySelector(".userModel").style.display = "none";
+    document.querySelector(".userModel").classList.remove("userModel_appear");
+});
 
 document.querySelector("body").addEventListener("changedCourse", function (event) {
     const selectedCourse = event.detail.course.trim();
-    console.log(selectedCourse);
     filterCards(selectedCourse);
-});
-
-document.addEventListener("keydown", function (event) {
-    if (event.key === "ArrowUp") {
-        animateAndReplaceCardUp();
-        
-    } else if (event.key === "ArrowDown") {
-        animateAndReplaceCardDown();
-    }
 });
 
 document.addEventListener("DOMContentLoaded", initializeCards);

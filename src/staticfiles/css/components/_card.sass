@@ -1,0 +1,206 @@
+@keyframes appearCard
+    0% 
+        transform: translateY(50px)
+        opacity: 0
+
+    80%
+        transform: translateY(-10px)
+
+    100%  
+        transform: translateY(0px)
+        opacity: 1 
+
+@keyframes slideUp 
+    0% 
+        transform: translateY(0)
+        opacity: 1
+    100% 
+        transform: translateY(-100%)
+        opacity: 0
+    
+
+
+@keyframes slideDown 
+    0% 
+        transform: translateY(0)
+        opacity: 1
+    100% 
+        transform: translateY(100%)
+        opacity: 0
+    
+.card.slide-down
+    animation: slideDown 0.5s forwards
+
+.card.slide-up 
+    animation: slideUp 0.5s forwards
+
+.noCards
+    display: none
+    align-items: center
+    justify-content: center
+    width: auto
+    height: 60vh
+    h1
+        color: white
+        font-family: $titleFont
+        font-size: 40px
+
+.cards
+    display: flex
+    justify-content: space-evenly
+    flex-wrap: wrap
+    width: auto
+    height: 60vh
+    width: 80vw
+    margin-left: 10vw
+
+.cardno
+    filter: blur(5px)
+.card, .cardno
+    height: 505px
+    z-index: 0 !important
+    opacity: 0
+    animation: appearCard 1s ease-in-out forwards    
+    padding: 20px
+    width: 280px
+    border-radius: 30px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+    background-color: $baseColor-200-50
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
+    transition: transform 0.3s
+    margin: 20px
+
+    &:hover
+        transform: translateY(-5px)
+
+    .image
+        border-radius: 50%
+        background-color: $primaryColor-100
+        margin: 10px 0
+        width: 80px
+        height: 80px
+        img
+            width: 100%
+            height: 100%
+            border-radius: 100%
+
+    .name
+        width: 100%
+
+        h3
+            margin: 10px 0
+            text-align: center
+            color: white
+            font-weight: 400
+            font-size: 24px
+            font-family: $titleFont
+
+    .course
+        p
+            margin: 5px 0
+            text-align: center
+            color: $baseColor-600
+            font-size: 16px
+            font-family: $textFont
+
+    .description
+        p
+            text-align: center
+            margin: 10px 0
+            color: $baseColor-600
+            font-size: 14px
+            line-height: 1.5
+            font-family: $textFont
+            width: 100%
+
+    .seemore
+        button
+            margin: 10px 0
+            padding: 10px 20px
+            background-color: $primaryColor-100
+            font-family: $textFont
+            color: white
+            font-size: 16px
+            border-radius: 10px
+            border: none
+            transition: background-color 0.5s, transform 0.3s
+
+            &:hover
+                background-color: $primaryColor-200
+                transform: scale(1.05)
+                cursor: pointer
+    .add-to-network
+        button
+            position: absolute
+            top: 20px
+            right: 20px
+            border: none
+            background: none
+            cursor: pointer
+            img
+                width: 20px
+                height: 20px
+
+
+.medium
+    height: 460px !important
+    width: 230px
+
+    .image
+        margin-top: 10px
+        margin-bottom: 10px
+        width: 65px
+        height: 65px
+
+    .name
+        h3
+            margin: 5px 0
+            font-size: 22px
+
+    .course
+        p
+            font-size: 15px
+
+    .description
+        p
+            font-size: 13px
+
+    .seemore
+        button
+            font-size: 16px
+            padding: 8px 16px
+
+.small
+    height: 415px !important
+    width: 200px
+
+    .image
+        margin-top: 7px
+        margin-bottom: 7px
+        width: 60px
+        height: 60px
+
+    .name
+        h3
+            margin: 5px 0
+            font-size: 18px
+
+    .course
+        p
+            font-size: 14px
+            margin: 5px 0
+
+    .description
+        p
+            font-size: 12px
+            line-height: 16px
+            margin: 5px 0
+
+    .seemore
+        button
+            font-size: 14px
+            padding: 7px 14px
+            margin: 5px 0

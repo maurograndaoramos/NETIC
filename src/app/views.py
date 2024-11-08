@@ -14,7 +14,7 @@ from django.conf import settings
 from allauth.account.adapter import DefaultAccountAdapter
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
-def receive_data(request):
+def add_to_network(request):
     if request.method == 'POST':
         data = json.loads(request.body)
 
@@ -28,13 +28,39 @@ def receive_data(request):
 
         if not new_user_to_add_is_on_network:
             logged_user_model.network.add(user_to_add_model)
-    
+
+def remove_to_network(request) :
+    if request.method == 'POST':
+        data = json.loads(request.body)
+
+        logged_user_id = data.get('userId')
+        user_to_remove_id = data.get('userToRemove')
+
+        # Retrieve the logged-in user and the user to be removed
+        logged_user_model = UserProfile.objects.get(id=logged_user_id)
+        user_to_remove_model = UserProfile.objects.get(id=user_to_remove_id)
+
+        # Check if the user is currently in the network
+        if logged_user_model.network.filter(id=user_to_remove_model.id).exists():
+            # Remove the user from the network
+            logged_user_model.network.remove(user_to_remove_model)
+
 
 def netics_home (request):
+    
     user = authenticate(username="Admin", password="Password")
-    #if user_placeholder is not None :
+    
+    if user:
+        login(request, user, backend="django.contrib.auth.backends.ModelBackend")
+
+    logged_profile = UserProfile.objects.get(user=request.user)
+
+    excluded_users = logged_profile.network.all()
+    users_not_in_network = UserProfile.objects.exclude(id__in=excluded_users).exclude(id=logged_profile.id)
+    
+
     context = {
-        "courses" : [
+        "courses": [
             "Design de Comunicação e Marketing Digital",
             "Criação Musical, Produção e Técnicas de Som",
             "Design de Comunicação e Multimédia",
@@ -49,12 +75,11 @@ def netics_home (request):
             "Produção e Criação Musical Eletrónica",
             "Técnicas de Som"
         ],
-        "users_data" : UserProfile.objects.all(),
-        "logged_user_id" : request.user.id
+        "users_data": users_not_in_network,  # Users not in the network of the logged user
+        "logged_user_id": request.user.id,
+        "particles" : min(len(logged_profile.network.all()) + 2, 100) 
     }
 
-    login(request, user, backend="django.contrib.auth.backends.ModelBackend")
-        
     return render(request, "mainPage/index.html", context)
 
 def myNetwork (request): 
@@ -63,7 +88,8 @@ def myNetwork (request):
 
     context = {
         "users_data" :all_connected_users,
-        "logged_user_id" : request.user.id
+        "logged_user_id" : request.user.id,
+        "particles" : min(len(logged_profile.network.all()) + 2, 100)
     }
     return render (request, "myNetwork/index.html", context)
 
