@@ -99,7 +99,7 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 SOCIALACCOUNT_LOGIN_ON_GET = True 
 ACCOUNT_LOGOUT_ON_GET = True
@@ -208,13 +208,11 @@ MEDIA_URL = '/profile_pictures/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5433",
-    "http://127.0.0.1:5433",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOW_HEADERS: list = ["*"]
 
 AUTH_PROFILE_MODULE = 'app.UserProfile'
 
