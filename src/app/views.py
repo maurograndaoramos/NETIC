@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from allauth.socialaccount.models import SocialAccount
 import json
+from main.utils.mongoDb import *
 
 from allauth.account.adapter import DefaultAccountAdapter
 
@@ -127,3 +128,21 @@ def login_view(request):
         'client_id': settings.CLIENT_ID,
     }
     return render(request, 'login/index.html', context)
+
+Mongo = mongo_remote_db()
+
+def chat(request):
+    if request.user.is_authenticated:
+        user_profile = get_object_or_404(UserProfile, user=request.user)
+
+        chats_list = Mongo.get_chats(user_profile.user.id)
+        all_chats = Mongo.get_all_chats()
+
+        context= {
+            'chats_list': chats_list,
+            'all_chats': all_chats,
+            'user_profile': user_profile.user.id
+        }
+        return render(request, 'chat/index.html', context)
+    else:
+        return redirect('login')
