@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "mongo-cli"
+version = "0.1.0"
+description = ""
+authors = ["Mccartheney Mendes <mccartheney@hotmail.com>"]
+readme = "README.md"
+packages = [{include = "*", from="src"}]
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pymongo = "^4.10.1"
+inquirerpy = "^0.3.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
