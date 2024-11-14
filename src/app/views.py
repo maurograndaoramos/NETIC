@@ -28,7 +28,8 @@ def add_to_network(request):
         
         if not new_user_to_add_is_on_network:
             logged_user_model.network.add(user_to_add_model)
-            
+
+
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def remove_to_network(request) :
     if request.method == 'POST':
