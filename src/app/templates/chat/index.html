@@ -11,11 +11,13 @@ userchat
 {% endfor %}
 
 <script>
-    window.onload = () => {
+    window.onload = (event) => {
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
             + '/ws/chat/'
+            //+ url.get(UID) comando para retirar UID do link.
+            +'/'
         );
 
         // Connection opened
@@ -27,7 +29,47 @@ userchat
         chatSocket.addEventListener("close", (event) => {
             console.log('client says connection closed')
         });
+
+        chatSocket.addEventListener("message", (event) => {
+            const data = JSON.parse(event.data);
+            console.log("data: " + JSON.stringify(data)); // Check the structure of the received data
+            
+            const list = document.getElementById("tweet-list");
+            if (list) {
+                list.innerHTML += `
+                <div class="tweet">
+                    <span class="user">${data['user']}</span>
+                    <span class="timestamp">${data['date']}</span>
+                    <div class="content">
+                        ${data['message']}
+                    </div>`
+                list.innerHTML += `</div>`;
+            }
+        });
+
+        document.getElementById('submitMessage').onclick = (e) => {
+            e.preventDefault();
+            const messageInputDom = document.querySelector('#your_message');
+            const message = messageInputDom.value;
+            
+            chatSocket.send(JSON.stringify({
+                'message': message,
+            }));
+
+            messageInputDom.value = '';
+        };
+
     }
 </script>
+
+    <button class="button-style" id="submitMessage">
+        Click Me!
+    </button>
+  
+    <textarea class="textarea-style" id="your_message"></textarea>
+
+    <div id="tweet-list" style="color:white;">
+
+    </div>
 
 {% endblock %}
