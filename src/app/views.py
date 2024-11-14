@@ -136,11 +136,33 @@ def chat(request):
         user_profile = get_object_or_404(UserProfile, user=request.user)
 
         chats_list = Mongo.get_chats(user_profile.user.id)
-        all_chats = Mongo.get_all_chats()
+        active_users = {}
+
+    for x in chats_list:
+        user_ids = x['users']
+        update_list = None  
+        for x in user_ids:
+            if x != user_profile.user.id:
+                update_list = x
+
+        print("--------------------------------------------------------------------------")
+        print(user_ids)
+        print(update_list)
+        for user_id in update_list:
+           
+            user = UserProfile.objects.filter(user_id=user_id).first()
+            print("User filtrado ----- ", user)
+            print(UserProfile.objects.filter(user_id=user_profile.user.id))
+            if user:
+                if user_id not in active_users:
+                    active_users[user_id] = []
+                active_users[user_id].append(user.first_name)
+
+        print(active_users, "-----------------------------------------")
 
         context= {
+            'users_list': active_users,
             'chats_list': chats_list,
-            'all_chats': all_chats,
             'user_profile': user_profile.user.id
         }
 
