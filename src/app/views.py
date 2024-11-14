@@ -11,7 +11,6 @@ from django.contrib.auth.models import User
 from allauth.socialaccount.models import SocialAccount
 import json
 from main.utils.mongoDb import *
-
 from allauth.account.adapter import DefaultAccountAdapter
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
@@ -29,7 +28,8 @@ def add_to_network(request):
         
         if not new_user_to_add_is_on_network:
             logged_user_model.network.add(user_to_add_model)
-            
+
+
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def remove_to_network(request) :
     if request.method == 'POST':
@@ -143,6 +143,12 @@ def chat(request):
             'all_chats': all_chats,
             'user_profile': user_profile.user.id
         }
+
         return render(request, 'chat/index.html', context)
     else:
         return redirect('login')
+    
+#   def get_context_data(self, **kwargs):
+#       context = super().get_context_data(**kwargs)
+#       context['form'] = MessageForm()
+#       return context

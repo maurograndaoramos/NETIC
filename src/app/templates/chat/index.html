@@ -10,5 +10,24 @@ userchat
 
 {% endfor %}
 
+<script>
+    window.onload = () => {
+        const chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+        );
+
+        // Connection opened
+        chatSocket.addEventListener("open", (event) => {
+            console.log('client says connection opened')
+        });
+
+        // Connection closed
+        chatSocket.addEventListener("close", (event) => {
+            console.log('client says connection closed')
+        });
+    }
+</script>
 
 {% endblock %}

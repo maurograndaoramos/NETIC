@@ -33,19 +33,23 @@ SECRET_KEY = os.getenv(
 DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
 
 # Base allowed hosts
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+# ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
 
-ngrok_host = os.getenv('NGROK_HOST')
-if ngrok_host:
-    ALLOWED_HOSTS.append(ngrok_host)
-else:
-    ALLOWED_HOSTS.append('.ngrok-free.app')
+# ngrok_host = os.getenv('NGROK_HOST')
+# if ngrok_host:
+#     ALLOWED_HOSTS.append(ngrok_host)
+# else:
+#     ALLOWED_HOSTS.append('.ngrok-free.app')
 
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "main",
+    "app",
+    'daphne',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -54,8 +58,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',
     "corsheaders",
-    "app",
-    "main",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -134,6 +136,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 WSGI_APPLICATION = "main.wsgi.application"
+ASGI_APPLICATION = "main.asgi.application"
 
 
 # Database
@@ -216,3 +219,9 @@ CORS_ALLOW_HEADERS: list = ["*"]
 
 AUTH_PROFILE_MODULE = 'app.UserProfile'
 
+#CHANNEL LAYER TO SETUP WEBSOCKETS
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
