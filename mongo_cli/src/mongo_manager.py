@@ -76,33 +76,20 @@ class mongo_remote_db :
     # funcao para buscar ou criar chat caso n exista
     def get_or_create_chat(self, user_id=None, friend_id=None, chat_id=None) :
         if not chat_id : # caso n seja fornecido chat_id
-            # busca todos os chats
-            all_chats = self.get_chats(user_id=int(user_id))
-
-            # array para guardar o chat
-            actual_chat = []
-
-            # loop por todos os chats
-            for chat in all_chats :
-                # se existir algum chat que tenha esses 2 users add ele em actual_chat
-                if (user_id in chat["users"]) and (friend_id in chat["users"]) :
-                    actual_chat.append(chat)
-                else :
-                    pass
             
-            # caso n tenha nada em actual_chat
-            if len(actual_chat) == 0 :
-                
-                # criar um novo chat no mongo_db
-                self.chat_collection.insert_one({
-                    "users" : [str(user_id), str(friend_id)],
-                    "messages" : []
-                })
+            chat = self.chat_collection.find_one({"users": {"$all": [user_id, friend_id]}})
 
-                # faz recursividade para retornar o chat recem criado
-                return self.get_or_create_chat(user_id=user_id, friend_id=friend_id)
-            
-            return actual_chat
+            if not chat:
+                new_chat = {
+                    "users": [user_id, friend_id],
+                    "messages": []  # Inicializa o chat com uma lista de mensagens vazia
+                }
+                # Insere o novo chat na coleção
+                chat_id = self.chat_collection.insert_one(new_chat).inserted_id
+                # Busca o chat recém-criado para garantir retorno consistente
+                chat = self.chat_collection.find_one({"_id": chat_id})
+
+            return chat
         else : # caso forneca o chat_id
             # transforma ele um obj id
             nid = ObjectId(chat_id)

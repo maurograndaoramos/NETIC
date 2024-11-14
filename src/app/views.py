@@ -1,7 +1,10 @@
+import logging
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth import login, authenticate
+from pydantic import BaseModel, Field, field_validator
 from .forms import UserProfileForm
+from django.http import JsonResponse
 from .models import UserProfile
 from django.views.decorators.csrf import csrf_exempt
 from allauth.account.views import LoginView
@@ -12,6 +15,8 @@ from allauth.socialaccount.models import SocialAccount
 import json
 from main.utils.mongoDb import *
 from allauth.account.adapter import DefaultAccountAdapter
+
+logging.basicConfig(level=logging.INFO)
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def add_to_network(request):
@@ -46,6 +51,41 @@ def remove_to_network(request) :
         if logged_user_model.network.filter(id=user_to_remove_model.id).exists():
             # Remove the user from the network
             logged_user_model.network.remove(user_to_remove_model)
+
+class Message(BaseModel):
+    user_id: int
+    content: str
+    sent_time: str
+
+class Chat(BaseModel):
+    id: int = Field(alias="_id")
+    users: list[int]
+    messages: list[Message]
+
+    @field_validator("id", mode="before")
+    @classmethod
+    def transform(cls, raw: ObjectId) -> int:
+        logging.info("raw", raw.__id)
+
+        return int(raw.__id)
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def return_chat_id(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+    user_contact_id = data.get('contact_id')
+
+    print(user_id, user_contact_id)
+    
+    mongo_db = mongo_remote_db()
+    chat = mongo_db.get_or_create_chat(user_id=user_id, friend_id=user_contact_id)
+
+    logging.warning(Chat(**chat))
+
+    chat_return = Chat(**chat)
+
+    return JsonResponse({'ui': chat_return.model_dump()})
 
 def netics_home(request):
     if request.user.is_authenticated:
