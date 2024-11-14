@@ -179,6 +179,7 @@ function getCookie(name) {
 
 function updateModalContent(card) {
     const modal = document.querySelector('.userModel');
+    
     if (modal) {
         modal.querySelector('.userModel_card_topInfo_image img').src = card.image;
         modal.querySelector('.userModel_card_topInfo_info h3').textContent = card.name;
@@ -190,6 +191,36 @@ function updateModalContent(card) {
         modal.querySelector('.userModel_card_links .insta').setAttribute("href", card.insta)
         modal.querySelector('.userModel_card_links .web').setAttribute("href", card.web) 
     }
+    
+    modal.querySelector(".gochat").onclick = () => {
+        const user_id = card.element.getAttribute("loggedUserId")
+        const contact_id = card.element.getAttribute("userId")
+        
+        console.log(user_id);
+        console.log(contact_id);
+        const data = {
+            user_id: user_id,
+            contact_id: contact_id
+        };
+
+        // Envio da requisição ao servidor
+        fetch('http://localhost:8000/get_db_id/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                window.location.replace(`chat/${data.id}`);
+            })
+            .catch(error => console.error('Erro:', error));
+    }
+
+
 }
 
 document.querySelector(".userModel_card_close-bt").addEventListener("click", () => {

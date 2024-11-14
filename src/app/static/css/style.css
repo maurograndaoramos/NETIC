@@ -415,6 +415,21 @@ input {
   align-items: center;
   justify-content: space-evenly;
 }
+.userModel .userModel_card .userModel_card_links button {
+  border: none;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: #282828;
+  cursor: pointer;
+}
+.userModel .userModel_card .userModel_card_links button img {
+  width: 30px;
+  height: 30px;
+}
 .userModel .userModel_card .userModel_card_links a {
   border-radius: 100%;
   display: flex;
