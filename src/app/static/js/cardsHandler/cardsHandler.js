@@ -215,7 +215,7 @@ function updateModalContent(card) {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                
+                window.location.replace(`chat/${data.id}`);
             })
             .catch(error => console.error('Erro:', error));
     }

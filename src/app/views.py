@@ -67,7 +67,7 @@ class Chat(BaseModel):
     def transform(cls, raw: ObjectId) -> int:
         logging.info("raw", raw.__id)
 
-        return int(raw.__id)
+        return int(raw)
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def return_chat_id(request) :
@@ -81,11 +81,12 @@ def return_chat_id(request) :
     mongo_db = mongo_remote_db()
     chat = mongo_db.get_or_create_chat(user_id=user_id, friend_id=user_contact_id)
 
-    logging.warning(Chat(**chat))
+    print(chat.get("_id"))
 
-    chat_return = Chat(**chat)
+    return JsonResponse({
+        'id': str(chat.get("_id"))    
+    })
 
-    return JsonResponse({'ui': chat_return.model_dump()})
 
 def netics_home(request):
     if request.user.is_authenticated:
