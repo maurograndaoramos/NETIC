@@ -180,6 +180,7 @@ function getCookie(name) {
 function updateModalContent(card) {
     const modal = document.querySelector('.userModel');
     
+    
     if (modal) {
         modal.querySelector('.userModel_card_topInfo_image img').src = card.image;
         modal.querySelector('.userModel_card_topInfo_info h3').textContent = card.name;
@@ -215,7 +216,7 @@ function updateModalContent(card) {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                window.location.replace(`chat/${data.id}`);
+                
             })
             .catch(error => console.error('Erro:', error));
     }
