@@ -4,11 +4,29 @@
 {% block content %}
 
 userchat
-{% for chat in chats_list %}
 
-<li> {{ chat }} </li>
+<div class="chat_app">
+    <div class="all_chats">
+        {% for chat in chats_list %}
+        
+        <li> {{ chat }} </li>
+        
+        {% endfor %}
+    </div>
 
-{% endfor %}
+    <div class="chat">
+        <div class="messages">
+
+        </div>
+
+        <div class="send">
+            <textarea class="textarea-style" id="your_message"></textarea>
+            <button class="button-style" id="submitMessage">
+                Click Me!
+            </button>
+        </div>
+    </div>
+</div>
 
 <script>
     const chat_id = `{{chat_id}}`
@@ -38,7 +56,7 @@ userchat
             const data = JSON.parse(event.data);
             console.log("data: " + JSON.stringify(data)); // Check the structure of the received data
             
-            const list = document.getElementById("tweet-list");
+            const list = document.querySelector(".messages");
             if (list) {
                 list.innerHTML += `
                 <div class="tweet">
@@ -111,23 +129,34 @@ async function fetchMessages() {
         const data = await response.json();
         const all_messages = data.message;
         
-        const list = document.getElementById("tweet-list");
+        const list = document.querySelector(".messages");
         if (list) {
-            list.innerHTML += all_messages.map(msg => `
-            <hr/>
-            <div class="tweet">
-                <span class="user">user id : ${msg.user_id}</span>
-                <br/>
-                <br/>
-                <span class="timestamp">time stamp ${msg.sent_time}</span>
-                <br/>
-                <br/>
-                <div class="content">
-                    content : ${msg.content}
-                </div>
-            </div>
-            <hr/>
-        `).join('');
+            all_messages.map(msg => {
+
+            
+                list.innerHTML += `
+                    <div class="message">
+                        <div class="message_content">
+                            <div class="message_content_image">
+                            <div>
+
+                            <div class="message_content_text">
+                            
+                                <div class="message_content_text_content">
+                                    ${msg.content}
+                                <div>
+                                <div class="message_content_text_time">
+                                    ${msg.sent_time}
+                                <div>
+                            <div>
+                        <div>
+                    <div>
+                `
+            
+            
+
+           
+        }).join('');
         }
 
     } catch (error) {
@@ -136,14 +165,5 @@ async function fetchMessages() {
 }
 </script>
 
-    <button class="button-style" id="submitMessage">
-        Click Me!
-    </button>
-  
-    <textarea class="textarea-style" id="your_message"></textarea>
-
-    <div id="tweet-list" style="color:white;">
-
-    </div>
 
 {% endblock %}
