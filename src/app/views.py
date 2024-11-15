@@ -21,27 +21,29 @@ from allauth.account.adapter import DefaultAccountAdapter
 
 logging.basicConfig(level=logging.INFO)
 
-logging.basicConfig(level=logging.INFO)
 
-@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+# Desativa temporariamente a verificação CSRF (apenas para testes)
+@csrf_exempt
 def add_to_network(request):
 
     if request.method == 'POST':
         data = json.loads(request.body)
         logged_user_id = data.get('userId')
         user_to_add_id = data.get('userToAdd')
-        
+
         logged_user_model = UserProfile.objects.get(id=logged_user_id)
         user_to_add_model = UserProfile.objects.get(id=user_to_add_id)
-        
-        new_user_to_add_is_on_network = logged_user_model.network.filter(id=user_to_add_model.id).exists()
-        
+
+        new_user_to_add_is_on_network = logged_user_model.network.filter(
+            id=user_to_add_model.id).exists()
+
         if not new_user_to_add_is_on_network:
             logged_user_model.network.add(user_to_add_model)
 
 
-@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
-def remove_to_network(request) :
+# Desativa temporariamente a verificação CSRF (apenas para testes)
+@csrf_exempt
+def remove_to_network(request):
     if request.method == 'POST':
         data = json.loads(request.body)
 
@@ -57,10 +59,12 @@ def remove_to_network(request) :
             # Remove the user from the network
             logged_user_model.network.remove(user_to_remove_model)
 
+
 class Message(BaseModel):
     user_id: int
     content: str
     sent_time: str
+
 
 class Chat(BaseModel):
     id: int = Field(alias="_id")
@@ -72,23 +76,28 @@ class Chat(BaseModel):
     def transform(cls, raw: ObjectId) -> int:
         logging.info("raw", raw.__id)
 
-        return int(raw.__id)
+        return int(raw)
 
-@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
-def return_chat_id(request) :
+
+# Desativa temporariamente a verificação CSRF (apenas para testes)
+@csrf_exempt
+def return_chat_id(request):
     data = json.loads(request.body)
 
     user_id = data.get('user_id')
     user_contact_id = data.get('contact_id')
 
     print(user_id, user_contact_id)
-    
+
     mongo_db = mongo_remote_db()
-    chat = mongo_db.get_or_create_chat(user_id=user_id, friend_id=user_contact_id)
+    chat = mongo_db.get_or_create_chat(
+        user_id=user_id, friend_id=user_contact_id)
 
     logging.warning(Chat(**chat))
 
-    chat_return = Chat(**chat)
+    return JsonResponse({
+        'id': str(chat.get("_id"))
+    })
 
     return JsonResponse({'ui': chat_return.model_dump()})
 
@@ -103,12 +112,13 @@ def netics_home(request):
                 'email': user.email,
             }
         )
-        
+
         logged_profile = UserProfile.objects.get(user=request.user)
 
         excluded_users = logged_profile.network.all()
-        users_not_in_network = UserProfile.objects.exclude(id__in=excluded_users).exclude(id=logged_profile.id)
-    
+        users_not_in_network = UserProfile.objects.exclude(
+            id__in=excluded_users).exclude(id=logged_profile.id)
+
         context = {
             "courses": [
                 "Design de Comunicação e Marketing Digital",
@@ -125,9 +135,10 @@ def netics_home(request):
                 "Produção e Criação Musical Eletrónica",
                 "Técnicas de Som"
             ],
-            "users_data": users_not_in_network,  # Users not in the network of the logged user
+            # Users not in the network of the logged user
+            "users_data": users_not_in_network,
             "logged_user_id": request.user.id,
-            "particles" : min(len(logged_profile.network.all()) + 2, 100) 
+            "particles": min(len(logged_profile.network.all()) + 2, 100)
         }
 
         return render(request, "mainPage/index.html", context)
@@ -135,7 +146,7 @@ def netics_home(request):
         return redirect('login')
 
 
-def myNetwork(request): 
+def myNetwork(request):
     if request.user.is_authenticated:
         logged_profile = UserProfile.objects.get(user=request.user)
         all_connected_users = logged_profile.network.all()
@@ -143,18 +154,20 @@ def myNetwork(request):
         context = {
             "users_data": all_connected_users,
             "logged_user_id": request.user.id,
-            "particles" : min(len(logged_profile.network.all()) + 2, 100) 
+            "particles": min(len(logged_profile.network.all()) + 2, 100)
         }
         return render(request, "myNetwork/index.html", context)
     else:
         return redirect('login')
+
 
 def profile(request):
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
 
         if request.method == 'POST':
-            form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+            form = UserProfileForm(
+                request.POST, request.FILES, instance=user_profile)
             if form.is_valid():
                 form.save()
                 return redirect('home')
@@ -168,53 +181,53 @@ def profile(request):
     else:
         return redirect('login')
 
+
 def login_view(request):
     context = {
         'client_id': settings.CLIENT_ID,
     }
     return render(request, 'login/index.html', context)
 
+
 Mongo = mongo_remote_db()
+
 
 def chat(request):
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
 
+        # Retrieve chats associated with the logged-in user
         chats_list = Mongo.get_chats(user_profile.user.id)
         active_users = {}
 
-    for x in chats_list:
-        user_ids = x['users']
-        update_list = None  
-        for x in user_ids:
-            if x != user_profile.user.id:
-                update_list = x
+        for chat in chats_list:
+            user_ids = chat['users']  # List of user IDs in the chat
 
-        print("--------------------------------------------------------------------------")
-        print(user_ids)
-        print(update_list)
-        for user_id in update_list:
-           
-            user = UserProfile.objects.filter(user_id=user_id).first()
-            print("User filtrado ----- ", user)
-            print(UserProfile.objects.filter(user_id=user_profile.user.id))
-            if user:
-                if user_id not in active_users:
-                    active_users[user_id] = []
-                active_users[user_id].append(user.first_name)
+            # Exclude the logged-in user's ID
+            other_users = [uid for uid in user_ids if str(
+                uid) != str(user_profile.user.id)]
 
-        print(active_users, "-----------------------------------------")
+            for user_id in other_users:
+                # Retrieve user information for the other users
+                user = UserProfile.objects.filter(user_id=user_id).first()
+                if user:
+                    # Add user information to the active_users dictionary
+                    if user_id not in active_users:
+                        active_users[user_id] = f"{
+                            user.first_name} {user.last_name}"
 
-        context= {
-            'users_list': active_users,
-            'chats_list': chats_list,
-            'user_profile': user_profile.user.id
+        # Context passed to the template
+        context = {
+            'users_list': active_users,  # Dictionary of user_id -> full_name
+            'chats_list': chats_list,   # Chats data from MongoDB
+            'user_profile': user_profile.user.id  # Logged-in user's ID
         }
 
         return render(request, 'chat/index.html', context)
     else:
         return redirect('login')
-    
+
+
 #   def get_context_data(self, **kwargs):
 #       context = super().get_context_data(**kwargs)
 #       context['form'] = MessageForm()
