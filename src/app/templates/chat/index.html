@@ -11,12 +11,16 @@ userchat
 {% endfor %}
 
 <script>
+    const chat_id = `{{chat_id}}`
+    const user_id = `{{user_id}}`
+    const contact_id = `{{contact_id}}`
+
     window.onload = (event) => {
         const chatSocket = new WebSocket(
             'ws://'
             + window.location.host
             + '/ws/chat/'
-            //+ url.get(UID) comando para retirar UID do link.
+            + chat_id
             +'/'
         );
 
@@ -47,19 +51,89 @@ userchat
             }
         });
 
+
+        
         document.getElementById('submitMessage').onclick = (e) => {
-            e.preventDefault();
             const messageInputDom = document.querySelector('#your_message');
             const message = messageInputDom.value;
-            
+
             chatSocket.send(JSON.stringify({
                 'message': message,
             }));
-
+    
             messageInputDom.value = '';
-        };
 
+
+            const data = {
+                user_id: user_id,
+                chat_id : chat_id,
+                content_message : message
+            };
+        
+            
+            fetch('http://localhost:8000/add_message/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error('Erro:', error));
+            }
+        
+        fetchMessages()
+
+        event.preventDefault();
     }
+
+async function fetchMessages() {
+    const dataToGetMessages = {
+        "chat_id": chat_id
+    }
+
+    try {
+        const response = await fetch('http://localhost:8000/get_messages/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToGetMessages)
+        });
+
+        if (!response.ok) {
+            throw new Error('Erro na resposta da rede');
+        }
+
+        const data = await response.json();
+        const all_messages = data.message;
+        
+        const list = document.getElementById("tweet-list");
+        if (list) {
+            list.innerHTML += all_messages.map(msg => `
+            <hr/>
+            <div class="tweet">
+                <span class="user">user id : ${msg.user_id}</span>
+                <br/>
+                <br/>
+                <span class="timestamp">time stamp ${msg.sent_time}</span>
+                <br/>
+                <br/>
+                <div class="content">
+                    content : ${msg.content}
+                </div>
+            </div>
+            <hr/>
+        `).join('');
+        }
+
+    } catch (error) {
+        console.error('Erro:', error);
+    }
+}
 </script>
 
     <button class="button-style" id="submitMessage">

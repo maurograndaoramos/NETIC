@@ -52,22 +52,22 @@ def remove_to_network(request) :
             # Remove the user from the network
             logged_user_model.network.remove(user_to_remove_model)
 
-class Message(BaseModel):
-    user_id: int
-    content: str
-    sent_time: str
+# class Message(BaseModel):
+#     user_id: int
+#     content: str
+#     sent_time: str
 
-class Chat(BaseModel):
-    id: int = Field(alias="_id")
-    users: list[int]
-    messages: list[Message]
+# class Chat(BaseModel):
+#     id: int = Field(alias="_id")
+#     users: list[int]
+#     messages: list[Message]
 
-    @field_validator("id", mode="before")
-    @classmethod
-    def transform(cls, raw: ObjectId) -> int:
-        logging.info("raw", raw.__id)
+#     @field_validator("id", mode="before")
+#     @classmethod
+#     def transform(cls, raw: ObjectId) -> int:
+#         logging.info("raw", raw.__id)
 
-        return int(raw)
+#         return int(raw)
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def return_chat_id(request) :
@@ -87,6 +87,39 @@ def return_chat_id(request) :
         'id': str(chat.get("_id"))    
     })
 
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_messages(request) :
+    data = json.loads(request.body)
+
+    chat_id = data.get('chat_id')    
+    mongo_db = mongo_remote_db()
+    all_messages = mongo_db.get_messages(
+        chat_id=chat_id
+    )
+
+    return JsonResponse ({
+        'message' : all_messages
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def add_message(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+    chat_id = data.get('chat_id')
+    content_message = data.get('content_message')
+    
+    mongo_db = mongo_remote_db()
+    mongo_db.add_message(
+        chat_id=chat_id,
+        user_id= user_id,
+        msg_content=content_message
+    )
+
+    return JsonResponse ({
+        'message' : f'{user_id} {chat_id} {content_message}'
+    })
 
 def netics_home(request):
     if request.user.is_authenticated:
@@ -172,17 +205,28 @@ def login_view(request):
 
 Mongo = mongo_remote_db()
 
-def chat(request):
+def chat(request, chat_id):
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
 
         chats_list = Mongo.get_chats(user_profile.user.id)
         all_chats = Mongo.get_all_chats()
 
+        this_chat_users = Mongo.get_or_create_chat(chat_id=chat_id).get("users")
+
+        contact_id = ""
+
+        for chat_user_id in this_chat_users :
+            if str(chat_user_id) != str(request.user.id) :
+                contact_id += chat_user_id
+
         context= {
             'chats_list': chats_list,
             'all_chats': all_chats,
-            'user_profile': user_profile.user.id
+            'user_profile': user_profile.user.id,
+            "chat_id" : chat_id,
+            "user_id": request.user.id,
+            "contact_id" : contact_id
         }
 
         return render(request, 'chat/index.html', context)
