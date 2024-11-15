@@ -881,4 +881,25 @@ ul:has(li:hover) li:not(:hover) {
 .formwrap form .desc textarea {
   box-sizing: border-box;
   width: 100%;
+}
+
+.chat_app {
+  display: flex;
+  color: white;
+}
+.chat_app .contact_info {
+  display: flex;
+}
+.chat_app .all_chats {
+  width: 17.5vw;
+}
+.chat_app .all_chats .chat {
+  width: 82.5vw;
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.chat_app .all_chats .chat .message {
+  padding: 20px 0px 20px 0px;
 }/*# sourceMappingURL=style.css.map */

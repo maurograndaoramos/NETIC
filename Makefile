@@ -16,7 +16,7 @@ load:
 	docker compose exec -it src poetry run python manage.py loaddata --exclude contenttypes /app/data.json
 
 up:
-	docker compose up $(if $(DETACH),-d)
+	docker compose up $(if $(DETACH),-d) --build
 
 down:
 	docker compose down --remove-orphans --volumes

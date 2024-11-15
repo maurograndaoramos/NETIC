@@ -103,6 +103,20 @@ def get_messages(request) :
     })
 
 @csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_chats(request) :
+    data = json.loads(request.body)
+
+    chat_id = data.get('chat_id')    
+    mongo_db = mongo_remote_db()
+    all_messages = mongo_db.get_messages(
+        chat_id=chat_id
+    )
+
+    return JsonResponse ({
+        'message' : all_messages
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
 def add_message(request) :
     data = json.loads(request.body)
 
@@ -119,6 +133,73 @@ def add_message(request) :
 
     return JsonResponse ({
         'message' : f'{user_id} {chat_id} {content_message}'
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_user_chats(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+
+    mongo_db = mongo_remote_db()
+    chats = mongo_db.get_chats(user_id=user_id)
+
+    formated_chats = []
+    for chat in chats:
+        chat_id = chat.get("_id")
+        friend_name = ""
+        friend_id = 0
+
+        friend_user = ""
+        friend_user_profile=""
+
+        for user_chat_id in chat["users"] :
+            if str(user_chat_id) != str(request.user.id):
+                friend_id = user_chat_id
+                
+                friend_user = User.objects.all().filter(id=friend_id)[0]
+                friend_user_profile = UserProfile.objects.all().filter(user = friend_user)[0]
+
+                friend_name = f'{friend_user_profile.first_name} {friend_user_profile.last_name}'
+                
+        messages = mongo_db.get_messages(chat_id=chat_id)
+        if messages :
+            last_message = messages[len(messages)-1]['content']
+        else :
+            last_message = ""
+
+        formated_chats.append(
+            {
+                "id": str(chat_id),
+                "friend_id" : friend_id,
+                "friend_name" : str(friend_name),
+                "last_message" : last_message
+            }
+        )
+    
+    return JsonResponse ({
+        'chats' : formated_chats
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_user_info(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+    auth_user = User.objects.all().filter(id = user_id)[0]
+
+    user_contact_profile = UserProfile.objects.all().filter(user=auth_user)
+    
+    user_contact_profile_info = {
+        "id" : user_contact_profile[0].id,
+        "first_name" : user_contact_profile[0].first_name,
+        "last_name" : user_contact_profile[0].last_name,
+        "course" : user_contact_profile[0].curso,
+        # "profile_picture" : user_contact_profile[0].profile_picture.url,
+    }
+
+    return JsonResponse ({
+        'user_info' : user_contact_profile_info
     })
 
 def netics_home(request):
@@ -208,6 +289,7 @@ Mongo = mongo_remote_db()
 def chat(request, chat_id):
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
+        logged_profile = UserProfile.objects.get(user=request.user)
 
         chats_list = Mongo.get_chats(user_profile.user.id)
         all_chats = Mongo.get_all_chats()
@@ -226,14 +308,25 @@ def chat(request, chat_id):
             'user_profile': user_profile.user.id,
             "chat_id" : chat_id,
             "user_id": request.user.id,
-            "contact_id" : contact_id
+            "contact_id" : contact_id,
+            "particles" : min(len(logged_profile.network.all()) + 2, 100) 
+
         }
 
         return render(request, 'chat/index.html', context)
     else:
         return redirect('login')
     
-#   def get_context_data(self, **kwargs):
-#       context = super().get_context_data(**kwargs)
-#       context['form'] = MessageForm()
-#       return context
+def chats(request):
+    if request.user.is_authenticated:
+        logged_profile = UserProfile.objects.get(user=request.user)
+
+        context= {
+            "user_id": request.user.id,
+            "particles" : min(len(logged_profile.network.all()) + 2, 100) 
+
+        }
+
+        return render(request, 'chat/chat.html', context)
+    else:
+        return redirect('login')

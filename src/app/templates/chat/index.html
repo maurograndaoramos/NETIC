@@ -3,15 +3,18 @@
 
 {% block content %}
 
-userchat
-
 <div class="chat_app">
+    <div class="contact_info">
+        <h2>
+
+        </h2>
+        <p>
+
+        </p>
+    </div>
+
     <div class="all_chats">
-        {% for chat in chats_list %}
-        
-        <li> {{ chat }} </li>
-        
-        {% endfor %}
+
     </div>
 
     <div class="chat">
@@ -22,7 +25,7 @@ userchat
         <div class="send">
             <textarea class="textarea-style" id="your_message"></textarea>
             <button class="button-style" id="submitMessage">
-                Click Me!
+                <img src="{% static 'images/userLinksLogo/send.png' %}" alt="">
             </button>
         </div>
     </div>
@@ -54,18 +57,44 @@ userchat
 
         chatSocket.addEventListener("message", (event) => {
             const data = JSON.parse(event.data);
-            console.log("data: " + JSON.stringify(data)); // Check the structure of the received data
+            console.log("data: " + data); // Check the structure of the received data
             
-            const list = document.querySelector(".messages");
+            var list = document.querySelector(".messages");
             if (list) {
+                console.log(user_id);
+                
+
+                let className = "from_contact"
+                if (user_id ==  data.user_id) {
+                    className="from_user"
+                }
+
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes();
+
                 list.innerHTML += `
-                <div class="tweet">
-                    <span class="user">${data['user']}</span>
-                    <span class="timestamp">${data['date']}</span>
-                    <div class="content">
-                        ${data['message']}
-                    </div>`
-                list.innerHTML += `</div>`;
+                    <div class="message ${className}">
+                            <div class="message_content">
+                                <div class="message_content_image">
+                                </div>
+
+                                <div class="message_content_text">
+                                    <div class="message_content_text_content">
+                                        <h3>
+                                            ${data['message']}
+                                        </h3>
+                                    </div>
+                                    <div class="message_content_text_time">
+                                        <p>
+                                            ${time}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                `
+
+                list.scrollTop = list.scrollHeight;
             }
         });
 
@@ -77,6 +106,7 @@ userchat
 
             chatSocket.send(JSON.stringify({
                 'message': message,
+                'user_id' : user_id
             }));
     
             messageInputDom.value = '';
@@ -98,15 +128,87 @@ userchat
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    fetchChats()
                 })
                 .catch(error => console.error('Erro:', error));
             }
+
         
         fetchMessages()
-
+        
+        set_user_contact_info(contact_id)
+        fetchChats ()
+        
         event.preventDefault();
     }
+
+async function fetchChats () {
+    const dataToGetUserChats = {
+        "user_id": user_id
+    };
+
+    const response = await fetch('http://localhost:8000/get_user_chats/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToGetUserChats)
+    });
+
+    const data = await response.json();
+    console.log(data);
+    
+    document.querySelector(".all_chats").innerHTML = ""
+
+    for (let i = 0; i < data.chats.length; i++) {
+        const element = data.chats[i];
+        const chat_element = document.createElement("div")
+        chat_element.classList.add("chat_link")
+        chat_element.innerHTML = `
+                <div class ="chat_userImage">
+                    <img/>
+                </div>
+
+                <div class="chat_infos">
+                    <h3>
+                        ${element.friend_name}    
+                    <h3/>
+                    <p>
+                        ${element.last_message}    
+                    </p>
+                </div>
+        `
+        chat_element.onclick = () => {
+            
+            window.location.replace(`http://localhost:8000/chat/${element.id}`);
+        }
+
+        document.querySelector(".all_chats").appendChild(chat_element)
+
+    }
+    
+}
+
+
+async function set_user_contact_info(userIdToSearch) {
+    const dataToGetUserInfo = {
+        "user_id": userIdToSearch
+    };
+
+    const response = await fetch('http://localhost:8000/get_user_info/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToGetUserInfo)
+    });
+
+
+    const data = await response.json();
+    const content_contact = document.querySelector(".contact_info")
+    content_contact.querySelector("h2").textContent = `${data.user_info.first_name} ${data.user_info.last_name}`
+    content_contact.querySelector("p").textContent = data.user_info.course
+}
 
 async function fetchMessages() {
     const dataToGetMessages = {
@@ -132,30 +234,35 @@ async function fetchMessages() {
         const list = document.querySelector(".messages");
         if (list) {
             all_messages.map(msg => {
+                let classToIndicateSender;
 
-            
+                if (msg.user_id == user_id) {
+                    classToIndicateSender = "from_user"
+                }else{
+                    classToIndicateSender = "from_contact"
+                }
+
                 list.innerHTML += `
-                    <div class="message">
+                    <div class="message ${classToIndicateSender}">
                         <div class="message_content">
                             <div class="message_content_image">
-                            <div>
+                            </div>
 
                             <div class="message_content_text">
-                            
                                 <div class="message_content_text_content">
-                                    ${msg.content}
-                                <div>
+                                    <h3>
+                                        ${msg.content}
+                                    </h3>
+                                </div>
                                 <div class="message_content_text_time">
-                                    ${msg.sent_time}
-                                <div>
-                            <div>
-                        <div>
-                    <div>
-                `
-            
-            
-
-           
+                                    <p>
+                                        ${msg.sent_time}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `           
         }).join('');
         }
 
