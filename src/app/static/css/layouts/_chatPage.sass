@@ -8,20 +8,34 @@
         color: white
         display: flex
         flex-direction: column
-        width: 30%
+        width: 17.5%
         height: 100%
-        border: solid 1px white
-        padding: 8px
+        border-right: solid 1px white
+        padding: 16px
         align-items: center
-        gap: 8px
+        gap: 16px
 
         .wrapper
-            display
-        .cardChat
-            background: $baseColor-200-50
-            border-radius: 8px
-            padding: 12px
-            cursor: pointer
+            display: flex
             width: 100%
-            p
-                line-height: 110%
+            max-height: 56px
+            gap: 8px
+            img
+                max-height: 56px
+            .profimage
+                background: $baseColor-200-50
+                border-radius: 32px
+
+            .cardChat
+                background: $baseColor-200-50
+                border-radius: 24px
+                padding: 12px
+                cursor: pointer
+                width: 100%
+                .message
+                    display: flex
+                    opacity: 0.5
+                    text-align: right
+                    justify-content: flex-end
+                p
+                    line-height: 110%

@@ -11,16 +11,18 @@
         {% for chat in chats_list %}
         <div class="wrapper">
             <div class="profimage">
+                <img src="{% static 'images/defaultUser/default_user.png' %}" alt="">
             </div>
             <div class="cardChat">
                 <p>
                     {% for user_id in chat.users %}
                     {% if user_id != user_profile %}
                     {{ users_list|get_item:user_id }}
+                    {% if not forloop.last %} & {% endif %}
                     {% endif %}
                     {% endfor %}
                 </p>
-                <p>{% with chat.messages|last as last_message %}
+                <p class="message">{% with chat.messages|last as last_message %}
                     {{ last_message.content }}
                     {% endwith %}</p>
             </div>

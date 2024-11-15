@@ -101,6 +101,7 @@ def return_chat_id(request):
 
     return JsonResponse({'ui': chat_return.model_dump()})
 
+
 def netics_home(request):
     if request.user.is_authenticated:
         user = request.user
@@ -213,8 +214,7 @@ def chat(request):
                 if user:
                     # Add user information to the active_users dictionary
                     if user_id not in active_users:
-                        active_users[user_id] = f"{
-                            user.first_name} {user.last_name}"
+                        active_users[user_id] = f"{user.first_name} {user.last_name}"
 
         # Context passed to the template
         context = {
