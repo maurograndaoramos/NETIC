@@ -1,0 +1,180 @@
+.chat_app
+    display: flex
+    color: white
+
+    .contact_info
+        position: absolute
+        left: 50vw
+        top: 120px
+        padding: 10px 50px
+        border-radius: 50px
+        background-color: $baseColor-200-50
+        backdrop-filter: blur(10px)
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        h2
+            font-family: $titleFont
+            margin-bottom: 10px
+            font-size: 20px
+            color: white
+        p
+            font-size: 12px
+            font-family: $textFont
+            color: $baseColor-600
+    .all_chats
+        width: 17.5vw
+        border-right: 1px solid $baseColor-200
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: start
+        .chat_link
+            margin: 20px 0px
+            display: flex
+            cursor: pointer
+            .chat_userImage
+                width: 50px
+                height: 50px
+                border-radius: 100%
+                margin-right: 20px
+                background: $primaryColor-100
+                img
+                    width: 50px
+                    height: 50px
+                    border-radius: 100%
+
+            .chat_infos
+                
+                background-color: $baseColor-200
+                h3
+                    font-weight: bold
+                    color: white
+                    text-align: start
+                    font-family: $titleFont
+                    font-size: 16px
+                p
+                    color: $baseColor-600
+                    font-size: 12px
+                    margin-top: 5px
+                    text-align: end
+                    font-family: $textFont
+
+                border-radius: 25px
+                padding: 8px 15px
+                width: 230px
+
+
+    .chat_empty
+        width: 82.5vw
+        height: calc( 100vh - 80px )
+        display: flex
+        justify-content: center
+        align-items: center
+        h2
+            font-size: 40px
+            color: white
+            font-family: $titleFont
+
+    .chat
+        
+        width: 82.5vw
+        height: calc( 100vh - 80px )
+        height: calc( 100vh - 80px )
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+
+        .send
+            border-top: 1px solid $baseColor-200
+            display: flex
+            align-items: center
+            justify-content: center
+            textarea
+                font-size: 20px
+                color: white
+                background-color: $baseColor-200
+                height: 50px
+                margin: 10px 0px
+                resize: none
+                width: 70%
+                border-radius: 50px
+                border: none
+                padding-top: 13px
+                padding-left: 25px
+                font-family: $textFont
+                &:focus
+                    outline: none
+            button
+                background-color: $baseColor-200
+                cursor: pointer
+                display: flex
+                justify-content: center
+                align-items: center
+                border-radius: 100%
+                padding: 5px
+                border: none 
+                margin-left: 20px
+                img
+                    width: 35px
+
+        .messages 
+            max-height: calc( 100vh - 80px )
+            overflow-y: scroll
+            padding-top: 300px
+            .message
+                margin: 0px 10px
+                display: flex
+                align-items: flex-end
+                padding: 10px 0px
+                .message_content
+                    display: flex
+                    align-items: center
+                    margin: 0px 20px
+                    .message_content_text
+                        font-family: $textFont
+                        min-width: 120px
+                        max-width: 350px
+                        padding: 8px 15px
+                        border-radius: 20px
+                        .message_content_text_time
+                            width: 100%
+                            font-size: 12px
+                            color: $baseColor-600 
+                            text-align: end
+                        h3
+                            font-size: 20px
+                            margin-bottom: 5px
+                            max-inline-size: 300px
+                            overflow-wrap: break-word
+
+
+            .from_user
+                justify-content: flex-end
+                .message_content_text
+                    background-color: $primaryColor-200-50
+                    backdrop-filter: blur(10px)
+
+            .from_contact
+                justify-content: flex-start
+                .message_content
+                    display: flex
+                    align-items: center
+                    justify-content: start
+                    .message_content_text
+                        background-color: $baseColor-200-50
+                        backdrop-filter: blur(10px)
+                        margin-left: 10px
+
+
+                    .message_content_image
+                        border-radius: 100%
+                        width: 50px
+                        height: 50px
+                        background: $primaryColor-100
+
+                
+        
+
+        

@@ -195,9 +195,7 @@ function updateModalContent(card) {
     modal.querySelector(".gochat").onclick = () => {
         const user_id = card.element.getAttribute("loggedUserId")
         const contact_id = card.element.getAttribute("userId")
-        
-        console.log(user_id);
-        console.log(contact_id);
+
         const data = {
             user_id: user_id,
             contact_id: contact_id
@@ -215,10 +213,10 @@ function updateModalContent(card) {
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                
+                window.location.replace(`http://localhost:8000/chat/${data.id}`);
             })
             .catch(error => console.error('Erro:', error));
-    }
+        }
 
 
 }

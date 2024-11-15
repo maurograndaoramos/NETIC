@@ -59,24 +59,24 @@ def remove_to_network(request):
             # Remove the user from the network
             logged_user_model.network.remove(user_to_remove_model)
 
+# class Message(BaseModel):
+#     user_id: int
+#     content: str
+#     sent_time: str
 
-class Message(BaseModel):
-    user_id: int
-    content: str
-    sent_time: str
+# class Chat(BaseModel):
+#     id: int = Field(alias="_id")
+#     users: list[int]
+#     messages: list[Message]
 
 
-class Chat(BaseModel):
-    id: int = Field(alias="_id")
-    users: list[int]
-    messages: list[Message]
 
-    @field_validator("id", mode="before")
-    @classmethod
-    def transform(cls, raw: ObjectId) -> int:
-        logging.info("raw", raw.__id)
+#     @field_validator("id", mode="before")
+#     @classmethod
+#     def transform(cls, raw: ObjectId) -> int:
+#         logging.info("raw", raw.__id)
 
-        return int(raw)
+#         return int(raw)
 
 
 # Desativa temporariamente a verificação CSRF (apenas para testes)
@@ -101,6 +101,120 @@ def return_chat_id(request):
 
     return JsonResponse({'ui': chat_return.model_dump()})
 
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_messages(request) :
+    data = json.loads(request.body)
+
+    chat_id = data.get('chat_id')    
+    mongo_db = mongo_remote_db()
+    all_messages = mongo_db.get_messages(
+        chat_id=chat_id
+    )
+
+    return JsonResponse ({
+        'message' : all_messages
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_chats(request) :
+    data = json.loads(request.body)
+
+    chat_id = data.get('chat_id')    
+    mongo_db = mongo_remote_db()
+    all_messages = mongo_db.get_messages(
+        chat_id=chat_id
+    )
+
+    return JsonResponse ({
+        'message' : all_messages
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def add_message(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+    chat_id = data.get('chat_id')
+    content_message = data.get('content_message')
+    
+    mongo_db = mongo_remote_db()
+    mongo_db.add_message(
+        chat_id=chat_id,
+        user_id= user_id,
+        msg_content=content_message
+    )
+
+    return JsonResponse ({
+        'message' : f'{user_id} {chat_id} {content_message}'
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_user_chats(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+
+    mongo_db = mongo_remote_db()
+    chats = mongo_db.get_chats(user_id=user_id)
+
+    formated_chats = []
+    for chat in chats:
+        chat_id = chat.get("_id")
+        friend_name = ""
+        friend_id = 0
+
+        friend_user = ""
+        friend_user_profile=""
+
+        for user_chat_id in chat["users"] :
+            if str(user_chat_id) != str(request.user.id):
+                friend_id = user_chat_id
+                
+                friend_user = User.objects.all().filter(id=friend_id)[0]
+                friend_user_profile = UserProfile.objects.all().filter(user = friend_user)[0]
+
+                friend_name = f'{friend_user_profile.first_name} {friend_user_profile.last_name}'
+                
+        messages = mongo_db.get_messages(chat_id=chat_id)
+        if messages :
+            last_message = messages[len(messages)-1]['content']
+        else :
+            last_message = ""
+
+        formated_chats.append(
+            {
+                "id": str(chat_id),
+                "friend_id" : friend_id,
+                "friend_name" : str(friend_name),
+                "last_message" : last_message
+            }
+        )
+    
+    return JsonResponse ({
+        'chats' : formated_chats
+    })
+
+@csrf_exempt  # Desativa temporariamente a verificação CSRF (apenas para testes)
+def get_user_info(request) :
+    data = json.loads(request.body)
+
+    user_id = data.get('user_id')
+    auth_user = User.objects.all().filter(id = user_id)[0]
+
+    user_contact_profile = UserProfile.objects.all().filter(user=auth_user)
+    
+    user_contact_profile_info = {
+        "id" : user_contact_profile[0].id,
+        "first_name" : user_contact_profile[0].first_name,
+        "last_name" : user_contact_profile[0].last_name,
+        "course" : user_contact_profile[0].curso,
+        # "profile_picture" : user_contact_profile[0].profile_picture.url,
+    }
+
+    return JsonResponse ({
+        'user_info' : user_contact_profile_info
+    })
 
 def netics_home(request):
     if request.user.is_authenticated:
@@ -192,43 +306,51 @@ def login_view(request):
 
 Mongo = mongo_remote_db()
 
+def chat(request, chat_id):
 
-def chat(request):
     if request.user.is_authenticated:
         user_profile = get_object_or_404(UserProfile, user=request.user)
+        logged_profile = UserProfile.objects.get(user=request.user)
 
         # Retrieve chats associated with the logged-in user
         chats_list = Mongo.get_chats(user_profile.user.id)
         active_users = {}
 
-        for chat in chats_list:
-            user_ids = chat['users']  # List of user IDs in the chat
+        this_chat_users = Mongo.get_or_create_chat(chat_id=chat_id).get("users")
 
-            # Exclude the logged-in user's ID
-            other_users = [uid for uid in user_ids if str(
-                uid) != str(user_profile.user.id)]
+        contact_id = ""
 
-            for user_id in other_users:
-                # Retrieve user information for the other users
-                user = UserProfile.objects.filter(user_id=user_id).first()
-                if user:
-                    # Add user information to the active_users dictionary
-                    if user_id not in active_users:
-                        active_users[user_id] = f"{user.first_name} {user.last_name}"
+        for chat_user_id in this_chat_users :
+            if str(chat_user_id) != str(request.user.id) :
+                contact_id += chat_user_id
 
-        # Context passed to the template
-        context = {
-            'users_list': active_users,  # Dictionary of user_id -> full_name
-            'chats_list': chats_list,   # Chats data from MongoDB
-            'user_profile': user_profile.user.id  # Logged-in user's ID
+        context= {
+            'chats_list': chats_list,
+            'all_chats': all_chats,
+            'user_profile': user_profile.user.id,
+            "chat_id" : chat_id,
+            "user_id": request.user.id,
+            "contact_id" : contact_id,
+            "particles" : min(len(logged_profile.network.all()) + 2, 100) 
+
         }
 
         return render(request, 'chat/index.html', context)
     else:
         return redirect('login')
 
+    
+def chats(request):
+    if request.user.is_authenticated:
+        logged_profile = UserProfile.objects.get(user=request.user)
 
-#   def get_context_data(self, **kwargs):
-#       context = super().get_context_data(**kwargs)
-#       context['form'] = MessageForm()
-#       return context
+        context= {
+            "user_id": request.user.id,
+            "particles" : min(len(logged_profile.network.all()) + 2, 100) 
+
+        }
+
+        return render(request, 'chat/chat.html', context)
+    else:
+        return redirect('login')
+

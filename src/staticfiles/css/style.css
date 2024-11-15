@@ -883,6 +883,26 @@ ul:has(li:hover) li:not(:hover) {
   width: 100%;
 }
 
+.chat_app {
+  display: flex;
+  color: white;
+}
+.chat_app .contact_info {
+  display: flex;
+}
+.chat_app .all_chats {
+  width: 17.5vw;
+}
+.chat_app .all_chats .chat {
+  width: 82.5vw;
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.chat_app .all_chats .chat .message {
+  padding: 20px 0px 20px 0px;
+=======
 .container {
   display: flex;
   height: 100vh;
@@ -909,4 +929,5 @@ ul:has(li:hover) li:not(:hover) {
 }
 .container .sidebar .cardChat p {
   line-height: 110%;
+
 }/*# sourceMappingURL=style.css.map */
