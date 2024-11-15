@@ -326,7 +326,6 @@ def chat(request, chat_id):
 
         context= {
             'chats_list': chats_list,
-            'all_chats': all_chats,
             'user_profile': user_profile.user.id,
             "chat_id" : chat_id,
             "user_id": request.user.id,
