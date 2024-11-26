@@ -10,15 +10,18 @@
 </head>
 
 <body>
-    {% include 'particle/particle.html' with quantity=20 %}
+    {% include 'particle/particle.html' with quantity=particles %}
 
     <div class="topBar">
         <div class="logo">
-            <img src="{% static 'images/logo/logo.png' %}" alt="logo">
+            <a href="/">
+                <img src="{% static 'images/logo/logo.png' %}" alt="logo">
+            </a>
         </div> 
 
         <nav>
             <a href="/" id = "Home-page" class="actualPage">Home</a>
+            <a href="/chats" id = "Chat-page" class="actualPage">Chats</a>
             <a href="/network" id = "Network-page" class="actualPage">My network</a>
             <a href="/perfil" class="user">
                 <img src="{% static 'images/defaultUser/default_user.png' %}" alt="">

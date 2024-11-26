@@ -33,20 +33,23 @@ SECRET_KEY = os.getenv(
 DEBUG = os.getenv('DEBUG', '1').lower() in ['true', 't', '1']
 
 # Base allowed hosts
-ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
+# ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,0.0.0.0').split(',')
 
-# Dynamically allow any ngrok host by checking if it ends with "ngrok-free.app"
-ngrok_host = os.getenv('NGROK_HOST')
-if ngrok_host:
-    ALLOWED_HOSTS.append(ngrok_host)
-else:
-    # For flexibility, allow any *.ngrok-free.app in development
-    ALLOWED_HOSTS.append('.ngrok-free.app')
+# ngrok_host = os.getenv('NGROK_HOST')
+# if ngrok_host:
+#     ALLOWED_HOSTS.append(ngrok_host)
+# else:
+#     ALLOWED_HOSTS.append('.ngrok-free.app')
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    "main",
+    "app",
+    'daphne',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -55,8 +58,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',
     "corsheaders",
-    "app",
-    "main",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -100,6 +101,8 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+
 SOCIALACCOUNT_LOGIN_ON_GET = True 
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_AUTO_SIGNUP = True
@@ -133,6 +136,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 WSGI_APPLICATION = "main.wsgi.application"
+ASGI_APPLICATION = "main.asgi.application"
 
 
 # Database
@@ -207,11 +211,17 @@ MEDIA_URL = '/profile_pictures/'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # CORS settings
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5433",
-    "http://127.0.0.1:5433",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOW_HEADERS: list = ["*"]
+
 AUTH_PROFILE_MODULE = 'app.UserProfile'
+
+#CHANNEL LAYER TO SETUP WEBSOCKETS
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}

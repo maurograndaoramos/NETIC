@@ -10,3 +10,6 @@ class UserProfileForm(forms.ModelForm):
             'descricao_longa': forms.Textarea(attrs={'rows': 5}),
             'profile_picture': forms.FileInput(),
         }
+
+class MessageForm(forms.Form):
+    message = forms.CharField(widget=forms.Textarea(attrs={"rows":"5"}), label="Your Message", max_length=100)

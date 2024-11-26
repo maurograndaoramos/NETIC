@@ -22,6 +22,11 @@ cryptography = "^43.0.3"
 faker = "^30.8.2"
 django-allauth = {extras = ["socialaccount"], version = "^65.1.0"}
 ngrok = "^1.4.0"
+pymongo = "^4.10.1"
+channels = "^4.1.0"
+channels-redis = "^4.2.0"
+daphne = "^4.1.2"
+pydantic = "^2.9.2"
 
 [build-system]
 requires = ["poetry-core"]

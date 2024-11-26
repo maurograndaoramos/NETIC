@@ -75,15 +75,10 @@
     </div>
 
     
-    <div class="cards" data-intro="O card que se apresenta no meio e o cards selecionado, para ver mais sobre o estudante clique em 'ver mais'.Para adicionar na network precione seta para cima, e para rejeitar seta para baixo">
-        {% include 'components/card.html' with usable="no" size="small" image="https://picsum.photos/300/250" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
-        {% include 'components/card.html' with usable="no" size="medium" image="https://picsum.photos/250/300" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
+    <div class="cards" data-intro="O card que se apresenta no meio e o cards selecionado, para ver mais sobre o estudante clique em 'ver mais. Para adicionar na network pressione na estrela do card.">
         {% for user_info in users_data %}
-            {% include 'components/card.html' with logged_user_id_to_send=logged_user_id id=user_info.id size="" image=user_info.profile_picture name=user_info.first_name course=user_info.curso description=user_info.sinopse big_discription=user_info.descricao_longa %}
+            {% include 'components/card.html' with insta=user_info.instagram github=user_info.github linkedin=user_info.linkedin web=user_info.website network=false connected="shit" logged_user_id_to_send=logged_user_id id=user_info.id size="" image=user_info.profile_picture name=user_info.first_name last_name=user_info.last_name course=user_info.curso description=user_info.sinopse big_discription=user_info.descricao_longa %}
         {% endfor %}
-        {% include 'components/card.html' with usable="no" size="medium" image="https://picsum.photos/200/250" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
-        {% include 'components/card.html' with usable="no" size="small" image="https://picsum.photos/250/200" name="neticDevelopers" course="The best Course" description="We Hope Bruno lanconi Like that Project and give us 20 points, pls lanconi give us 20 :)" %}
-        
     </div>
 
     <div class="noCards">

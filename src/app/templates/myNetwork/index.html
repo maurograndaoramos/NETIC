@@ -6,15 +6,22 @@
 			<h1 class="title">My Network</h1>
 	</header>
 
+	<div class="no-more-cards" style="display: none;">
+		<h3>Não há mais contatos na network<br>
+			<br>
+			<a href="/">Adicionar contatos na sua network</a>
+		</h3>
+	</div>
 	<main>
 		<ul>
 			{% for user_info in users_data %}
 				<li class="cardss">
-					{% include 'components/card.html' with logged_user_id_to_send=logged_user_id id=user_info.id size="" image=user_info.profile_picture name=user_info.first_name course=user_info.curso description=user_info.sinopse big_discription=user_info.descricao_longa %}
+					{% include 'components/card.html' with insta=user_info.instagram github=user_info.github linkedin=user_info.linkedin web=user_info.website network=true connected=true logged_user_id_to_send=logged_user_id id=user_info.id size="" image=user_info.profile_picture name=user_info.first_name last_name=user_info.last_name course=user_info.curso description=user_info.sinopse big_discription=user_info.descricao_longa %}
 				</li>
 			{% endfor %}
 				
 		</ul>   
+
 
 	{% include 'components/userModel.html' %}
 	<script type="module" src="{% static 'js/cardsHandler/cardsHandler.js'%}"></script>

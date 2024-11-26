@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="chat_app">
+    <div class="all_chats">
+
+    </div>
+
+    <div class="chat_empty">
+        <h2>
+            Escolha um chat para abrir a conversa
+        </h2>
+    </div>
+</div>
+
+<script>
+    const chat_id = `{{chat_id}}`
+    const user_id = "{{user_id}}"
+    async function fetchChats() {
+        const dataToGetUserChats = {
+            "user_id": user_id
+        };
+
+        const response = await fetch('http://localhost:8000/get_user_chats/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToGetUserChats)
+        });
+
+        const data = await response.json();
+        console.log(data);
+
+        document.querySelector(".all_chats").innerHTML = ""
+
+        for (let i = 0; i < data.chats.length; i++) {
+            const element = data.chats[i];
+            const chat_element = document.createElement("div")
+            chat_element.classList.add("chat_link")
+            chat_element.innerHTML = `
+                <div class ="chat_userImage">
+                    <img/>
+                </div>
+
+                <div class="chat_infos">
+                    <h3>
+                        ${element.friend_name}    
+                    <h3/>
+                    <p>
+                        ${element.last_message}    
+                    </p>
+                </div>
+        `
+            chat_element.onclick = () => {
+
+                window.location.replace(`http://localhost:8000/chat/${element.id}`);
+            }
+
+            document.querySelector(".all_chats").appendChild(chat_element)
+
+        }
+
+    }
+
+    fetchChats()
+</script>
+
+
+{% endblock %}
