@@ -147,7 +147,7 @@ This builds and starts all Docker containers. The application will be available 
         <sub><b>Mauro Ramos</b></sub>
       </a>
       <br />
-      <sub>Project Lead / Backend</sub>
+      <sub>Project Lead / Backend Developer</sub>
     </td>
     <td align="center">
       <a href="https://github.com/JoaoCardosoDev">
@@ -156,7 +156,7 @@ This builds and starts all Docker containers. The application will be available 
         <sub><b>Joao Cardoso</b></sub>
       </a>
       <br />
-      <sub>Developer</sub>
+      <sub>Frontend Developer</sub>
     </td>
     <td align="center">
       <a href="https://github.com/G00li">
@@ -165,7 +165,7 @@ This builds and starts all Docker containers. The application will be available 
         <sub><b>Leandro Oliveira</b></sub>
       </a>
       <br />
-      <sub>Developer</sub>
+      <sub>Frontend Developer</sub>
     </td>
     <td align="center">
       <a href="https://github.com/mccartheney">
@@ -174,7 +174,7 @@ This builds and starts all Docker containers. The application will be available 
         <sub><b>Mccartheney Mendes</b></sub>
       </a>
       <br />
-      <sub>Developer</sub>
+      <sub>Backend Developer</sub>
     </td>
     <td align="center">
       <a href="https://github.com/r1ckyjr">
@@ -183,7 +183,7 @@ This builds and starts all Docker containers. The application will be available 
         <sub><b>Ricardo Almeida</b></sub>
       </a>
       <br />
-      <sub>Developer</sub>
+      <sub>Backend Developer</sub>
     </td>
   </tr>
 </table>
@@ -209,3 +209,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 [Report Bug](https://github.com/maurograndaoramos/NETIC/issues) • [Request Feature](https://github.com/maurograndaoramos/NETIC/issues)
 
 </div>
+
